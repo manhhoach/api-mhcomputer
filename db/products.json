@@ -1,0 +1,46 @@
+{
+  "RECORDS": [
+    {
+      "id": 1,
+      "categoryId": 1,
+      "brandId": 2,
+      "name": "Laptop Asus Gaming TUF FX506LHB-HN188W",
+      "price": 16999000,
+      "description": "Laptop Asus Gaming TUF FX506 sở hữu thiết kế được thay đổi hoàn toàn so với những người anh em trước đó thuộc dòng TUF Gaming. Bề ngoài góc cạnh cùng màu Eclipse Gray tạo cảm giác chắc chắn và đậm chất gaming..",
+      "accessories": "Sạc, sách hướng dẫn sử dụng",
+      "offer": "BỘ QUÀ TẶNG TRỊ GIÁ 1.000.000Đ: Chuột không dây trị giá 500.000đ + Tấm lót chuột trị giá 500.000đ",
+      "totalSold": 0,
+      "quantity": 100,
+      "imageUrl": null,
+      "createdDate": "2022-6-25 22:15:53"
+    },
+    {
+      "id": 3,
+      "categoryId": 1,
+      "brandId": 4,
+      "name": "Laptop HP provip",
+      "price": 17000000,
+      "description": "cực đẹp",
+      "accessories": "Sạc, sách hướng dẫn sử dụng",
+      "offer": "BỘ QUÀ TẶNG TRỊ GIÁ 1.000.000Đ: Chuột không dây trị giá 500.000đ + Tấm lót chuột trị giá 500.000đ",
+      "totalSold": 0,
+      "quantity": 100,
+      "imageUrl": null,
+      "createdDate": "2022-6-26 10:14:02"
+    },
+    {
+      "id": 4,
+      "categoryId": 1,
+      "brandId": 2,
+      "name": "Laptop Asus vip màn xịn",
+      "price": 18000000,
+      "description": "Laptop Asus Gaming TUF FX506 sở hữu thiết kế được thay đổi hoàn toàn so với những người anh em trước đó thuộc dòng TUF Gaming. Bề ngoài góc cạnh cùng màu Eclipse Gray tạo cảm giác chắc chắn và đậm chất gaming..",
+      "accessories": "Sạc, sách hướng dẫn sử dụng",
+      "offer": "BỘ QUÀ TẶNG TRỊ GIÁ 1.000.000Đ: Chuột không dây trị giá 500.000đ + Tấm lót chuột trị giá 500.000đ",
+      "totalSold": 0,
+      "quantity": 100,
+      "imageUrl": null,
+      "createdDate": "2022-6-26 10:14:02"
+    }
+  ]
+}

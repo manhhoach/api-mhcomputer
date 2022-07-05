@@ -1,0 +1,352 @@
+{
+  "RECORDS": [
+    {
+      "id": 62,
+      "categoryId": 1,
+      "propertyId": 4,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 63,
+      "categoryId": 1,
+      "propertyId": 5,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 64,
+      "categoryId": 1,
+      "propertyId": 6,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 65,
+      "categoryId": 1,
+      "propertyId": 7,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 66,
+      "categoryId": 1,
+      "propertyId": 8,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 67,
+      "categoryId": 1,
+      "propertyId": 9,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 68,
+      "categoryId": 1,
+      "propertyId": 10,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 69,
+      "categoryId": 1,
+      "propertyId": 11,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 70,
+      "categoryId": 1,
+      "propertyId": 12,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 71,
+      "categoryId": 1,
+      "propertyId": 16,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 72,
+      "categoryId": 1,
+      "propertyId": 17,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 73,
+      "categoryId": 1,
+      "propertyId": 18,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 74,
+      "categoryId": 1,
+      "propertyId": 19,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 75,
+      "categoryId": 1,
+      "propertyId": 20,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 76,
+      "categoryId": 1,
+      "propertyId": 21,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 77,
+      "categoryId": 1,
+      "propertyId": 22,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 78,
+      "categoryId": 1,
+      "propertyId": 26,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 79,
+      "categoryId": 1,
+      "propertyId": 27,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 80,
+      "categoryId": 1,
+      "propertyId": 29,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 81,
+      "categoryId": 3,
+      "propertyId": 4,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 82,
+      "categoryId": 3,
+      "propertyId": 5,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 83,
+      "categoryId": 3,
+      "propertyId": 6,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 84,
+      "categoryId": 3,
+      "propertyId": 11,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 85,
+      "categoryId": 3,
+      "propertyId": 12,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 86,
+      "categoryId": 3,
+      "propertyId": 16,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 87,
+      "categoryId": 3,
+      "propertyId": 17,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 88,
+      "categoryId": 3,
+      "propertyId": 18,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 89,
+      "categoryId": 3,
+      "propertyId": 19,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 90,
+      "categoryId": 3,
+      "propertyId": 20,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 91,
+      "categoryId": 3,
+      "propertyId": 21,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 92,
+      "categoryId": 3,
+      "propertyId": 22,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 93,
+      "categoryId": 3,
+      "propertyId": 25,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 94,
+      "categoryId": 3,
+      "propertyId": 26,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 95,
+      "categoryId": 3,
+      "propertyId": 27,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 96,
+      "categoryId": 3,
+      "propertyId": 28,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 97,
+      "categoryId": 3,
+      "propertyId": 29,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 98,
+      "categoryId": 18,
+      "propertyId": 12,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 99,
+      "categoryId": 18,
+      "propertyId": 13,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 100,
+      "categoryId": 18,
+      "propertyId": 14,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 101,
+      "categoryId": 19,
+      "propertyId": 14,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 102,
+      "categoryId": 19,
+      "propertyId": 15,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 103,
+      "categoryId": 19,
+      "propertyId": 16,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 104,
+      "categoryId": 20,
+      "propertyId": 17,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 105,
+      "categoryId": 20,
+      "propertyId": 29,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 106,
+      "categoryId": 20,
+      "propertyId": 19,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 107,
+      "categoryId": 20,
+      "propertyId": 20,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 108,
+      "categoryId": 21,
+      "propertyId": 21,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 109,
+      "categoryId": 21,
+      "propertyId": 24,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 110,
+      "categoryId": 33,
+      "propertyId": 18,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 111,
+      "categoryId": 33,
+      "propertyId": 22,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 112,
+      "categoryId": 34,
+      "propertyId": 18,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 113,
+      "categoryId": 34,
+      "propertyId": 22,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 114,
+      "categoryId": 34,
+      "propertyId": 23,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 115,
+      "categoryId": 34,
+      "propertyId": 24,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 116,
+      "categoryId": 23,
+      "propertyId": 25,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 117,
+      "categoryId": 23,
+      "propertyId": 26,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 118,
+      "categoryId": 23,
+      "propertyId": 27,
+      "createdDate": "2022-6-25 15:14:33"
+    },
+    {
+      "id": 119,
+      "categoryId": 24,
+      "propertyId": 28,
+      "createdDate": "2022-6-25 15:14:33"
+    }
+  ]
+}

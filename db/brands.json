@@ -1,0 +1,40 @@
+{
+  "RECORDS": [
+    {
+      "id": 1,
+      "name": "Acer",
+      "imageUrl": null,
+      "createdDate": "0-0-0 00:00:00"
+    },
+    {
+      "id": 2,
+      "name": "Asus",
+      "imageUrl": null,
+      "createdDate": "0-0-0 00:00:00"
+    },
+    {
+      "id": 3,
+      "name": "Dell",
+      "imageUrl": null,
+      "createdDate": "0-0-0 00:00:00"
+    },
+    {
+      "id": 4,
+      "name": "HP",
+      "imageUrl": null,
+      "createdDate": "0-0-0 00:00:00"
+    },
+    {
+      "id": 5,
+      "name": "MSI",
+      "imageUrl": null,
+      "createdDate": "0-0-0 00:00:00"
+    },
+    {
+      "id": 6,
+      "name": "Lenovo",
+      "imageUrl": null,
+      "createdDate": "0-0-0 00:00:00"
+    }
+  ]
+}

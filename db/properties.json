@@ -1,0 +1,160 @@
+{
+  "RECORDS": [
+    {
+      "id": 4,
+      "name": "RAM",
+      "extendName": "ram",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 5,
+      "name": "Ổ cứng",
+      "extendName": "o-cung",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 6,
+      "name": "VGA - Card màn hình",
+      "extendName": "vga---card-man-hinh",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 7,
+      "name": "Kích thước màn hình",
+      "extendName": "kich-thuoc-man-hinh",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 8,
+      "name": "Độ phân giải màn hình",
+      "extendName": "do-phan-giai-man-hinh",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 9,
+      "name": "Cảm ứng màn hình",
+      "extendName": "cam-ung-man-hinh",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 10,
+      "name": "Tần số màn hình",
+      "extendName": "tan-so-man-hinh",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 11,
+      "name": "Hệ điều hành",
+      "extendName": "he-dieu-hanh",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 12,
+      "name": "Dòng CPU",
+      "extendName": "dong-cpu",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 13,
+      "name": "Thế hệ CPU",
+      "extendName": "the-he-cpu",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 14,
+      "name": "Socket",
+      "extendName": "socket",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 15,
+      "name": "Chip set",
+      "extendName": "chip-set",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 16,
+      "name": "Số khe cắm RAM",
+      "extendName": "so-khe-cam-ram",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 17,
+      "name": "Loại RAM",
+      "extendName": "loai-ram",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 18,
+      "name": "Dung lượng ổ cứng",
+      "extendName": "dung-luong-o-cung",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 19,
+      "name": "Bus RAM",
+      "extendName": "bus-ram",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 20,
+      "name": "Đèn LED",
+      "extendName": "den-led",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 21,
+      "name": "GPU",
+      "extendName": "gpu",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 22,
+      "name": "Loại ổ cứng",
+      "extendName": "loai-o-cung",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 23,
+      "name": "Tốc độ vòng quay",
+      "extendName": "toc-do-vong-quay",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 24,
+      "name": "Bộ nhớ đệm",
+      "extendName": "bo-nho-dem",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 25,
+      "name": "Loại Case",
+      "extendName": "loai-case",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 26,
+      "name": "Chất liệu",
+      "extendName": "chat-lieu",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 27,
+      "name": "Màu",
+      "extendName": "mau",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 28,
+      "name": "Công suất",
+      "extendName": "cong-suat",
+      "createdDate": "2022-6-25 15:08:00"
+    },
+    {
+      "id": 29,
+      "name": "Dung lượng RAM",
+      "extendName": "dung-luong-ram",
+      "createdDate": "2022-6-25 14:41:35"
+    }
+  ]
+}

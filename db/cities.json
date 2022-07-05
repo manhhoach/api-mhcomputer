@@ -1,0 +1,319 @@
+{
+  "RECORDS": [
+    {
+      "id": 1,
+      "name": "Lào Cai",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 2,
+      "name": "Hưng Yên",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 3,
+      "name": "Hòa Bình",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 4,
+      "name": "Sơn La",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 5,
+      "name": "Điện Biên",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 6,
+      "name": "Lai Châu",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 7,
+      "name": "Yên Bái",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 8,
+      "name": "Bình Định",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 9,
+      "name": "Ninh Thuận",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 10,
+      "name": "Phú Yên",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 11,
+      "name": "Kon Tum",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 12,
+      "name": "Bình Thuận",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 13,
+      "name": "Bạc Liêu",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 14,
+      "name": "Cà Mau",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 15,
+      "name": "Hậu Giang",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 16,
+      "name": "Bắc Ninh",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 17,
+      "name": "Bắc Giang",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 18,
+      "name": "Lạng Sơn",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 19,
+      "name": "Cao Bằng",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 20,
+      "name": "Bắc Kạn",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 21,
+      "name": "Thái Nguyên",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 22,
+      "name": "Quảng Nam",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 23,
+      "name": "Quảng Ngãi",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 24,
+      "name": "Đắk Nông",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 25,
+      "name": "Tây Ninh",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 26,
+      "name": "Bình Phước",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 27,
+      "name": "Quảng Trị",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 28,
+      "name": "Quảng Bình",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 29,
+      "name": "Hà Tĩnh",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 30,
+      "name": "Nghệ An",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 31,
+      "name": "Thanh Hóa",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 32,
+      "name": "Ninh Bình",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 33,
+      "name": "Hà Nam",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 34,
+      "name": "Nam Định",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 35,
+      "name": "Quảng Ninh",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 36,
+      "name": "Phú Thọ",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 37,
+      "name": "Tuyên Quang",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 38,
+      "name": "Hà Giang",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 39,
+      "name": "Thái Bình",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 40,
+      "name": "Hải Dương",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 41,
+      "name": "Hải Phòng",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 42,
+      "name": "Thừa Thiên - Huế",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 43,
+      "name": "Vĩnh Phúc",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 44,
+      "name": "Cần Thơ",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 45,
+      "name": "Kiên Giang",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 46,
+      "name": "Sóc Trăng",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 47,
+      "name": "An Giang",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 48,
+      "name": "Đồng Tháp",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 49,
+      "name": "Vĩnh Long",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 50,
+      "name": "Trà Vinh",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 51,
+      "name": "Bến Tre",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 52,
+      "name": "Tiền Giang",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 53,
+      "name": "Long An",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 54,
+      "name": "Đắk Lắk",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 55,
+      "name": "Lâm Đồng",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 56,
+      "name": "Khánh Hòa",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 57,
+      "name": "Gia Lai",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 58,
+      "name": "Bà Rịa - Vũng Tàu",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 59,
+      "name": "Bình Dương",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 60,
+      "name": "Đồng Nai",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 61,
+      "name": "Đà Nẵng",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 62,
+      "name": "Hồ Chí Minh",
+      "createdDate": "2022-6-24 21:25:48"
+    },
+    {
+      "id": 63,
+      "name": "Hà Nội",
+      "createdDate": "2022-6-24 21:25:48"
+    }
+  ]
+}
