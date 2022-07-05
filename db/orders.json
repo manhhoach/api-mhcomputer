@@ -1,0 +1,56 @@
+{
+  "RECORDS": [
+    {
+      "id": 4,
+      "userId": 3,
+      "phone": null,
+      "address": null,
+      "paymentMethod": null,
+      "code": null,
+      "deliveryProgress": null,
+      "price": null,
+      "discount": null,
+      "status": 0,
+      "createdDate": "2022-7-2 07:45:42"
+    },
+    {
+      "id": 5,
+      "userId": 3,
+      "phone": "0387293562",
+      "address": "Số 1 Tổ 2 Văn Nội, Phường Phú Lương, Quận Hà Đông, Hà Nội",
+      "paymentMethod": 0,
+      "code": "MH59-3-1656722952129",
+      "deliveryProgress": "{\"status\":2,\"time\":\"2022-07-02T00:49:12.130Z\"}",
+      "price": 19000000,
+      "discount": 100000000,
+      "status": 7,
+      "createdDate": "2022-7-2 07:49:12"
+    },
+    {
+      "id": 6,
+      "userId": 2,
+      "phone": null,
+      "address": null,
+      "paymentMethod": null,
+      "code": null,
+      "deliveryProgress": null,
+      "price": null,
+      "discount": null,
+      "status": 0,
+      "createdDate": "2022-7-2 07:51:36"
+    },
+    {
+      "id": 7,
+      "userId": 2,
+      "phone": "0387293562",
+      "address": "Số 1 Tổ 2 Văn Nội, Phường Phú Lương, Quận Hà Đông, Hà Nội",
+      "paymentMethod": 1,
+      "code": "MH29-2-1656723155036",
+      "deliveryProgress": "{\"status\":1,\"time\":\"2022-07-02T00:52:35.036Z\"}",
+      "price": 19000000,
+      "discount": 100000000,
+      "status": 2,
+      "createdDate": "2022-7-2 07:52:35"
+    }
+  ]
+}

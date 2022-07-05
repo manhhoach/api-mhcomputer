@@ -1,0 +1,26 @@
+{
+  "RECORDS": [
+    {
+      "id": 4,
+      "productId": 3,
+      "userId": 3,
+      "content": "Sản phẩm tuyệt vời hơn mong đợi",
+      "rate": 5,
+      "imageUrl": null,
+      "response": "Cảm ơn bạn đã tin dùng sản phẩm",
+      "status": 0,
+      "createdDate": "2022-7-3 15:08:27"
+    },
+    {
+      "id": 5,
+      "productId": 3,
+      "userId": 1,
+      "content": "ngon",
+      "rate": 4,
+      "imageUrl": null,
+      "response": "thanks",
+      "status": 0,
+      "createdDate": "2022-7-3 15:36:26"
+    }
+  ]
+}

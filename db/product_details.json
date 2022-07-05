@@ -11,7 +11,7 @@
       "id": 2,
       "productId": 1,
       "propertyId": 5,
-      "value": "512GB M.2 NVMe™ PCIe® 3.0 SSD",
+      "value": "15TB SSD Sata 2.5",
       "createdDate": "2022-6-25 22:15:53"
     },
     {
@@ -230,6 +230,83 @@
       "propertyId": 26,
       "value": "Kim loại, nhựa",
       "createdDate": "2022-6-26 10:14:02"
+    },
+    {
+      "id": 34,
+      "productId": 5,
+      "propertyId": 4,
+      "value": "32GB DDR4 SO-DIMM",
+      "createdDate": "2022-6-29 13:43:01"
+    },
+    {
+      "id": 35,
+      "productId": 5,
+      "propertyId": 5,
+      "value": "512GB M.2 NVMe™ PCIe® 3.0 SSD",
+      "createdDate": "2022-6-29 13:43:01"
+    },
+    {
+      "id": 36,
+      "productId": 5,
+      "propertyId": 6,
+      "value": "GTX 1650 4GB",
+      "createdDate": "2022-6-29 13:43:01"
+    },
+    {
+      "id": 37,
+      "productId": 5,
+      "propertyId": 7,
+      "value": "15.6",
+      "createdDate": "2022-6-29 13:43:01"
+    },
+    {
+      "id": 38,
+      "productId": 5,
+      "propertyId": 8,
+      "value": "2880x1440",
+      "createdDate": "2022-6-29 13:43:01"
+    },
+    {
+      "id": 39,
+      "productId": 5,
+      "propertyId": 9,
+      "value": "không",
+      "createdDate": "2022-6-29 13:43:01"
+    },
+    {
+      "id": 40,
+      "productId": 5,
+      "propertyId": 12,
+      "value": "Intel® Core™ i7-10300H 2.5 GHZ (8M Cache, up to 4.5 GHz, 4 nhân 8 luồng)",
+      "createdDate": "2022-6-29 13:43:01"
+    },
+    {
+      "id": 41,
+      "productId": 5,
+      "propertyId": 16,
+      "value": "2",
+      "createdDate": "2022-6-29 13:43:01"
+    },
+    {
+      "id": 42,
+      "productId": 5,
+      "propertyId": 21,
+      "value": "Nvidia RTX 3000",
+      "createdDate": "2022-6-29 13:43:01"
+    },
+    {
+      "id": 43,
+      "productId": 5,
+      "propertyId": 27,
+      "value": "Đen",
+      "createdDate": "2022-6-29 13:43:01"
+    },
+    {
+      "id": 44,
+      "productId": 5,
+      "propertyId": 26,
+      "value": "Kim loại, nhựa",
+      "createdDate": "2022-6-29 13:43:01"
     }
   ]
 }

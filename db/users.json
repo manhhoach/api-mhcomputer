@@ -1,0 +1,76 @@
+{
+  "RECORDS": [
+    {
+      "id": 1,
+      "email": "m1@gmail.com",
+      "fullName": "Cụ mạnh",
+      "status": 1,
+      "phone": "0387295907",
+      "password": "$2a$10$mCXuWpTfyCLS2fmZf7BZJOKsk3eE.BxpzhrG5fJ7NWq6Qce0vjSuW",
+      "googleId": null,
+      "facebookId": null,
+      "createdDate": "2022-6-25 22:16:43",
+      "gender": 1
+    },
+    {
+      "id": 2,
+      "email": "m2@gmail.com",
+      "fullName": "Cụ mạnh",
+      "status": 0,
+      "phone": "0387295907",
+      "password": "$2a$10$mCXuWpTfyCLS2fmZf7BZJOKsk3eE.BxpzhrG5fJ7NWq6Qce0vjSuW",
+      "googleId": null,
+      "facebookId": null,
+      "createdDate": "2022-6-27 15:54:41",
+      "gender": 1
+    },
+    {
+      "id": 3,
+      "email": "m3@gmail.com",
+      "fullName": "jjjj",
+      "status": 0,
+      "phone": "0387295907",
+      "password": "$2a$10$mCXuWpTfyCLS2fmZf7BZJOKsk3eE.BxpzhrG5fJ7NWq6Qce0vjSuW",
+      "googleId": null,
+      "facebookId": null,
+      "createdDate": "2022-7-2 07:35:35",
+      "gender": 1
+    },
+    {
+      "id": 14,
+      "email": "manhhn.n7@gmail.com",
+      "fullName": "the manh bui",
+      "status": 0,
+      "phone": null,
+      "password": null,
+      "googleId": "103606780493989507422",
+      "facebookId": null,
+      "createdDate": "2022-7-2 20:45:32",
+      "gender": 1
+    },
+    {
+      "id": 18,
+      "email": null,
+      "fullName": "Mạnh Hoạch",
+      "status": 0,
+      "phone": null,
+      "password": null,
+      "googleId": null,
+      "facebookId": "1627938110910985",
+      "createdDate": "2022-7-4 14:56:11",
+      "gender": 1
+    },
+    {
+      "id": 19,
+      "email": "manhhn.nv@gmail.com",
+      "fullName": "Mạnh Vũ",
+      "status": 0,
+      "phone": null,
+      "password": null,
+      "googleId": "100213421048771214730",
+      "facebookId": null,
+      "createdDate": "2022-7-5 10:04:14",
+      "gender": 1
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "RECORDS": [
+    {
+      "id": 1,
+      "name": "Show room Hà Đông",
+      "phone": "0123456789",
+      "address": "Số 1 Quang Trung, Hà Đông, Hà Nội",
+      "createdDate": "2022-6-29 09:08:14"
+    },
+    {
+      "id": 2,
+      "name": "Show room Thái Hà",
+      "phone": "023564548",
+      "address": "Số 3 Thái Hà, Đống Đa, Hà Nội",
+      "createdDate": "2022-6-29 10:20:59"
+    },
+    {
+      "id": 5,
+      "name": "Show room Lê Thanh Nghị",
+      "phone": "01265789",
+      "address": "Số 17 Lê Thanh Nghị, Hai Bà Trưng, Hà Nội",
+      "createdDate": "2022-6-29 13:25:43"
+    }
+  ]
+}

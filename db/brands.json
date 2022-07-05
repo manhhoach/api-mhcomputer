@@ -35,6 +35,12 @@
       "name": "Lenovo",
       "imageUrl": null,
       "createdDate": "0-0-0 00:00:00"
+    },
+    {
+      "id": 7,
+      "name": "Dell sp",
+      "imageUrl": null,
+      "createdDate": "2022-7-1 12:27:49"
     }
   ]
 }

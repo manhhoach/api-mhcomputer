@@ -6,11 +6,10 @@
       "brandId": 2,
       "name": "Laptop Asus Gaming TUF FX506LHB-HN188W",
       "price": 16999000,
-      "description": "Laptop Asus Gaming TUF FX506 sở hữu thiết kế được thay đổi hoàn toàn so với những người anh em trước đó thuộc dòng TUF Gaming. Bề ngoài góc cạnh cùng màu Eclipse Gray tạo cảm giác chắc chắn và đậm chất gaming..",
+      "description": "Laptop Asus Vivobook Pro 14 OLED sở hữu ngoại hình cực thanh lịch và sang trọng với logo ASUS in 3D độc đáo góp phần tạo dấu ấn riêng cho máy.",
       "accessories": "Sạc, sách hướng dẫn sử dụng",
       "offer": "BỘ QUÀ TẶNG TRỊ GIÁ 1.000.000Đ: Chuột không dây trị giá 500.000đ + Tấm lót chuột trị giá 500.000đ",
       "totalSold": 0,
-      "quantity": 100,
       "imageUrl": null,
       "createdDate": "2022-6-25 22:15:53"
     },
@@ -24,13 +23,12 @@
       "accessories": "Sạc, sách hướng dẫn sử dụng",
       "offer": "BỘ QUÀ TẶNG TRỊ GIÁ 1.000.000Đ: Chuột không dây trị giá 500.000đ + Tấm lót chuột trị giá 500.000đ",
       "totalSold": 0,
-      "quantity": 100,
       "imageUrl": null,
       "createdDate": "2022-6-26 10:14:02"
     },
     {
       "id": 4,
-      "categoryId": 1,
+      "categoryId": 3,
       "brandId": 2,
       "name": "Laptop Asus vip màn xịn",
       "price": 18000000,
@@ -38,9 +36,21 @@
       "accessories": "Sạc, sách hướng dẫn sử dụng",
       "offer": "BỘ QUÀ TẶNG TRỊ GIÁ 1.000.000Đ: Chuột không dây trị giá 500.000đ + Tấm lót chuột trị giá 500.000đ",
       "totalSold": 0,
-      "quantity": 100,
       "imageUrl": null,
       "createdDate": "2022-6-26 10:14:02"
+    },
+    {
+      "id": 5,
+      "categoryId": 1,
+      "brandId": 2,
+      "name": "Laptop Asus TUF FX550 VN PLUS",
+      "price": 1800000,
+      "description": "Laptop Asus Gaming TUF FX506 sở hữu thiết kế được thay đổi hoàn toàn so với những người anh em trước đó thuộc dòng TUF Gaming. Bề ngoài góc cạnh cùng màu Eclipse Gray tạo cảm giác chắc chắn và đậm chất gaming..",
+      "accessories": "Sạc, sách hướng dẫn sử dụng",
+      "offer": "BỘ QUÀ TẶNG TRỊ GIÁ 1.000.000Đ: Chuột không dây trị giá 500.000đ + Tấm lót chuột trị giá 500.000đ",
+      "totalSold": 0,
+      "imageUrl": null,
+      "createdDate": "2022-6-29 13:43:01"
     }
   ]
 }
