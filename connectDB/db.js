@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 let db = {};
+const dotenv=require('dotenv').config({})
 // const sequelize = new Sequelize('sql6500353', 'sql6500353', 'tVqkxjYqJM', {
 //     host: 'sql6.freemysqlhosting.net',
 //     dialect: 'mysql',
@@ -11,10 +12,10 @@ let db = {};
 //     },
 // });
 
-const sequelize = new Sequelize('mhcomputer', 'root', null, {
-    host: 'localhost',
-    dialect: 'mysql',
-    port: '3306',
+const sequelize = new Sequelize(process.env.DB_DBNAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
+    port: process.env.DB_PORT,
     timezone: "+07:00",
     define: {
         charset: 'utf8',

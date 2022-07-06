@@ -16,18 +16,18 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(14)
         },
         address: {
-            type: DataTypes.STRING(1024)
+            type: DataTypes.STRING(512)
         },
         paymentMethod:{
             type: DataTypes.INTEGER(4),
             //defaultValue: 0 // thanh toán tiền mặt
         },
         code: {
-            type: DataTypes.STRING(256),
+            type: DataTypes.STRING(128),
             unique: true
         },
         deliveryProgress:{
-            type: DataTypes.STRING(1024)
+            type: DataTypes.STRING(512)
         },
         price:{
             type: DataTypes.BIGINT(32)

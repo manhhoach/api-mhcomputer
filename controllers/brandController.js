@@ -4,6 +4,7 @@ const { responseSuccess, responseWithError } = require('./../utils/response')
 
 module.exports.getAll = async (req, res, next) => {
     try {
+        
         const { limit, offset } = getPagination(parseInt(req.query.page_index), parseInt(req.query.page_size));
         let data = {
             condition: {},

@@ -2,11 +2,13 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 //const keys = require('./../keys/google')
 const dotenv = require('dotenv').config()
+
 const keys={
   googleClientID: process.env.googleClientID,
   googleClientSecret: process.env.googleClientSecret,
-  callbackURL_GG: process.env.callbackURL_GG
+  callbackURL_GG: `${process.env.callbackURL_GG}`
 };
+
 
 
 passport.use(new GoogleStrategy({
