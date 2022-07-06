@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         paymentMethod:{
             type: DataTypes.INTEGER(4),
-            //defaultValue: 0 // thanh toán tiền mặt
+            //defaultValue: 0  thanh toán tiền mặt
         },
         code: {
             type: DataTypes.STRING(128),
