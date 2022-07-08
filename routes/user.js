@@ -7,12 +7,14 @@ const passportFacebook = require('./../utils/passportFacebook')
 
 
 
-
 router.post('/register', userController.register);
 router.post('/login', userController.login);
 router.post('/login-with-google', userController.loginWithGoogleAPI);
 router.post('/login-with-facebook', userController.loginWithFacebookAPI);
 
+
+router.post('/forgot-password', userController.forgotPassword)
+router.put('/reset-password/:token', userController.resetPassword)
 
 
 router.use(passportGoogle.initialize());
@@ -32,6 +34,7 @@ router.use(jwt_token.checkToken)
 router.get('/me', userController.getMe);
 router.put('/me', userController.updateMe);
 router.put('/change-password', userController.changePassword);
+//router.post('/verify-email', userController.verifyEmail);
 
 router.use(jwt_token.checkAdmin);
 router.get('/all', userController.getAll);

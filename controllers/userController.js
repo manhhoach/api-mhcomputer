@@ -3,6 +3,12 @@ const jwt_token = require('./../middlewares/jwt_token');
 const { responseSuccess, responseWithError } = require('./../utils/response')
 const bcryptjs = require('bcryptjs');
 const fetch = require('node-fetch')
+const mailService = require('./../services/mailService')
+const dotenv = require('dotenv').config();
+const jwt = require('jsonwebtoken')
+
+
+
 
 module.exports.getMe = async (req, res, next) => {
     try {
@@ -230,23 +236,67 @@ module.exports.loginWithFacebook = async (req, res, next) => {
     }
 }
 
-module.exports.updateAdmin= async (req, res, next) => {
-    try
-    {
+module.exports.updateAdmin = async (req, res, next) => {
+    try {
         await userService.updateByCondition({ status: req.query.status }, { email: req.body.email });
         res.json(responseSuccess());
     }
-    catch (err){
+    catch (err) {
         res.json(responseWithError(err))
     }
 }
-module.exports.getAll= async (req, res, next) => {
-    try
-    {
-        let data=await userService.getByCondition({ status: req.query.status });
+
+module.exports.getAll = async (req, res, next) => {
+    try {
+        let data = await userService.getByCondition({ status: req.query.status });
         res.json(responseSuccess(data));
     }
-    catch (err){
+    catch (err) {
+        res.json(responseWithError(err))
+    }
+}
+
+module.exports.forgotPassword = async (req, res, next) => {
+    try {
+        let user = await userService.findOne({ email: req.body.email }, false);
+        if (user) {
+            let token = jwt_token.signToken({ id: user.id })
+            let url = `${req.protocol}://${req.get('host')}/user/reset-password/${token}`
+            let data = await mailService.sendMail(req.body.email, url)
+            if (data.rejected.length === 0)
+                res.json(responseSuccess());
+            else
+                res.json(responseWithError())
+        }
+        else {
+            res.json(responseWithError("USER IS NOT EXIST"))
+        }
+
+    }
+    catch (err) {
+        console.log(err)
+        res.json(responseWithError(err))
+    }
+}
+
+module.exports.resetPassword = async (req, res, next) => {
+    try {
+        let decoded = jwt.verify(req.params.token, process.env.SECRET_KEY);
+        if (new Date() < new Date(decoded.exp)) {
+            let user = await userService.findOne({ id: decoded.id }, false);
+            if (user) {
+                await userService.updateByCondition({ password: req.body.password }, { id: user.id });
+                res.json(responseSuccess("RESET PASSWORD SUCCESSFUL"))
+            }
+            else {
+                res.json(responseWithError("USER IS NOT EXIST"))
+            }
+        }
+        else {
+            res.json(responseWithError("TOKEN IS INVALID"))
+        }
+    }
+    catch (err) {
         res.json(responseWithError(err))
     }
 }
