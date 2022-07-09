@@ -236,9 +236,9 @@ module.exports.loginWithFacebook = async (req, res, next) => {
     }
 }
 
-module.exports.updateAdmin = async (req, res, next) => {
+module.exports.updateToAdmin = async (req, res, next) => {
     try {
-        await userService.updateByCondition({ status: req.query.status }, { email: req.body.email });
+        await userService.updateByCondition({ status: 1 }, { email: req.body.email });
         res.json(responseSuccess());
     }
     catch (err) {

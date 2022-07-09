@@ -36,9 +36,9 @@ router.put('/me', userController.updateMe);
 router.put('/change-password', userController.changePassword);
 //router.post('/verify-email', userController.verifyEmail);
 
-router.use(jwt_token.checkAdmin);
+router.use(jwt_token.checkOwner);
 router.get('/all', userController.getAll);
-router.put('/update-admin', userController.updateAdmin);
+router.put('/update-admin', userController.updateToAdmin);
 
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer')
 const dotenv = require('dotenv').config();
+const mailTemplate=require('./../utils/mailTemplate')
 const { OAuth2Client } = require('google-auth-library')
 
 module.exports.sendMail = async (email, url) => {
@@ -25,8 +26,7 @@ module.exports.sendMail = async (email, url) => {
     const mailOptions = {
         to: email,
         subject: 'Forgot password',
-        html: `<p>Hi my fen. Do you want to reset your password?</p><ul><li>Submit a request with your new password to: ${url}</li><li>If you didn\'t forget your password, please ignore this email!</li></ul>`
-
+        html: mailTemplate.mailResetPassword.replace('URL_RESET_PASSWORD', url)
     }
     return transporter.sendMail(mailOptions)
 }

@@ -25,7 +25,14 @@ module.exports.checkToken = async (req, res, next) => {
 }
 
 module.exports.checkAdmin = async (req, res, next) => {
-    if (req.user.status === 1)
+    if (req.user.status > 0)
+        next()
+    else
+        res.json(responseWithError("You can not access this route"));
+}
+
+module.exports.checkOwner = async (req, res, next) => {
+    if (req.user.status > 1)
         next()
     else
         res.json(responseWithError("You can not access this route"));
