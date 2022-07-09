@@ -24,7 +24,13 @@ const responseProduct = (product, property) => {
             value: ele.value
         }
     });
-    let data = { ...product.dataValues, property };
+    let _product={...product.dataValues};
+    if(_product.imageUrl)
+    {
+        _product.imageUrl=_product.imageUrl.split(";")
+    }
+    
+    let data = { ..._product, property };
     return data;
 }
 
@@ -138,6 +144,9 @@ module.exports.create = async (req, res, next) => {
 
         let body = { ...req.body };
         delete body.property;
+        if(body.imageUrl.length > 0) {
+            body.imageUrl = body.imageUrl.join(";");
+        }
         let product = await productService.create(body);
         let property = req.body.property.map(ele => {
             return {
@@ -164,6 +173,7 @@ module.exports.getById = async (req, res, next) => {
             productDetailService.getByCondition({ productId: req.params.id }),
             storedProductService.getByCondition({ productId: req.params.id })
         ])
+      
         let data = responseProduct(product, property)
         data.stored = stored.map(ele => ele.show_room)
         res.json(responseSuccess(data))
@@ -211,7 +221,9 @@ module.exports.update = async (req, res, next) => {
             delete req.body.property;
         }
 
-
+        if(req.body.imageUrl.length > 0) {
+            req.body.imageUrl = req.body.imageUrl.join(";");
+        }
         let data = await productService.updateByCondition(req.body, { id: req.params.id });
 
         if (result_property === -1) {

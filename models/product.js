@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: 0
         },
         imageUrl:{
-            type: DataTypes.STRING(256)
+            type: DataTypes.TEXT()
         },
         createdDate: {
             type: DataTypes.DATE,
