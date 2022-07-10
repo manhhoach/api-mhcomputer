@@ -3,6 +3,21 @@ const storedProductService = require('./../services/storedProductService');
 const { getPagingData, getPagination } = require('./../utils/pagination');
 const { responseSuccess, responseWithError } = require('./../utils/response')
 const { Op } = require('sequelize')
+const mapService = require('./../services/mapService');
+
+const getCoordinates = async (address) => {
+    let coordinates = await mapService.getCoordinates(address);
+    return JSON.stringify({
+        lng: coordinates.features[0].center[0],
+        lat: coordinates.features[0].center[1]
+    })
+}
+
+const responseShowRoom = (showroom) => {
+    showroom=showroom.dataValues;
+    showroom.coordinates = JSON.parse(showroom.coordinates)
+    return showroom;
+}
 
 module.exports.getAll = async (req, res, next) => {
     try {
@@ -13,6 +28,7 @@ module.exports.getAll = async (req, res, next) => {
             }
         }
         let showRooms = await showRoomService.getByCondition(data);
+        showRooms = showRooms.map(ele => responseShowRoom(ele))
         res.json(responseSuccess(showRooms))
 
     }
@@ -25,7 +41,8 @@ module.exports.getById = async (req, res, next) => {
     try {
         let data = { condition: { id: req.params.id } }
         let showRooms = await showRoomService.getByCondition(data);
-        res.json(responseSuccess(showRooms.rows[0].dataValues))
+        let result=responseShowRoom(showRooms[0])
+        res.json(responseSuccess(result))
     }
     catch (err) {
         res.json(responseWithError(err))
@@ -35,8 +52,9 @@ module.exports.getById = async (req, res, next) => {
 module.exports.create = async (req, res, next) => {
     try {
 
+        req.body.coordinates = await getCoordinates(req.body.address)
         let showRooms = await showRoomService.create(req.body);
-        res.json(responseSuccess(showRooms));
+        res.json(responseSuccess(responseShowRoom(showRooms)));
 
     }
     catch (err) {
@@ -50,7 +68,7 @@ module.exports.update = async (req, res, next) => {
         let data = await showRoomService.updateByCondition(req.body, { id: req.params.id });
         if (data[0] === 1) {
             let response = await showRoomService.getByCondition({ id: req.params.id });
-            res.json(responseSuccess(response[0].dataValues));
+            res.json(responseSuccess( responseShowRoom(response[0])));
         }
         else {
             res.json(responseWithError("SHOW ROOM UPDATE FAILED"))

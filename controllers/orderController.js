@@ -160,15 +160,16 @@ module.exports.getMyOrderForClient = async (req, res, next) => {
 }
 
 const updateStatus = async (status, orderId) => {
+    let order=await orderService.findOne( { id: orderId });
+    let deliveryProgress=`${JSON.stringify({status: ord.status, time: new Date()})};${order.deliveryProgress}`;
     return await Promise.all([
-        orderService.updateByCondition({ status: status }, { id: orderId }),
+        orderService.updateByCondition({ status: status, deliveryProgress}, { id: orderId }),
         orderDetailService.updateByCondition({ status: status }, { orderId: orderId })
     ])
 }
 
 module.exports.updateStatusForClient = async (req, res, next) => {
     try {
-
         await updateStatus(req.body.status, parseInt(req.params.orderId));
         res.json(responseSuccess())
     }
@@ -181,8 +182,10 @@ module.exports.updateStatusForAdmin = async (req, res, next) => {
     try {
         if (req.body.status === 3) // phân đoạn kiểm tra hàng
         {
+            let order=await orderService.findOne( { id: req.params.orderId  });
+            let deliveryProgress=`${JSON.stringify({status: ord.status, time: new Date()})};${order.deliveryProgress}`;
             await Promise.all([
-                orderService.updateByCondition({ status: req.body.status }, { id: req.params.orderId }),
+                orderService.updateByCondition({ status: req.body.status, deliveryProgress }, { id: req.params.orderId }),
                 ...req.body.orderDetails.map(async (ele) => {  // k có dấu ... vẫn chạy bình thường, ảo vcl
                     await orderDetailService.updateByCondition(
                         { status: req.body.status, showRoomId: ele.showRoomId },

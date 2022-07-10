@@ -11,11 +11,23 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING(255),
         },
+        email:{
+            type: DataTypes.STRING(64),
+        },
         phone:{
             type: DataTypes.STRING(20),
         },
         address:{
-            type: DataTypes.STRING(1024),
+            type: DataTypes.STRING(512),
+        },
+        coordinates: {
+            type: DataTypes.STRING(128),
+        },
+        imageUrl:{
+            type: DataTypes.TEXT(),
+        },
+        openTime:{
+            type: DataTypes.STRING(128),
         },
         createdDate: {
             type: DataTypes.DATE,

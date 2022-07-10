@@ -75,7 +75,7 @@ let alterProduct = () => {
     // db.property_value.sync({force: true})
     // db.product_detail.sync({force: true})
 
-    //db.show_room.sync({alter: true})
+    
    // db.stored_product.sync({alter: true})
 }
 //alterProduct()
@@ -91,6 +91,8 @@ let alterOrder =()=>{
 //db.assess.sync({alter: true})
 //db.user.sync({alter: true})
 //db.banner.sync({alter: true})
+
+//db.show_room.sync({alter: true})
 
 
 
