@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
         address:{
             type: DataTypes.STRING(512),
         },
-        coordinates: {
-            type: DataTypes.STRING(128),
+        urlMap: {
+            type: DataTypes.TEXT(),
         },
         imageUrl:{
             type: DataTypes.TEXT(),

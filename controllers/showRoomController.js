@@ -13,11 +13,7 @@ const getCoordinates = async (address) => {
     })
 }
 
-const responseShowRoom = (showroom) => {
-    showroom=showroom.dataValues;
-    showroom.coordinates = JSON.parse(showroom.coordinates)
-    return showroom;
-}
+
 
 module.exports.getAll = async (req, res, next) => {
     try {
@@ -28,7 +24,6 @@ module.exports.getAll = async (req, res, next) => {
             }
         }
         let showRooms = await showRoomService.getByCondition(data);
-        showRooms = showRooms.map(ele => responseShowRoom(ele))
         res.json(responseSuccess(showRooms))
 
     }
@@ -41,8 +36,7 @@ module.exports.getById = async (req, res, next) => {
     try {
         let data = { condition: { id: req.params.id } }
         let showRooms = await showRoomService.getByCondition(data);
-        let result=responseShowRoom(showRooms[0])
-        res.json(responseSuccess(result))
+        res.json(responseSuccess(showRooms[0]))
     }
     catch (err) {
         res.json(responseWithError(err))
@@ -52,9 +46,8 @@ module.exports.getById = async (req, res, next) => {
 module.exports.create = async (req, res, next) => {
     try {
 
-        req.body.coordinates = await getCoordinates(req.body.address)
         let showRooms = await showRoomService.create(req.body);
-        res.json(responseSuccess(responseShowRoom(showRooms)));
+        res.json(responseSuccess(showRooms));
 
     }
     catch (err) {
@@ -67,8 +60,8 @@ module.exports.update = async (req, res, next) => {
 
         let data = await showRoomService.updateByCondition(req.body, { id: req.params.id });
         if (data[0] === 1) {
-            let response = await showRoomService.getByCondition({ id: req.params.id });
-            res.json(responseSuccess( responseShowRoom(response[0])));
+            let response = await showRoomService.findOne({ id: req.params.id });
+            res.json(responseSuccess(response));
         }
         else {
             res.json(responseWithError("SHOW ROOM UPDATE FAILED"))
