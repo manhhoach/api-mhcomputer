@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(255),
             required: true,
         },
-        gender:{
+        gender: {
             type: DataTypes.INTEGER(4),
             defaultValue: 1 // nam
         },
@@ -48,15 +48,21 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
 
-    user.afterValidate((user, options) => {
-        if(user.password)
-        {
+    user.afterValidate((user, options) => { // cách này dùng dc cả cho create và update
+        //console.log(user)
+        if (user.password) {
             const salt = bcryptjs.genSaltSync(10);
             user.password = bcryptjs.hashSync(user.password, salt);
         }
-        
     })
 
+    // nếu dùng cái này thì lại phải dùng thêm beforeCreate 
+    // user.beforeBulkUpdate((options) => {
+    //     if (options.attributes.password) {
+    //         const salt = bcryptjs.genSaltSync(10);
+    //         options.attributes.password = bcryptjs.hashSync(options.attributes.password, salt);
+    //     }
+    // })
 
     return user;
 }

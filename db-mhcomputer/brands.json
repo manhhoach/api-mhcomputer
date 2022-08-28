@@ -1,0 +1,40 @@
+{
+  "RECORDS": [
+    {
+      "id": 1,
+      "name": "Acer",
+      "imageUrl": "http://res.cloudinary.com/utc-ss/image/upload/v1657332252/computer/1657332251350-acer_ozcmet.jpg",
+      "createdDate": "2022-7-9 09:05:41"
+    },
+    {
+      "id": 2,
+      "name": "Asus",
+      "imageUrl": "http://res.cloudinary.com/utc-ss/image/upload/v1657332251/computer/1657332251351-asus_suuosy.jpg",
+      "createdDate": "2022-7-9 09:05:46"
+    },
+    {
+      "id": 3,
+      "name": "Dell",
+      "imageUrl": "http://res.cloudinary.com/utc-ss/image/upload/v1657332252/computer/1657332251352-dell_l6lw9e.jpg",
+      "createdDate": "2022-7-9 09:05:49"
+    },
+    {
+      "id": 4,
+      "name": "HP",
+      "imageUrl": "http://res.cloudinary.com/utc-ss/image/upload/v1657332252/computer/1657332251355-hp_hmpq18.png",
+      "createdDate": "2022-7-9 09:05:53"
+    },
+    {
+      "id": 5,
+      "name": "MSI",
+      "imageUrl": "http://res.cloudinary.com/utc-ss/image/upload/v1657332252/computer/1657332251360-msi_pubxpy.jpg",
+      "createdDate": "2022-7-9 09:05:57"
+    },
+    {
+      "id": 6,
+      "name": "Lenovo",
+      "imageUrl": "http://res.cloudinary.com/utc-ss/image/upload/v1657332252/computer/1657332251358-lenovo_lshy05.jpg",
+      "createdDate": "2022-7-9 09:06:01"
+    }
+  ]
+}

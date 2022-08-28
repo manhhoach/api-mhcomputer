@@ -1,0 +1,92 @@
+{
+  "RECORDS": [
+    {
+      "id": 1,
+      "name": "Show room Hà Đông",
+      "phone": "0123456789",
+      "address": "Số 1 Quang Trung, Hà Đông, Hà Nội",
+      "createdDate": "2022-6-29 09:08:14",
+      "email": "kinhdoanh.hadong@gmail.com",
+      "imageUrl": null,
+      "openTime": "Từ 8h-20h hàng ngày",
+      "urlMap": "https://www.google.com/maps/place/S%E1%BB%91+1,+Quang+Trung,+H%C3%A0+%C4%90%C3%B4ng/@20.9729004,105.7763326,17z/data=!3m1!4b1!4m5!3m4!1s0x313453e9fb5e0811:0x5924c61fe2ca5274!8m2!3d20.9729004!4d105.7785213"
+    },
+    {
+      "id": 2,
+      "name": "Show room Thái Hà",
+      "phone": "0235645480",
+      "address": "Số 3 Thái Hà, Đống Đa, Hà Nội",
+      "createdDate": "2022-6-29 10:20:59",
+      "email": "kinhdoanh.dongda@gmail.com",
+      "imageUrl": null,
+      "openTime": "Từ 8h-20h hàng ngày",
+      "urlMap": "https://www.google.com/maps/place/3+P.+Th%C3%A1i+H%C3%A0,+Trung+Li%E1%BB%87t,+%C4%90%E1%BB%91ng+%C4%90a,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0097032,105.8209357,17z/data=!3m1!4b1!4m5!3m4!1s0x3135ac8201f89f11:0x1330c37ff8ac8b52!8m2!3d21.0097032!4d105.8231244"
+    },
+    {
+      "id": 3,
+      "name": "Show room Nguyễn Văn Huyên",
+      "phone": "0398745632",
+      "address": "Số 70 Nguyễn Văn Huyên, Cầu Giấy, Hà Nội",
+      "createdDate": "2022-7-10 14:34:40",
+      "email": "kinhdoanh.caugiay@gmail.com",
+      "imageUrl": null,
+      "openTime": "Từ 8h-20h hàng ngày",
+      "urlMap": "https://www.google.com/maps/place/70+%C4%90.+Nguy%E1%BB%85n+V%C4%83n+Huy%C3%AAn,+Ngh%C4%A9a+%C4%90%C3%B4,+C%E1%BA%A7u+Gi%E1%BA%A5y,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0502277,105.7955728,17z/data=!3m1!4b1!4m5!3m4!1s0x3135ab24c2306ad1:0x6521ab0ef58a96e6!8m2!3d21.0502277!4d105.7977615"
+    },
+    {
+      "id": 4,
+      "name": "Show room Quận 3",
+      "phone": "0398745632",
+      "address": "Số 520 Cách Mạng Tháng Tám, Quận 3, TP Hồ Chí Minh",
+      "createdDate": "2022-7-10 14:36:47",
+      "email": "kinhdoanh.q3@gmail.com",
+      "imageUrl": null,
+      "openTime": "Từ 8h-20h hàng ngày",
+      "urlMap": "https://www.google.com/maps/place/HACOM%20Qu%E1%BA%ADn%203%20TPHCM/@10.7854463,106.6655173,17z/data=!3m1!4b1!4m5!3m4!1s0x31752f6b60b78c9b:0x5b51b6f9943e16d9!8m2!3d10.785441!4d106.667706"
+    },
+    {
+      "id": 5,
+      "name": "Show room Yên Lãng",
+      "phone": "0126578958",
+      "address": "Số 172A Yên Lãng, Đống Đa, Hà Nội",
+      "createdDate": "2022-7-10 10:01:30",
+      "email": "kinhdoanh.haibatrung@gmail.com",
+      "imageUrl": null,
+      "openTime": "Từ 8h-20h hàng ngày",
+      "urlMap": "https://www.google.com/maps/place/172a+P.Y%C3%AAn+L%C3%A3ng,+L%C3%A1ng+H%E1%BA%A1,+%C4%90%E1%BB%91ng+%C4%90a,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0092891,105.8100715,17z/data=!3m1!4b1!4m5!3m4!1s0x3135ac9d0b7b6afb:0xb933b0036768fd55!8m2!3d21.0092892!4d105.8145562"
+    },
+    {
+      "id": 6,
+      "name": "Show room Thợ Nhuộm",
+      "phone": "0999874111",
+      "address": "Số 61 Thợ Nhuộm, Hoàn Kiếm, Hà Nội",
+      "createdDate": "2022-7-10 14:38:26",
+      "email": "kinhdoanh.hoankiem@gmail.com",
+      "imageUrl": null,
+      "openTime": "Từ 8h-20h hàng ngày",
+      "urlMap": "https://www.google.com/maps/place/HACOM+HO%C3%80N+KI%E1%BA%BEM/@21.0268599,105.8428011,17z/data=!3m1!4b1!4m5!3m4!1s0x3135ab45a7406c63:0x2d6e5cb9dd3e4957!8m2!3d21.0268549!4d105.8449898?shorturl=1"
+    },
+    {
+      "id": 7,
+      "name": "Show room Phạm Văn Đồng",
+      "phone": "0178453666",
+      "address": "Số 49 Phạm Văn Đồng, Gò Vấp, TP Hồ Chí Minh",
+      "createdDate": "2022-7-10 14:43:07",
+      "email": "kinhdoanh.govap@gmail.com",
+      "imageUrl": null,
+      "openTime": "Từ 8h-20h hàng ngày",
+      "urlMap": "https://www.google.com/maps/place/Ng%C5%A9+H%C3%A0nh+S%C6%A1n,+%C4%90%C3%A0+N%E1%BA%B5ng,+Vi%E1%BB%87t+Nam/@10.8150446,106.6790152,17.69z/data=!4m5!3m4!1s0x3142174c8f171ac3:0x5d1534b08f3a1fa0!8m2!3d15.9955056!4d108.2588049"
+    },
+    {
+      "id": 8,
+      "name": "Show room ĐH GTVT",
+      "phone": "0387145236",
+      "address": "Số 3 Cầu Giấy, Láng Thượng, Đống Đa",
+      "createdDate": "2022-7-17 17:26:12",
+      "email": "kinhdoanh.caugiay2@gmail.com",
+      "imageUrl": null,
+      "openTime": "Từ 8h-20h hàng ngày",
+      "urlMap": "https://www.google.com/maps/dir//%C4%91%E1%BA%A1i+h%E1%BB%8Dc+giao+th%C3%B4ng+v%E1%BA%ADn+t%E1%BA%A3i/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x3135ab424a50fff9:0xbe3a7f3670c0a45f?sa=X&ved=2ahUKEwisorv82v_4AhX5pVYBHXHNCvcQ9Rd6BAhLEAU"
+    }
+  ]
+}

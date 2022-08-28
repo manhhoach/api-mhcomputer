@@ -1,15 +1,15 @@
 const models=require('./../connectDB/db');
 
 module.exports.getByCondition=(condition, limit, offset) => {
-    return models.assess.findAll({
+    return models.assesses.findAll({
         where: condition.assess,
         include:[
             {
-                model: models.product,
+                model: models.products,
                 where: condition.product
             },
             {
-                model: models.user,
+                model: models.users,
                 where: condition.user
             }
         ],
@@ -19,13 +19,13 @@ module.exports.getByCondition=(condition, limit, offset) => {
 }
 
 module.exports.create = (data)=>{
-    return models.assess.create(data);
+    return models.assesses.create(data);
 }
 
 module.exports.updateByCondition = (data, condition)=>{
-    return models.assess.update(data,{where: condition})
+    return models.assesses.update(data,{where: condition})
 }
 
 module.exports.destroyByCondition = (condition)=>{
-    return models.assess.destroy({where: condition})
+    return models.assesses.destroy({where: condition})
 }

@@ -3,74 +3,86 @@
     {
       "id": 1,
       "email": "m1@gmail.com",
-      "fullName": "Cụ mạnh",
+      "fullName": "Mạnh m1",
+      "gender": 1,
+      "status": 2,
+      "phone": "0387295907",
+      "password": "$2a$10$mCXuWpTfyCLS2fmZf7BZJOKsk3eE.BxpzhrG5fJ7NWq6Qce0vjSuW",
+      "googleId": null,
+      "facebookId": null,
+      "createdDate": "2022-6-25 22:16:43"
+    },
+    {
+      "id": 2,
+      "email": "m2@gmail.com",
+      "fullName": "Mạnh m2",
+      "gender": 1,
       "status": 1,
       "phone": "0387295907",
       "password": "$2a$10$mCXuWpTfyCLS2fmZf7BZJOKsk3eE.BxpzhrG5fJ7NWq6Qce0vjSuW",
       "googleId": null,
       "facebookId": null,
-      "createdDate": "2022-6-25 22:16:43",
-      "gender": 1
-    },
-    {
-      "id": 2,
-      "email": "m2@gmail.com",
-      "fullName": "Cụ mạnh",
-      "status": 0,
-      "phone": "0387295907",
-      "password": "$2a$10$mCXuWpTfyCLS2fmZf7BZJOKsk3eE.BxpzhrG5fJ7NWq6Qce0vjSuW",
-      "googleId": null,
-      "facebookId": null,
-      "createdDate": "2022-6-27 15:54:41",
-      "gender": 1
+      "createdDate": "2022-6-27 15:54:41"
     },
     {
       "id": 3,
       "email": "m3@gmail.com",
-      "fullName": "jjjj",
-      "status": 0,
+      "fullName": "Mạnh m3",
+      "gender": 1,
+      "status": 1,
       "phone": "0387295907",
       "password": "$2a$10$mCXuWpTfyCLS2fmZf7BZJOKsk3eE.BxpzhrG5fJ7NWq6Qce0vjSuW",
       "googleId": null,
       "facebookId": null,
-      "createdDate": "2022-7-2 07:35:35",
-      "gender": 1
+      "createdDate": "2022-7-2 07:35:35"
     },
     {
       "id": 14,
       "email": "manhhn.n7@gmail.com",
       "fullName": "the manh bui",
+      "gender": 1,
       "status": 0,
       "phone": null,
       "password": null,
       "googleId": "103606780493989507422",
       "facebookId": null,
-      "createdDate": "2022-7-2 20:45:32",
-      "gender": 1
+      "createdDate": "2022-7-2 20:45:32"
     },
     {
       "id": 18,
       "email": null,
       "fullName": "Mạnh Hoạch",
+      "gender": 1,
       "status": 0,
       "phone": null,
       "password": null,
       "googleId": null,
       "facebookId": "1627938110910985",
-      "createdDate": "2022-7-4 14:56:11",
-      "gender": 1
+      "createdDate": "2022-7-4 14:56:11"
     },
     {
-      "id": 19,
-      "email": "manhhn.nv@gmail.com",
-      "fullName": "Mạnh Vũ",
+      "id": 34,
+      "email": "hieunvmob@gmail.com",
+      "fullName": "Hiếu nv",
+      "gender": 1,
       "status": 0,
-      "phone": null,
-      "password": null,
-      "googleId": "100213421048771214730",
+      "phone": "0387295907",
+      "password": "$2a$10$3BD7a/U.Vi5odlUaBBE4UOcpPA5y8QdtxGbVNKi6Kub3OD/ScJ3r2",
+      "googleId": null,
       "facebookId": null,
-      "createdDate": "2022-7-5 10:04:14",
-      "gender": 1
+      "createdDate": "2022-7-27 16:24:24"
+    },
+    {
+      "id": 54,
+      "email": "thoaikun1905@gmail.com",
+      "fullName": "thoai nguyen",
+      "gender": 1,
+      "status": 0,
+      "phone": "0865132893",
+      "password": "$2a$10$l94MjkJv.fc0ESMVj2BX5OHv8XQCa9hBfyv04HII50CiUnAhvr2ra",
+      "googleId": null,
+      "facebookId": null,
+      "createdDate": "2022-8-1 21:49:00"
     }
   ]
 }
