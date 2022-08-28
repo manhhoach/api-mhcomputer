@@ -124,12 +124,13 @@ module.exports.getAllPaging = async (req, res, next) => {
         data.condition = condition;
 
         let products = await productService.getAllPaging(data);
-
+        
         products = await Promise.all(products.map(async (ele) => {
             let property_product = await productDetailService.getByCondition({ productId: ele.id })
+   
             return responseProduct(ele, property_product)
         }))
-
+        
         let response = getPagingData({ count: products.length, rows: products }, page_index, limit);
         res.json(responseSuccess(response));
 

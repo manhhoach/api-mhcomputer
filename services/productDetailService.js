@@ -4,7 +4,7 @@ const { QueryTypes } = require('sequelize');
 module.exports.getByCondition=async(condition)=>{
     return models.product_details.findAll({
         where: condition,
-        include: models.property
+        include: models.properties
     });
 }
 

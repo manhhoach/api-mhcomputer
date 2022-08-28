@@ -24,7 +24,7 @@ module.exports.destroyByCondition= async (condition) => {
 }
 
 module.exports.getByCondition= async(condition) => {
-    return models.product.findAll({where: condition})
+    return models.products.findAll({where: condition})
 }
 module.exports.getById= async(id) => {
     return models.products.findOne({where: {id: id}})

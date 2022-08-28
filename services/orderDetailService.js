@@ -43,7 +43,7 @@ module.exports.getMyOrder = async (condition) => {
 
 module.exports.checkOrder = (data) => {
     return models.order_details.findOne({
-        where: data.order_detail,
+        where: data.order_details,
         include: { model: models.orders, where: data.order }
     })
 }
