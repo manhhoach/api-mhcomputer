@@ -4,9 +4,19 @@ const pagination = require('./../utils/pagination')
 
 module.exports.getAll = async (req, res, next) => {
     try {
-        let condition = { parentId: req.query.parentId ? req.query.parentId : 0 };
-        let category = await categoryService.getByCondition(condition);
-        res.json(responseSuccess(category));
+
+        let category_node = await categoryService.getByCondition({ parentId: 0 });
+        let data= await Promise.all(
+            category_node.map(async (category) => {
+               let category_child= await categoryService.getByCondition({ parentId: category.id });
+               return {
+                ...category.dataValues,
+                category_child
+               }
+            })
+        );
+
+        res.json(responseSuccess(data));
     }
     catch (err) {
         res.json(responseWithError(err))
