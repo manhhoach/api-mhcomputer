@@ -3,16 +3,16 @@ const app = express()
 const port = process.env.PORT || 3000
 const { sequelize } = require('./connectDB/db')
 const route = require('./routes')
-const dotenv = require('dotenv').config({});
+require('dotenv').config();
 const cors= require('cors')
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('uploads'))
+
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Welcome to MH-Computer!')
 })
 
 app.use(route)
