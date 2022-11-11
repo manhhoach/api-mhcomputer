@@ -10,7 +10,7 @@ const sequelize = require('sequelize');
 const { Op } = require('sequelize');
 
 
-let property_array = ['ram', 'o-cung', 'vga---card-man-hinh', 'kich-thuoc-man-hinh', 'do-phan-giai-man-hinh',
+const property_array = ['ram', 'o-cung', 'vga---card-man-hinh', 'kich-thuoc-man-hinh', 'do-phan-giai-man-hinh',
     'cam-ung-man-hinh', 'tan-so-man-hinh', 'he-dieu-hanh', 'dong-cpu', 'the-he-cpu', 'socket', 'chip-set',
     'so-khe-cam-ram', 'loai-ram', 'dung-luong-o-cung', 'bus-ram', 'den-led', 'gpu', 'loai-o-cung',
     'toc-do-vong-quay', 'bo-nho-dem', 'loai-case', 'chat-lieu', 'mau', 'cong-suat', 'dung-luong-ram'
@@ -124,11 +124,11 @@ module.exports.getAllPaging = async (req, res, next) => {
 
         let products = await productService.getAllPaging(data);
 
-        products = await Promise.all(products.map(async (ele) => {
-            let property_product = await productDetailService.getByCondition({ productId: ele.id })
+        // products = await Promise.all(products.map(async (ele) => {
+        //     let property_product = await productDetailService.getByCondition({ productId: ele.id })
 
-            return responseProduct(ele, property_product)
-        }))
+        //     return responseProduct(ele, property_product)
+        // }))
 
         let response = getPagingData({ count: products.length, rows: products }, page_index, limit);
         res.json(responseSuccess(response));
@@ -153,7 +153,9 @@ module.exports.create = async (req, res, next) => {
                 productId: product.dataValues.id
             }
         });
-        await productDetailService.bulkCreate(property)
+        console.log(property[0])
+        await productDetailService.create(property[0]);
+        // await productDetailService.bulkCreate(property)
         res.json(responseSuccess(product.dataValues));
 
 

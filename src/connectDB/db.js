@@ -9,10 +9,6 @@ let DB_HOST = process.env.DB_HOST || 'localhost';
 let DB_DIALECT = process.env.DB_DIALECT || 'mysql';
 let DB_PORT = process.env.DB_PORT || '3306';
 
-// connect with string url
-// const databaseConnection =`postgres://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DBNAME}?ssl=true`
-// const sequelize=new Sequelize(databaseConnection)
-
 
 
 //connect with options
@@ -25,11 +21,11 @@ const sequelize = new Sequelize(DB_DBNAME, DB_USERNAME, DB_PASSWORD, {
         charset: 'utf8',
         collate: 'utf8_unicode_ci'
     },
-    dialectOptions: {
-        ssl: {
-            require: true
-        }
-    }
+    // dialectOptions: {
+    //     ssl: {
+    //         require: true
+    //     }
+    // }
 });
 
 // const sequelize = new Sequelize(`postgres://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DBNAME}`, {
