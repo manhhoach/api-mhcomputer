@@ -1,5 +1,4 @@
 const { responseSuccess, responseWithError } = require('./../utils/response')
-const cloudinary = require('./../keys/cloudinary');
 
 module.exports.uploadSingle = async (req, res, next) => {
     try {
