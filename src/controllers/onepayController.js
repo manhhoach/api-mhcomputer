@@ -11,10 +11,9 @@ exports.checkout = async (req, res) => {
     if (clientIp.length > 15) {
         clientIp = '127.0.0.1';
     }
-    const againLink = `http://${req.headers.host}/`;
-    // console.log(order, clientIp, againLink);
+    const againLink = `${req.protocol}://${req.headers.host}/`;
     const transaction = new Transaction(order, clientIp, againLink);
-    var url = null;
+    let url = null;
     try {
         url = await transaction.createTransactionURL(transactionType, againLink);
         return res.json({ url, clientIp });
@@ -39,17 +38,3 @@ exports.callback = (req, res) => {
     })
 }
 
-
-// let url = {
-//     vpc_Version: '2',
-//     vpc_Currency : 'VND',
-//     vpc_Command : 'pay',
-//     vpc_Locale : 'vn',
-//     // vpc_ReturnURL: 'http://localhost:3000/onepay/',
-//     vpc_OrderInfo : `node-${now.toISOString()}`,
-//     vpc_Amount : 10000,
-//     againLink: `http://${req.headers.host}/`,
-//     vpc_Customer_Id : 1,
-//     clientIp : '127.0.0.1'
-    
-// }

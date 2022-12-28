@@ -1,7 +1,6 @@
 const assessService = require('./../services/assessService');
 const orderDetailService = require('./../services/orderDetailService')
 const orderService = require('./../services/orderService')
-const { Op } = require('sequelize')
 const { responseSuccess, responseWithError } = require('./../utils/response')
 const { getPagingData, getPagination } = require('./../utils/pagination');
 

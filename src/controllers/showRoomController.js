@@ -1,6 +1,5 @@
 const showRoomService = require('./../services/showRoomService')
 const storedProductService = require('./../services/storedProductService');
-const { getPagingData, getPagination } = require('./../utils/pagination');
 const { responseSuccess, responseWithError } = require('./../utils/response')
 const { Op } = require('sequelize')
 

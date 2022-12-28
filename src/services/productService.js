@@ -1,9 +1,19 @@
 const models=require('./../connectDB/db');
 
 
-module.exports.getAllPaging=async(data)=>{
+module.exports.getAll=async(data)=>{
    
     return models.products.findAll({
+        where: data.condition,
+        limit: data.limit,
+        offset: data.offset,
+        order: data.order
+    });
+}
+
+module.exports.getAllPaging=async(data)=>{
+   
+    return models.products.findAndCountAll({
         where: data.condition,
         limit: data.limit,
         offset: data.offset,

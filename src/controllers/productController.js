@@ -67,7 +67,9 @@ module.exports.getAllPaging = async (req, res, next) => {
             offset: offset
         };
         if (req.query.categoryId) {
-            condition.categoryId = parseInt(req.query.categoryId)
+            condition.categoryId ={
+                [Op.in]: req.query.categoryId.split(';').map(ele=>parseInt(ele))
+            } 
         }
         if (req.query.brandId) {
             condition.brandId = parseInt(req.query.brandId)
@@ -130,7 +132,7 @@ module.exports.getAllPaging = async (req, res, next) => {
         //     return responseProduct(ele, property_product)
         // }))
 
-        let response = getPagingData({ count: products.length, rows: products }, page_index, limit);
+        let response = getPagingData(products, page_index, limit);
         res.json(responseSuccess(response));
 
     }
@@ -153,11 +155,9 @@ module.exports.create = async (req, res, next) => {
                 productId: product.dataValues.id
             }
         });
-        console.log(property[0])
-        await productDetailService.create(property[0]);
-        // await productDetailService.bulkCreate(property)
-        res.json(responseSuccess(product.dataValues));
+        await productDetailService.bulkCreate(property)
 
+        res.json(responseSuccess(product.dataValues));
 
     }
     catch (err) {
@@ -243,9 +243,6 @@ module.exports.update = async (req, res, next) => {
                 res.json(responseWithError('PRODUCT UPDATE FAILED'))
             }
         }
-
-
-
 
     }
     catch (err) {

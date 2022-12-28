@@ -1,12 +1,12 @@
 const models=require('./../connectDB/db');
 
-module.exports.getByCondition=async(data)=>{
+module.exports.getAllPaging=async(data)=>{
     return models.banners.findAndCountAll({
-        where: data.condition,
         limit: data.limit,
         offset: data.offset
     });
 }
+
 
 
 module.exports.create=async(data)=>{

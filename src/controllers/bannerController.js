@@ -6,12 +6,12 @@ module.exports.getAll = async (req, res, next) => {
     try {
         const { limit, offset } = getPagination(parseInt(req.query.page_index), parseInt(req.query.page_size));
         let data = {
-            condition: {},
             limit,
             offset
         }
-        let banners = await bannerService.getByCondition(data);
-        res.json(responseSuccess(banners.rows))
+        let banners = await bannerService.getAllPaging(data);
+        let response=getPagingData(banners, req.query.page_index, limit)
+        res.json(responseSuccess(response))
 
     }
     catch (err) {
