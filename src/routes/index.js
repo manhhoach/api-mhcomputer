@@ -14,7 +14,7 @@ const brandRouter = require('./brand');
 const cityRouter = require('./city');
 const districtRouter = require('./district');
 const wardRouter = require('./ward');
-const onePayRouter = require('./onepay');
+const paymentRouter = require('./payment');
 const cartRouter = require("./cart");
 const uploadRouter=require('./upload');
 const showRoomRouter=require('./show_room');
@@ -44,7 +44,7 @@ router.use('/banner', bannerRouter);
 // order
 router.use('/order', ordersRouter);
 router.use('/cart', cartRouter);
-router.use('/onepay',onePayRouter);
+router.use('/payment',paymentRouter);
 router.use('/assess', assessRouter)
 
 

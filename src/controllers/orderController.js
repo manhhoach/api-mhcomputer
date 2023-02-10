@@ -96,7 +96,7 @@ module.exports.checkOut = async (req, res, next) => {
             paymentMethod: req.body.paymentMethod,
             price: req.body.price,
             discount: req.body.discount,
-            status: status
+            status: status 
         });
         let new_order_detail = await Promise.all(
             req.body.products.map(async (ele) => {
@@ -112,7 +112,6 @@ module.exports.checkOut = async (req, res, next) => {
                 return order_detail
             })
         );
-        /// console.log(new_order_detail)
         res.json(responseSuccess(new_order_detail))
     }
     catch (err) {

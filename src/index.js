@@ -20,7 +20,7 @@ app.use(route)
 
 
 app.listen(port, async () => {
-  console.log(`Example app listening on http://localhost:${port}`)
+  console.log(`Server listening on http://localhost:${port}`)
   try {
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');

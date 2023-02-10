@@ -10,8 +10,6 @@ let DB_DIALECT = process.env.DB_DIALECT || 'mysql';
 let DB_PORT = process.env.DB_PORT || '3306';
 
 
-
-//connect with options
 const sequelize = new Sequelize(DB_DBNAME, DB_USERNAME, DB_PASSWORD, {
     host: DB_HOST,
     dialect: DB_DIALECT,
@@ -28,19 +26,6 @@ const sequelize = new Sequelize(DB_DBNAME, DB_USERNAME, DB_PASSWORD, {
     // }
 });
 
-// const sequelize = new Sequelize(`postgres://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DBNAME}`, {
-//     dialect: DB_DIALECT,
-//     timezone: "+07:00",
-//     define: {
-//         charset: 'utf8',
-//         collate: 'utf8_unicode_ci'
-//     },
-//     dialectOptions: {
-//         ssl: {
-//           require: true
-//         }
-//     }
-// });
 
 
 
@@ -79,7 +64,6 @@ db.addresses = require('../models/address')(sequelize, DataTypes)
 
 
 //sequelize.sync({alter: true})
-
 
 
 module.exports = db;

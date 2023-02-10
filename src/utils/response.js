@@ -5,10 +5,11 @@ const responseSuccess=(data)=> {
     };
 }
 
-const responseWithError=(data) =>{
+const responseWithError=(err) =>{
+    console.log(err);
     return {
         success: false,
-        errors: data
+        error: err.message?err.message:err
     };
 }
 

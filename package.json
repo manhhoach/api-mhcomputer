@@ -24,6 +24,7 @@
     "node-fetch": "^2.6.6",
     "nodemailer": "^6.7.7",
     "sequelize": "^6.25.0",
+    "stripe": "^11.10.0",
     "vn-payments": "^1.1.0"
   },
   "devDependencies": {
