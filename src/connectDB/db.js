@@ -63,7 +63,12 @@ db.wards = require('../models/ward')(sequelize, DataTypes)
 db.addresses = require('../models/address')(sequelize, DataTypes)
 
 
+//db.order_details.sync({force: true})
+
 //sequelize.sync({alter: true})
+
+db.orders.hasMany(db.order_details)
+
 
 
 module.exports = db;

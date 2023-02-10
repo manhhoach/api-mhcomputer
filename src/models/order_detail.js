@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
         },
         quantity:{
             type: DataTypes.INTEGER(4),
-
         },
         showRoomId: {
             type: DataTypes.INTEGER(4),
@@ -36,18 +35,9 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
 
-    product.belongsToMany(order, {through: order_detail})
-    order.belongsToMany(product, {through: order_detail})
-    
-
-    order_detail.belongsTo(product)
-    order_detail.belongsTo(order)
-    order_detail.belongsTo(show_room)
-
-    product.hasMany(order_detail);
-    order.hasMany(order_detail);
-    show_room.hasMany(order_detail);
-
+    order_detail.belongsTo(product, {foreignKey: 'productId'})
+    order_detail.belongsTo(order, {foreignKey: 'orderId'})
+    order_detail.belongsTo(show_room, {foreignKey: 'showRoomId'})
 
     return order_detail;
 }

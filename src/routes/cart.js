@@ -6,10 +6,10 @@ const jwt_token = require('./../middlewares/jwt_token')
 
 router.use(jwt_token.checkToken);
 
-router.get('/', orderController.getAll);
-router.put('/:id', orderDetailController.updateQuantity);
-router.post('/', orderController.create);
-router.delete('/:id', orderDetailController.destroy);
+router.get('/', orderController.getProductsInCart);
+router.put('/:orderDetailId', orderDetailController.updateQuantity);
+router.post('/', orderController.addProductInCart);
+router.delete('/:orderDetailId', orderDetailController.removeProduct);
 
 router.post('/check-out', orderController.checkOut);
 

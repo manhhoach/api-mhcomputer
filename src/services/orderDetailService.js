@@ -1,4 +1,6 @@
 const models = require('../connectDB/db');
+const sequelize=require('sequelize')
+const { Op } = require('sequelize');
 
 module.exports.getByCondition = async (data) => {
     return models.order_details.findAll({
@@ -45,5 +47,16 @@ module.exports.checkOrder = (data) => {
     return models.order_details.findOne({
         where: data.order_details,
         include: { model: models.orders, where: data.order }
+    })
+}
+
+
+module.exports.destroyByConditionOrder = async (userId) => {
+    return models.order_details.destroy({
+        where: {
+            orderId:{
+                [Op.in]: sequelize.literal(`(SELECT id FROM orders WHERE userId = ${userId}) and status = 0`)
+            }
+        }
     })
 }

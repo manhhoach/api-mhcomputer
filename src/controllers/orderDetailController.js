@@ -14,10 +14,10 @@ const checkMyCart = async (data) => {
 
 module.exports.updateQuantity = async (req, res, next) => {
     try {
-        let data = { userId: req.user.id, status: 0, id: req.params.id }
+        let data = { userId: req.user.id, status: 0, id: req.params.orderDetailId }
         let isMyOrder = await checkMyCart(data)
         if (isMyOrder) {
-            await orderDetailService.updateByCondition({ quantity: req.body.quantity }, { id: req.params.id })
+            await orderDetailService.updateByCondition({ quantity: req.body.quantity }, { id: req.params.orderDetailId })
             res.json(responseSuccess("UPDATE QUANTITY SUCCESSFUL"))
         }
         else {
@@ -29,32 +29,22 @@ module.exports.updateQuantity = async (req, res, next) => {
     }
 }
 
-module.exports.destroy = async (req, res, next) => {
+module.exports.removeProduct = async (req, res, next) => {
     try {
-        if (req.params.id == 0) // xoá tất cả
-        {
-            let myCart = await orderService.findOne({ userId: req.user.id, status: 0 })
-            if (myCart) {
-                let data = await orderDetailService.destroyByCondition({ orderId: myCart.id })
-                if (data !== 0)
-                    res.json(responseSuccess("DELETE ALL PRODUCT SUCCESSFUL"))
-                else
-                    res.json(responseWithError("CAN NOT DELETE"))
-            }
-            else {
-                res.json(responseWithError("CAN NOT DELETE"))
-            }
-
+        if (req.params.orderDetailId == 0) // remove all products
+        { 
+            await orderDetailService.destroyByConditionOrder(req.user.id)
+            res.json(responseSuccess("REMOVE ALL PRODUCT SUCCESSFUL"))
         }
         else {
-            let data = { userId: req.user.id, status: 0, id: req.params.id }
+            let data = { userId: req.user.id, status: 0, id: req.params.orderDetailId }
             let isMyOrder = await checkMyCart(data)
             if (isMyOrder) {
-                await orderDetailService.destroyByCondition({ id: req.params.id })
-                res.json(responseSuccess("DELETE PRODUCT SUCCESSFUL"))
+                await orderDetailService.destroyByCondition({ id: req.params.orderDetailId })
+                res.json(responseSuccess("REMOVE PRODUCT SUCCESSFUL"))
             }
             else {
-                res.json(responseWithError("CAN NOT DELETE"))
+                res.json(responseWithError("YOU CAN NOT REMOVE"))
             }
         }
 
