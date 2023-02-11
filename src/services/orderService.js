@@ -1,6 +1,6 @@
 const models = require('../connectDB/db');
 
-module.exports.getByCondition = async (condition) => {
+module.exports.getByCondition = (condition) => {
     return models.orders.findAll({
         where: condition,
         include: [
@@ -12,71 +12,73 @@ module.exports.getByCondition = async (condition) => {
     })
 }
 
-module.exports.create = async (data) => {
+module.exports.create = (data) => {
     return models.orders.create(data)
 }
 
-module.exports.findOne = async (condition) => {
+module.exports.findOne = (condition) => {
     return models.orders.findOne({ where: condition })
 }
 
-module.exports.updateByCondition = async (data, condition) => {
-    return models.orders.update(data, { where: condition })
+module.exports.updateByCondition = (data, condition, transaction=undefined) => {
+    return models.orders.update(data, { where: condition, transaction: transaction })
 }
 
-module.exports.destroyByCondition = async (condition) => {
+module.exports.destroyByCondition = (condition) => {
     return models.orders.destroy({ where: condition })
 }
 
 
-module.exports.getAllWithOrderDetails = async (condition) => {
+module.exports.getAllWithOrderDetails = (condition, attributes, attributes_order_detail, attributes_product, attributes_showroom=undefined ) => {
     return models.orders.findAll({
         where: condition,
         include: [
             {
                 model: models.order_details,
-                attributes:['id', 'quantity'],
+                attributes: attributes_order_detail, // ['id', 'quantity'],
                 include: [
                     {
                         model: models.products,
-                        attributes:['id', 'name','price', 'imageUrl']
+                        attributes: attributes_product // ['id', 'name', 'price', 'imageUrl']
                     },
                     {
                         model: models.show_rooms,
-                        attributes:['id', 'name','address']
+                        attributes: attributes_showroom // ['id', 'name', 'address']
                     }
                 ]
             }
         ],
-        attributes: ['id','code','price', 'discount']
+        attributes: attributes, // ['id', 'code', 'price', 'discount'],
+        orderby: [['createdDate', 'DESC']]
     })
 }
 
 
-module.exports.getProductsInCart = async (condition) => {
+module.exports.getProductsInCart = (condition, attributes, attributes_order_detail, attributes_product, attributes_showroom=undefined ) => {
     return models.orders.findOne({
         where: condition,
         include: [
             {
                 model: models.order_details,
-                attributes:['id', 'quantity', 'createdDate'],
+                attributes: attributes_order_detail,
                 include: [
                     {
                         model: models.products,
-                        attributes:['id', 'name','price', 'imageUrl']
+                        attributes: attributes_product 
                     },
                     {
                         model: models.show_rooms,
-                        attributes:['id', 'name','address']
+                        attributes: attributes_showroom
                     }
                 ]
             }
         ],
-        attributes: ['id']
+        attributes: attributes,
+        orderby: [['createdDate', 'DESC']]
     })
 }
 
-module.exports.findOrCreate=async(condition, data)=>{
+module.exports.findOrCreate = (condition, data) => {
     return models.orders.findOrCreate({
         where: condition,
         defaults: data

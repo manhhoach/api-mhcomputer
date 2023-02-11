@@ -4,7 +4,7 @@ const { responseSuccess, responseWithError } = require('./../utils/response')
 const bcryptjs = require('bcryptjs');
 const fetch = require('node-fetch')
 const mailService = require('./../services/mailService')
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 const jwt = require('jsonwebtoken')
 
 

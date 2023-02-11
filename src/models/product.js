@@ -38,6 +38,9 @@ module.exports = (sequelize, DataTypes) => {
         imageUrl:{
             type: DataTypes.TEXT()
         },
+        imageCover:{
+            type: DataTypes.STRING(255)
+        },
         createdDate: {
             type: DataTypes.DATE,
             defaultValue: new Date()

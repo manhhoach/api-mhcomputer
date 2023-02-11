@@ -1,31 +1,17 @@
 const { Sequelize, DataTypes } = require('sequelize');
 let db = {};
-const dotenv = require('dotenv').config({})
+const { DATABASE } = require('./../config/mysql')
 
-let DB_DBNAME = process.env.DB_DBNAME || 'mhcomputer';
-let DB_USERNAME = process.env.DB_USERNAME || 'root';
-let DB_PASSWORD = process.env.DB_PASSWORD || null //'manh123456';
-let DB_HOST = process.env.DB_HOST || 'localhost';
-let DB_DIALECT = process.env.DB_DIALECT || 'mysql';
-let DB_PORT = process.env.DB_PORT || '3306';
-
-
-const sequelize = new Sequelize(DB_DBNAME, DB_USERNAME, DB_PASSWORD, {
-    host: DB_HOST,
-    dialect: DB_DIALECT,
-    port: DB_PORT,
+const sequelize = new Sequelize(DATABASE.DB_DBNAME, DATABASE.DB_USERNAME, DATABASE.DB_PASSWORD, {
+    host: DATABASE.DB_HOST,
+    dialect: DATABASE.DB_DIALECT,
+    port: DATABASE.DB_PORT,
     timezone: "+07:00",
     define: {
         charset: 'utf8',
         collate: 'utf8_unicode_ci'
-    },
-    // dialectOptions: {
-    //     ssl: {
-    //         require: true
-    //     }
-    // }
+    }
 });
-
 
 
 
@@ -50,20 +36,18 @@ db.assesses = require('../models/assess')(sequelize, DataTypes)
 
 
 
-// order
 db.orders = require('../models/order')(sequelize, DataTypes)
 db.order_details = require('../models/order_detail')(sequelize, DataTypes)
 
 
 
-// address
 db.cities = require('../models/city')(sequelize, DataTypes);
 db.districts = require('../models/district')(sequelize, DataTypes)
 db.wards = require('../models/ward')(sequelize, DataTypes)
 db.addresses = require('../models/address')(sequelize, DataTypes)
 
 
-//db.order_details.sync({force: true})
+//db.products.sync({alter: true})
 
 //sequelize.sync({alter: true})
 

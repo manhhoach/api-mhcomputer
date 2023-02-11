@@ -24,6 +24,21 @@ module.exports.checkToken = async (req, res, next) => {
     }
 }
 
+module.exports.checkTokenV2 = async (req, res, next) => {
+    try {
+        let token = req.headers.authorization.split(' ')[1];
+        let decoded = jwt.verify(token, process.env.SECRET_KEY);
+        if (new Date() < new Date(decoded.exp)) {
+            let user = await userService.getOne({ id: decoded.id });
+            req.user = user.dataValues;
+        }
+        next()
+    }
+    catch (err) {
+        res.json(responseWithError("Invalid or expired token provided!"));
+    }
+}
+
 module.exports.checkAdmin = async (req, res, next) => {
     if (req.user.status === 1)
         next()

@@ -21,8 +21,8 @@ module.exports.findOne = async (condition) => {
     return models.order_details.findOne({ where: condition })
 }
 
-module.exports.updateByCondition = async (data, condition) => {
-    return models.order_details.update(data, { where: condition })
+module.exports.updateByCondition = async (data, condition, transaction=undefined) => {
+    return models.order_details.update(data, { where: condition, transaction: transaction})
 }
 
 module.exports.destroyByCondition = async (condition) => {

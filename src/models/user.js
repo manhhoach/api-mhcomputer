@@ -48,8 +48,7 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
 
-    user.afterValidate((user, options) => { // cách này dùng dc cả cho create và update
-        //console.log(user)
+    user.afterValidate((user) => { // cách này dùng dc cả cho create và update
         if (user.password) {
             const salt = bcryptjs.genSaltSync(10);
             user.password = bcryptjs.hashSync(user.password, salt);

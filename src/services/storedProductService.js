@@ -31,8 +31,8 @@ module.exports.create= async(data)=>{
     return models.stored_products.create(data)
 }
 
-module.exports.updateByCondition= async(data,condition)=>{
-    return models.stored_products.update(data, {where: condition})
+module.exports.updateByCondition= async(data,condition, transaction=undefined)=>{
+    return models.stored_products.update(data, {where: condition, transaction: transaction})
 }
 
 module.exports.destroyByCondition= async(condition)=>{

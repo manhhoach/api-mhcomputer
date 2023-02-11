@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer')
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 const mailTemplate=require('./../utils/mailTemplate')
 const { OAuth2Client } = require('google-auth-library')
 

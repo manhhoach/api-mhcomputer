@@ -45,7 +45,5 @@ module.exports = (sequelize, DataTypes) => {
             throw new Error("Quantity must be greater than 0")
         }
     })
-    
-
     return stored_product;
 }

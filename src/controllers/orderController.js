@@ -2,11 +2,17 @@ const orderService = require('../services/orderService')
 const orderDetailService = require('../services/orderDetailService')
 const storedProductService = require('./../services/storedProductService')
 const { responseSuccess, responseWithError } = require('../utils/response')
-
+const {ORDER_STATUS} =require('../utils/constants/orderStatus')
+const {sequelize}=require('./../connectDB/db')
 
 module.exports.getProductsInCart = async (req, res, next) => {
     try {
-        let data = await orderService.getProductsInCart({ userId: req.user.id, status: 0 })
+        let data = await orderService.getProductsInCart(
+            { userId: req.user.id, status: ORDER_STATUS[0].status },
+            ['id'],
+            ['id', 'quantity', 'createdDate'],
+            ['id', 'name', 'price', 'imageCover']
+        )
         res.json(responseSuccess(data))
     }
     catch (err) {
@@ -18,7 +24,7 @@ module.exports.addProductInCart = async (req, res, next) => {
     try {
         let condition = {
             userId: req.user.id,
-            status: 0
+            status: ORDER_STATUS[0].status
         }
         let [cart, ] = await orderService.findOrCreate(condition, { userId: req.user.id })
         let orderProduct = await orderDetailService.findOne({
@@ -48,7 +54,7 @@ module.exports.addProductInCart = async (req, res, next) => {
 
 module.exports.checkOut = async (req, res, next) => {
     try {
-        let status = req.body.paymentMethod === 1 ? 1 : 2;
+        let status = req.body.paymentMethod === 1 ? ORDER_STATUS[1].status : ORDER_STATUS[2].status;
         let new_order = await orderService.create({
             userId: req.user.id,
             phone: req.body.phone,
@@ -79,9 +85,24 @@ module.exports.checkOut = async (req, res, next) => {
     }
 }
 
-module.exports.getMyOrderForClient = async (req, res, next) => {
+module.exports.getOrdersByStatus = async (req, res, next) => {
     try {
-        let data = await orderService.getAllWithOrderDetails({ userId: req.user.id, status: req.query.status })
+        let data;
+        if(req.user.status===0)
+        {
+            data = await orderService.getAllWithOrderDetails(
+                { userId: req.user.id, status: req.query.status },
+                ['id', 'phone', 'code', 'address', 'price', 'discount', 'createdDate', 'paymentMethod', 'deliveryProgress'],
+                ['id', 'quantity', 'createdDate'],
+                ['id', 'name', 'price', 'imageCover'],
+                
+            )
+        }
+        else
+        {
+            data = await orderService.getAllWithOrderDetails({ status: req.query.status })
+        }
+        
         res.json(responseSuccess(data))
     }
     catch (err) {
@@ -89,98 +110,64 @@ module.exports.getMyOrderForClient = async (req, res, next) => {
     }
 }
 
-const updateStatus = async (status, orderId) => {
-    let order = await orderService.findOne({ id: orderId });
-    let deliveryProgress = `${JSON.stringify({ status: ord.status, time: new Date() })};${order.deliveryProgress}`;
-    return await Promise.all([
-        orderService.updateByCondition({ status: status, deliveryProgress }, { id: orderId }),
-        orderDetailService.updateByCondition({ status: status }, { orderId: orderId })
+const updateStatus = (status, order) => {
+    let deliveryProgress = `${JSON.stringify({ status: status, time: new Date() })};${order.deliveryProgress}`;
+    return Promise.all([
+        orderService.updateByCondition({ status: status, deliveryProgress }, { id: order.id }),
+        orderDetailService.updateByCondition({ status: status }, { orderId: order.id })
     ])
 }
 
-module.exports.updateStatusForClient = async (req, res, next) => {
+module.exports.updateStatusOrder = async (req, res, next) => {
+    const t=await sequelize.transaction()
     try {
-        await updateStatus(req.body.status, parseInt(req.params.orderId));
-        res.json(responseSuccess())
-    }
-    catch (err) {
-        res.json(responseWithError(err))
-    }
-}
-
-module.exports.updateStatusForAdmin = async (req, res, next) => {
-    try {
-        if (req.body.status === 3) // phân đoạn kiểm tra hàng
+        if(req.user.status>=ORDER_STATUS[req.body.status].permissionStatus)
         {
-            let order = await orderService.findOne({ id: req.params.orderId });
-            let deliveryProgress = `${JSON.stringify({ status: ord.status, time: new Date() })};${order.deliveryProgress}`;
-            await Promise.all([
-                orderService.updateByCondition({ status: req.body.status, deliveryProgress }, { id: req.params.orderId }),
-                ...req.body.orderDetails.map(async (ele) => {  // k có dấu ... vẫn chạy bình thường, ảo vcl
-                    await orderDetailService.updateByCondition(
-                        { status: req.body.status, showRoomId: ele.showRoomId },
-                        { id: ele.id }
-                    )
-                    let data = await storedProductService.findOne({ productId: ele.productId, showRoomId: ele.showRoomId })
-                    await storedProductService.updateByCondition({ quantity: data.quantity - ele.quantity }, { id: data.id })
-                })
-            ])
-
-        }
-        else {
-            await updateStatus(req.body.status, parseInt(req.params.orderId))
-        }
-        res.json(responseSuccess())
-    }
-    catch (err) {
-        res.json(responseWithError(err))
-    }
-}
-
-module.exports.getMyOrderForAdmin = async (req, res, next) => {
-    try {
-        let orders = await orderService.getByCondition({ status: parseInt(req.query.status) })
-        orders = await Promise.all(
-            orders.map(async (ele) => {
-                let orderDetails = await orderDetailService.getMyOrder({ id: ele.id });
-                return {
-                    ...ele.dataValues, orderDetails
+            if(req.user.status===0)
+            {
+                let order=await orderService.findOne({id: req.params.id, userId: req.user.id})
+                if(order)
+                {
+                    await updateStatus(req.body.status, {id: order.id, deliveryProgress: order.deliveryProgress })
+                    res.json(responseSuccess("UPDATE STATUS SUCCESSFULLY"));
                 }
-            })
-        )
+                else
+                {
+                    res.json(responseWithError("ORDER NOT FOUND"))
+                }
 
-        let m = new Map();
-        for (let ele of orders) {
-            let counter = m.get(ele.userId);
-
-            let order = { ...ele };
-            delete order.user;
-            order.orderDetails = ele.orderDetails.map(order_detail => {
-                let OrderDetail = { ...order_detail.dataValues }
-                delete OrderDetail.order;
-                OrderDetail.product = order_detail.dataValues.product.dataValues
-                return OrderDetail;
-            })
-            order.deliveryProgress = JSON.parse(order.deliveryProgress)
-
-            if (!counter) {
-                m.set(ele.userId, [order])
             }
-            else {
-                counter.push(order);
-                m.set(ele.userId, counter);
+            else
+            {
+                let order=await orderService.findOne({id: req.params.id})
+                let deliveryProgress = `${JSON.stringify({ status: req.body.status, time: new Date() })};${order.deliveryProgress}`;
+                if(req.body.status === 3)
+                {         
+                    await Promise.all([
+                        orderService.updateByCondition({ status: req.body.status, deliveryProgress: deliveryProgress }, { id: order.id }, t),
+                        orderDetailService.updateByCondition({ status: req.body.status }, { orderId: order.id }, t),
+                        ...req.body.orderDetails.map(async (ele) => {
+                            let data = await storedProductService.findOne({ productId: ele.productId, showRoomId: ele.showRoomId })
+                            await storedProductService.updateByCondition({ quantity: data.quantity - ele.quantity }, { id: data.id }, t)
+                        })
+                    ])
+                    await t.commit()
+                }
+                else
+                {
+                    await updateStatus(req.body.status, {id: order.id, deliveryProgress: order.deliveryProgress})
+                }
+                res.json(responseSuccess("UPDATE STATUS SUCCESSFULLY"));
             }
         }
-        let data = [];
-        for (let [key, value] of m) {
-            let user = orders.find(ele => ele.user.id === key);
-            user = user.user.dataValues;
-            user.orders = value;
-            data.push(user)
+        else
+        {
+            res.json(responseWithError("YOU CAN NOT UPDATE STATUS"))
         }
-        res.json(responseSuccess(data))
     }
     catch (err) {
+        await t.rollback()
         res.json(responseWithError(err))
     }
 }
+

@@ -34,3 +34,7 @@ module.exports.updateByCondition = async (data, condition) => {
 module.exports.destroyByCondition = async (condition) => {
     return models.users.destroy({ where: condition })
 }
+
+module.exports.getOne=(condition)=>{
+    return models.users.findOne({ where: condition, attributes: ['id','fullName', 'status']})
+}

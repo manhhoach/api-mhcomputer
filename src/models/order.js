@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
     user.hasMany(order, {foreignKey: 'userId'});
     order.belongsTo(user);
 
-    order.beforeCreate((ord, options)=>{
+    order.beforeCreate((ord)=>{
         if(ord.status!==0)
         {
             ord.code=`MH${Math.floor(Math.random() * 100)}-${ord.userId}-${ord.createdDate.getTime()}`;
@@ -58,9 +58,12 @@ module.exports = (sequelize, DataTypes) => {
                 time: new Date()
             })
         }
-        
     })
-
+    order.afterFind((orders)=>{
+        orders.map(o=>{
+            o.deliveryProgress=o.deliveryProgress.split(';').map(e=>JSON.parse(e))
+        })
+    })
 
     return order;
 }
