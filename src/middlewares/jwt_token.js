@@ -1,23 +1,30 @@
 const jwt = require('jsonwebtoken')
-const { responseSuccess, responseWithError } = require("./../utils/response");
+const { responseWithError } = require("./../utils/response");
 const userService = require('./../services/userService')
 
-module.exports.signToken = (user) => {
+module.exports.signAccessToken = (user) => {
     return jwt.sign({
-        ...user,
-        iat: new Date().getTime(),
-        exp: new Date().getTime() + 30 * 24 * 60 * 60 * 1000
-    }, process.env.SECRET_KEY, { algorithm: 'HS512' });
+        ...user
+    }, process.env.SECRET_KEY_ACCESS_TOKEN, { expiresIn: '1m'  });
 }
-module.exports.checkToken = async (req, res, next) => {
+module.exports.signRefreshToken = (user) => {
+    return jwt.sign({
+        ...user
+    }, process.env.SECRET_KEY_REFRESH_TOKEN, { expiresIn: '3m'  });
+}
+
+
+module.exports.checkAccessToken = async (req, res, next) => {
     try {
         let token = req.headers.authorization.split(' ')[1];
-        let decoded = jwt.verify(token, process.env.SECRET_KEY);
-        if (new Date() < new Date(decoded.exp)) {
-            let user = await userService.findOne({ id: decoded.id }, false);
+        let decoded = jwt.verify(token, process.env.SECRET_KEY_ACCESS_TOKEN);
+        let user = await userService.findOne({ id: decoded.id });
+        if(user)
+        {
             req.user = user.dataValues;
+            return next()
         }
-        next()
+        return res.json(responseWithError("User not found"));
     }
     catch (err) {
         res.json(responseWithError("Invalid or expired token provided!"));
@@ -28,11 +35,14 @@ module.exports.checkTokenV2 = async (req, res, next) => {
     try {
         let token = req.headers.authorization.split(' ')[1];
         let decoded = jwt.verify(token, process.env.SECRET_KEY);
-        if (new Date() < new Date(decoded.exp)) {
-            let user = await userService.getOne({ id: decoded.id });
+
+        let user = await userService.getOne({ id: decoded.id });
+        if(user)
+        {
             req.user = user.dataValues;
+            return next()
         }
-        next()
+        return res.json(responseWithError("User not found"));
     }
     catch (err) {
         res.json(responseWithError("Invalid or expired token provided!"));

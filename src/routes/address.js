@@ -3,7 +3,7 @@ const router = express.Router();
 const addressController = require('./../controllers/addressController');
 const jwt_token=require('./../middlewares/jwt_token')
 
-router.use(jwt_token.checkToken)
+router.use(jwt_token.checkAccessToken)
 router.get('/', addressController.getAll); 
 router.put('/:id', addressController.update); 
 router.post('/', addressController.create); 

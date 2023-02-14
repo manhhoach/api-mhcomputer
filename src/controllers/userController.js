@@ -35,16 +35,19 @@ module.exports.register = async (req, res, next) => {
 module.exports.login = async (req, res, next) => {
     try {
         let user = await userService.findOne({ email: req.body.email }, true);
-
         if (user) {
             user = user.dataValues;
             let checkPassword = bcryptjs.compareSync(req.body.password, user.password);
             if (checkPassword) {
-                let token = jwt_token.signToken({
+                let accessToken = jwt_token.signAccessToken({
+                    id: user.id
+                })
+                let refreshToken = jwt_token.signRefreshToken({
                     id: user.id
                 })
                 delete user.password;
-                res.json(responseSuccess({ ...user, token }))
+                res.cookie('refreshToken', refreshToken, {httpOnly: true, secure: true })  
+                res.json(responseSuccess({ ...user, accessToken, refreshToken }))
             }
             else {
                 res.json(responseWithError("PASSWORD IS INVALID"))
@@ -54,6 +57,15 @@ module.exports.login = async (req, res, next) => {
             res.json(responseWithError("USER IS NOT EXIST"))
         }
 
+    }
+    catch (err) {
+        res.json(responseWithError(err))
+    }
+}
+
+module.exports.refreshToken = async (req, res, next) => {
+    try {
+        console.log(req.cookie);
     }
     catch (err) {
         res.json(responseWithError(err))

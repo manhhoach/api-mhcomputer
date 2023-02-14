@@ -1,6 +1,12 @@
 const { responseSuccess, responseWithError } = require('./../utils/response')
 const paymentService=require('./../services/paymentService')
 
+const calcAmount=(products)=>{
+    let amount=products.reduce((init, nextItem)=>{
+        return init+nextItem.price*nextItem.quantity;
+    }, 0)
+    return amount
+}
 
 exports.createSession = async (req, res) => {
     const RETURN_URL=`${req.protocol}://${req.get('host')}/payment/get-status-payment`
@@ -39,4 +45,14 @@ exports.checkout=async(req, res)=>{
     }
 }
 
+exports.createPaymentIntent = async (req, res) => {
+    try {
+        let amount=calcAmount(req.body.products)
+        let paymentIntent=await paymentService.createPaymentIntents(amount)
+        res.json(responseSuccess({clientSecret: paymentIntent.client_secret}))
 
+    }
+    catch (err) {
+        res.json(responseWithError(err))
+    }
+}

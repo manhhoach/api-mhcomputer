@@ -5,20 +5,11 @@ module.exports.getByCondition = async (condition) => {
         where: condition
     });
 }
-module.exports.findOne = async (condition, requiredPassword) => {
-    if(requiredPassword)
-    {
-        return models.users.findOne({
-            where: condition
-        });
-    }
-    else
-    {
-        return models.users.findOne({
+module.exports.findOne = async (condition, requiredPassword=false) => {
+    return models.users.findOne({
             where: condition,
-            attributes: { exclude: ['password'] }
-        });
-    }
+            attributes: requiredPassword? undefined : { exclude: ['password'] }
+    });
 }
 
 

@@ -4,7 +4,7 @@ const orderController = require('./../controllers/orderController');
 const orderDetailController = require('./../controllers/orderDetailController');
 const jwt_token = require('./../middlewares/jwt_token')
 
-router.use(jwt_token.checkToken);
+router.use(jwt_token.checkAccessToken);
 
 router.get('/', orderController.getProductsInCart);
 router.put('/:orderDetailId', orderDetailController.updateQuantity);

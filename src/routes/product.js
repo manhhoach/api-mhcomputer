@@ -8,7 +8,7 @@ router.get('/all-paging', productController.getAllPaging);
 router.get('/:id', productController.getById);
 
 
-router.use(jwt_token.checkToken)
+router.use(jwt_token.checkAccessToken)
 router.use(jwt_token.checkAdmin)
 router.post('/', productController.create);
 router.delete('/', productController.delete);

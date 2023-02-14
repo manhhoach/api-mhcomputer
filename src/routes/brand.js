@@ -7,7 +7,7 @@ const brandController = require('./../controllers/brandController');
 router.get('/', brandController.getAll);
 router.get('/:id', brandController.getById);
 
-router.use(jwt_token.checkToken);
+router.use(jwt_token.checkAccessToken);
 router.use(jwt_token.checkAdmin)
 
 router.put('/:id', brandController.update);

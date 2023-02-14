@@ -5,7 +5,7 @@ const jwt_token=require('./../middlewares/jwt_token')
 
 router.get('/product/:id', assessController.getAssessOfProduct); // xong
 router.get('/statistical/:productId', assessController.statistical); // xong
-router.use(jwt_token.checkToken)
+router.use(jwt_token.checkAccessToken)
 router.get('/my-assesses', assessController.getMyAssesses); // xong
 router.post('/', assessController.create); // xong
 
