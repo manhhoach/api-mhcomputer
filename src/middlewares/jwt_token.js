@@ -5,12 +5,12 @@ const userService = require('./../services/userService')
 module.exports.signAccessToken = (user) => {
     return jwt.sign({
         ...user
-    }, process.env.SECRET_KEY_ACCESS_TOKEN, { expiresIn: '1m'  });
+    }, process.env.SECRET_KEY_ACCESS_TOKEN, { expiresIn: '6h'  });
 }
 module.exports.signRefreshToken = (user) => {
     return jwt.sign({
         ...user
-    }, process.env.SECRET_KEY_REFRESH_TOKEN, { expiresIn: '3m'  });
+    }, process.env.SECRET_KEY_REFRESH_TOKEN, { expiresIn: '3d'  });
 }
 
 

@@ -4,7 +4,7 @@ const userController = require('./../controllers/userController');
 const jwt_token = require('./../middlewares/jwt_token')
 
 
-router.post('/refresh', userController.refreshToken);
+router.post('/refresh-access-token', userController.refreshToken);
 router.post('/register', userController.register);
 router.post('/login', userController.login);
 router.post('/login-with-google', userController.loginWithGoogleAPI);

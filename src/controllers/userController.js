@@ -5,7 +5,8 @@ const bcryptjs = require('bcryptjs');
 const fetch = require('node-fetch')
 const mailService = require('./../services/mailService')
 require('dotenv').config();
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const { response } = require('express');
 
 
 
@@ -45,8 +46,7 @@ module.exports.login = async (req, res, next) => {
                 let refreshToken = jwt_token.signRefreshToken({
                     id: user.id
                 })
-                delete user.password;
-                res.cookie('refreshToken', refreshToken, {httpOnly: true, secure: true })  
+                delete user.password;  
                 res.json(responseSuccess({ ...user, accessToken, refreshToken }))
             }
             else {
@@ -65,7 +65,15 @@ module.exports.login = async (req, res, next) => {
 
 module.exports.refreshToken = async (req, res, next) => {
     try {
-        console.log(req.cookie);
+        let token = req.headers.authorization.split(' ')[1];
+        let decoded = jwt.verify(token, process.env.SECRET_KEY_REFRESH_TOKEN);
+        let user = await userService.findOne({ id: decoded.id });
+        if(user)
+        {
+            let accessToken = jwt_token.signAccessToken({id: user.id})
+            return res.json(responseSuccess(accessToken));
+        }
+        return res.json(responseWithError("User not found"));
     }
     catch (err) {
         res.json(responseWithError(err))
