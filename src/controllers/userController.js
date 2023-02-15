@@ -6,8 +6,6 @@ const fetch = require('node-fetch')
 const mailService = require('./../services/mailService')
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const { response } = require('express');
-
 
 
 
