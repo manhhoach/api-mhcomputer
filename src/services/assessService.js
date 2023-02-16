@@ -1,9 +1,9 @@
-const models=require('./../connectDB/db');
+const models = require('./../connectDB/db');
 
-module.exports.getByCondition=(condition, limit, offset) => {
+module.exports.getByCondition = (condition, limit, offset) => {
     return models.assesses.findAll({
         where: condition.assess,
-        include:[
+        include: [
             {
                 model: models.products,
                 where: condition.product
@@ -18,14 +18,14 @@ module.exports.getByCondition=(condition, limit, offset) => {
     })
 }
 
-module.exports.create = (data)=>{
+module.exports.create = (data) => {
     return models.assesses.create(data);
 }
 
-module.exports.updateByCondition = (data, condition)=>{
-    return models.assesses.update(data,{where: condition})
+module.exports.updateByCondition = (data, condition) => {
+    return models.assesses.update(data, { where: condition })
 }
 
-module.exports.destroyByCondition = (condition)=>{
-    return models.assesses.destroy({where: condition})
+module.exports.destroyByCondition = (condition) => {
+    return models.assesses.destroy({ where: condition })
 }

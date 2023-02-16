@@ -1,24 +1,24 @@
-const models=require('./../connectDB/db');
+const models = require('./../connectDB/db');
 
 
-module.exports.getAll=async()=>{
-    return models.property_values.findAll({});
+module.exports.getAll = () => {
+    return models.property_values.findAll();
 }
 
-module.exports.create=async(data)=>{
+module.exports.create = (data) => {
     return models.property_values.create(data);
 }
 
-module.exports.bulkCreate=async(data)=>{
+module.exports.bulkCreate = (data) => {
     return models.property_values.bulkCreate(data);
 }
 
-module.exports.getPropertyByCategoryId=async(category_id)=>{
+module.exports.getPropertyByCategoryId = (category_id) => {
     return models.property_values.findAll({
         where: {
             categoryId: category_id
         },
         include: models.properties
-        
+
     })
 }

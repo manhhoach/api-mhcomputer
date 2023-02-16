@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer')
 require('dotenv').config();
-const mailTemplate=require('./../utils/mailTemplate')
+const mailTemplate = require('./../utils/mailTemplate')
 const { OAuth2Client } = require('google-auth-library')
 
 module.exports.sendMail = async (email, url) => {

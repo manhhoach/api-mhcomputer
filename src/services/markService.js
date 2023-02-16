@@ -1,14 +1,14 @@
-const models=require('./../connectDB/db');
+const models = require('./../connectDB/db');
 
-module.exports.getByCondition=(condition, limit, offset) => {
+module.exports.getByCondition = (condition, limit, offset) => {
     return models.marks.findAll({
         where: condition,
-        include:[
+        include: [
             {
-                model: models.products  
+                model: models.products
             },
             {
-                model: models.users     
+                model: models.users
             }
         ],
         limit: limit,
@@ -16,14 +16,14 @@ module.exports.getByCondition=(condition, limit, offset) => {
     })
 }
 
-module.exports.create = (data)=>{
+module.exports.create = (data) => {
     return models.marks.create(data);
 }
 
-module.exports.updateByCondition = (data, condition)=>{
-    return models.marks.update(data,{where: condition})
+module.exports.updateByCondition = (data, condition) => {
+    return models.marks.update(data, { where: condition })
 }
 
-module.exports.destroyByCondition = (condition)=>{
-    return models.marks.destroy({where: condition})
+module.exports.destroyByCondition = (condition) => {
+    return models.marks.destroy({ where: condition })
 }

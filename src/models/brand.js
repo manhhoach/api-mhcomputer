@@ -9,14 +9,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER(4)
         },
         name: {
-            type: DataTypes.STRING(255)
+            type: DataTypes.STRING(255),
+            required: true
         },
         imageUrl: { 
             type: DataTypes.STRING(1024) 
         },
         createdDate: {
             type: DataTypes.DATE,
-            defaultValue: new Date()
+            defaultValue: DataTypes.NOW
         }
     }, {
         timestamps: false

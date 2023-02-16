@@ -1,5 +1,5 @@
-const models=require('./../connectDB/db')
+const models = require('./../connectDB/db')
 
-module.exports.getAll=async()=>{
+module.exports.getAll = () => {
     return models.cities.findAll();
 }

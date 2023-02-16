@@ -1,8 +1,8 @@
 const models = require('../connectDB/db');
-const sequelize=require('sequelize')
+const sequelize = require('sequelize')
 const { Op } = require('sequelize');
 
-module.exports.getByCondition = async (data) => {
+module.exports.getByCondition = (data) => {
     return models.order_details.findAll({
         where: { orderId: data.orderId, status: data.status },
         include: [
@@ -13,23 +13,23 @@ module.exports.getByCondition = async (data) => {
     })
 }
 
-module.exports.create = async (data) => {
+module.exports.create = (data) => {
     return models.order_details.create(data)
 }
 
-module.exports.findOne = async (condition) => {
+module.exports.findOne = (condition) => {
     return models.order_details.findOne({ where: condition })
 }
 
-module.exports.updateByCondition = async (data, condition, transaction=undefined) => {
-    return models.order_details.update(data, { where: condition, transaction: transaction})
+module.exports.updateByCondition = (data, condition, transaction = undefined) => {
+    return models.order_details.update(data, { where: condition, transaction: transaction })
 }
 
-module.exports.destroyByCondition = async (condition) => {
+module.exports.destroyByCondition = (condition) => {
     return models.order_details.destroy({ where: condition })
 }
 
-module.exports.getMyOrder = async (condition) => {
+module.exports.getMyOrder = (condition) => {
     return models.order_details.findAll({
         include: [
             {
@@ -51,10 +51,10 @@ module.exports.checkOrder = (data) => {
 }
 
 
-module.exports.destroyByConditionOrder = async (userId) => {
+module.exports.destroyByConditionOrder = (userId) => {
     return models.order_details.destroy({
         where: {
-            orderId:{
+            orderId: {
                 [Op.in]: sequelize.literal(`(SELECT id FROM orders WHERE userId = ${userId}) and status = 0`)
             }
         }

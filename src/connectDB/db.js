@@ -47,7 +47,7 @@ db.wards = require('../models/ward')(sequelize, DataTypes)
 db.addresses = require('../models/address')(sequelize, DataTypes)
 
 
-//db.products.sync({alter: true})
+//db.categories.sync({force: true})
 
 //sequelize.sync({alter: true})
 

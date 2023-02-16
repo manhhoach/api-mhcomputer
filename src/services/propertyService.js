@@ -1,21 +1,21 @@
-const models=require('./../connectDB/db');
+const models = require('./../connectDB/db');
 
-module.exports.getByCondition=async(condition)=>{
-    return models.properties.findAll({where: condition});
+module.exports.getByCondition = (condition) => {
+    return models.properties.findAll({ where: condition });
 }
 
-module.exports.create=async(data)=>{
+module.exports.create = (data) => {
     return models.properties.create(data);
 }
 
-module.exports.bulkCreate=async(data)=>{
+module.exports.bulkCreate = (data) => {
     return models.properties.bulkCreate(data);
 }
 
-module.exports.updateByCondition= async (data, condition) => {
-    return models.properties.update(data,{ where: condition});
+module.exports.updateByCondition = (data, condition) => {
+    return models.properties.update(data, { where: condition });
 }
 
-module.exports.destroyByCondition= async (condition) => {
-    return models.properties.destroy({where: condition});
+module.exports.destroyByCondition = (condition) => {
+    return models.properties.destroy({ where: condition });
 }

@@ -5,7 +5,6 @@ const jwt_token = require('./../middlewares/jwt_token')
 
 
 router.get('/', categoryController.getAll);
-router.get('/:id', categoryController.getById);
 
 router.use(jwt_token.checkAccessToken);
 router.use(jwt_token.checkAdmin)

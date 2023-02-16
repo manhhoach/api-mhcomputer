@@ -1,6 +1,6 @@
-const models=require('./../connectDB/db');
+const models = require('./../connectDB/db');
 
-module.exports.getAllPaging=async(data)=>{
+module.exports.getAllPaging = (data) => {
     return models.banners.findAndCountAll({
         limit: data.limit,
         offset: data.offset
@@ -9,14 +9,14 @@ module.exports.getAllPaging=async(data)=>{
 
 
 
-module.exports.create=async(data)=>{
+module.exports.create = (data) => {
     return models.banners.create(data);
 }
 
-module.exports.destroyByCondition=async(condition)=>{
-    return models.banners.destroy({where: condition});
+module.exports.destroyByCondition = (condition) => {
+    return models.banners.destroy({ where: condition });
 }
 
-module.exports.updateByCondition=async(data,condition)=>{
-    return models.banners.update(data, {where: condition});
+module.exports.updateByCondition = (data, condition) => {
+    return models.banners.update(data, { where: condition });
 }

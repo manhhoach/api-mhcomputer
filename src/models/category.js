@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER(4)
         },
         name: {
-            type: DataTypes.STRING(255)
+            type: DataTypes.STRING(255),
+            required: true
         },
         imageUrl: { 
             type: DataTypes.STRING(1024) 
@@ -19,11 +20,14 @@ module.exports = (sequelize, DataTypes) => {
         },
         createdDate: {
             type: DataTypes.DATE,
-            defaultValue: new Date()
+            defaultValue: DataTypes.NOW
         }
     }, {
         timestamps: false
     });
+    
+    category.hasMany(category, { as: 'category_children', foreignKey: 'parentId'})
+    category.belongsTo(category, { as: 'category_parents', foreignKey: 'parentId'})
 
     return category;
 }
