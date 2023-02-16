@@ -3,7 +3,7 @@ const app = express()
 require('dotenv').config();
 const route = require('./routes')
 const cors = require('cors')
-
+const {responseError}=require('./utils/response')
 
 app.use(cors());
 app.use(express.json());
@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.use(route)
+
 
 
 
