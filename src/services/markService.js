@@ -1,16 +1,12 @@
 const models = require('./../connectDB/db');
 
 module.exports.getByCondition = (condition, limit, offset) => {
-    return models.marks.findAll({
+    return models.marks.findAndCountAll({
         where: condition,
-        include: [
-            {
-                model: models.products
-            },
-            {
-                model: models.users
-            }
-        ],
+        include: {
+            model: models.products,
+            attributes: ['name', 'price', 'imageCover']
+        },
         limit: limit,
         offset: offset
     })

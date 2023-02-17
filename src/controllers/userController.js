@@ -14,7 +14,7 @@ module.exports.getMe = async (req, res, next) => {
         res.json(responseSuccess(req.user))
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -27,7 +27,7 @@ module.exports.register = async (req, res, next) => {
 
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -57,7 +57,7 @@ module.exports.login = async (req, res, next) => {
 
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -74,7 +74,7 @@ module.exports.refreshToken = async (req, res, next) => {
         return res.json(responseWithError("User not found"));
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -96,7 +96,7 @@ module.exports.updateMe = async (req, res, next) => {
 
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -118,7 +118,7 @@ module.exports.changePassword = async (req, res, next) => {
 
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -140,7 +140,7 @@ module.exports.loginWithFacebookAPI = async (req, res, next) => {
         res.json(responseSuccess({ ...user.dataValues, token }));
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -186,7 +186,7 @@ module.exports.updateToAdmin = async (req, res, next) => {
         res.json(responseSuccess());
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -196,7 +196,7 @@ module.exports.getAll = async (req, res, next) => {
         res.json(responseSuccess(data));
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -219,7 +219,7 @@ module.exports.forgotPassword = async (req, res, next) => {
     }
     catch (err) {
         console.log(err)
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -241,6 +241,6 @@ module.exports.resetPassword = async (req, res, next) => {
         }
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }

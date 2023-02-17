@@ -13,7 +13,7 @@ module.exports.getAll = async (req, res, next) => {
 
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -26,6 +26,6 @@ module.exports.create = async (req, res, next) => {
         res.json(responseSuccess(data));
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }

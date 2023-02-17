@@ -12,14 +12,14 @@ module.exports = (sequelize, DataTypes) => {
         },
         productId: {
             type: DataTypes.INTEGER(4),
-            primaryKey: true,
+            primaryKey: true
         },
         userId: {
             type: DataTypes.INTEGER(4),
-            primaryKey: true,
+            primaryKey: true
         },
         status: {
-            type: DataTypes.INTEGER(4)
+            type: DataTypes.INTEGER(4) // 0: like, 1: mua sau
         },
         createdDate: {
             type: DataTypes.DATE,

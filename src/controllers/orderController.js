@@ -16,7 +16,7 @@ module.exports.getProductsInCart = async (req, res, next) => {
         res.json(responseSuccess(data))
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -48,7 +48,7 @@ module.exports.addProductInCart = async (req, res, next) => {
 
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -81,7 +81,7 @@ module.exports.checkOut = async (req, res, next) => {
         res.json(responseSuccess(new_order_detail))
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -106,7 +106,7 @@ module.exports.getOrdersByStatus = async (req, res, next) => {
         res.json(responseSuccess(data))
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -167,7 +167,7 @@ module.exports.updateStatusOrder = async (req, res, next) => {
     }
     catch (err) {
         await t.rollback()
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 

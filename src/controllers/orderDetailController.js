@@ -25,7 +25,7 @@ module.exports.updateQuantity = async (req, res, next) => {
         }
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -50,6 +50,6 @@ module.exports.removeProduct = async (req, res, next) => {
 
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }

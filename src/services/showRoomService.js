@@ -1,7 +1,7 @@
 const models = require('../connectDB/db');
 
 module.exports.getByCondition = (condition) => {
-    return models.show_rooms.findAll({ where: condition })
+    return models.show_rooms.findAll({ where: condition, attributes: {exclude: ['createdDate'] } })
 }
 
 module.exports.create = (data) => {
@@ -14,4 +14,8 @@ module.exports.updateByCondition = (data, condition) => {
 
 module.exports.destroyByCondition = (condition) => {
     return models.show_rooms.destroy({ where: condition })
+}
+
+module.exports.getById = (id) => {
+    return models.show_rooms.findOne({ where: {id: id} })
 }

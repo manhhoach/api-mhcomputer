@@ -5,9 +5,8 @@ const jwt_token=require('./../middlewares/jwt_token')
 
 
 router.use(jwt_token.checkAccessToken)
-router.get('/', markController.getMarkList); 
+router.get('/', markController.getAll); 
 router.post('/', markController.create); 
-//router.put('/:id', markController.update); 
 router.delete('/:id', markController.destroy); 
 
 

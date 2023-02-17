@@ -1,12 +1,12 @@
-const wardService=require('./../services/wardService')
+const wardService = require('./../services/wardService')
 const { responseSuccess, responseWithError } = require('./../utils/response')
 
-module.exports.getAllByDistrictId= async (req, res, next) => {
+module.exports.getAllByDistrictId = async (req, res) => {
     try {
-        let data=await wardService.getByCondition({districtId: req.params.districtId});
-        res.json(responseSuccess(data))
+        let data = await wardService.getByCondition({ districtId: req.params.districtId });
+        res.status(200).json(responseSuccess(data))
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }

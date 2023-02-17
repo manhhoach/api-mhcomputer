@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const { responseWithError } = require("./../utils/response");
 const userService = require('./../services/userService')
+const CONSTANT_MESSAGES = require('./../utils/constants/messages')
 
 module.exports.signAccessToken = (user) => {
     return jwt.sign({
@@ -24,10 +25,10 @@ module.exports.checkAccessToken = async (req, res, next) => {
             req.user = user.dataValues;
             return next()
         }
-        return res.json(responseWithError("User not found"));
+        return res.json(responseWithError(CONSTANT_MESSAGES.USER_NOT_FOUND));
     }
     catch (err) {
-        res.json(responseWithError("Invalid or expired token provided!"));
+        res.json(responseWithError(CONSTANT_MESSAGES.INVALID_TOKEN));
     }
 }
 
@@ -42,10 +43,10 @@ module.exports.checkTokenV2 = async (req, res, next) => {
             req.user = user.dataValues;
             return next()
         }
-        return res.json(responseWithError("User not found"));
+        return res.json(responseWithError(CONSTANT_MESSAGES.USER_NOT_FOUND));
     }
     catch (err) {
-        res.json(responseWithError("Invalid or expired token provided!"));
+        res.json(responseWithError(CONSTANT_MESSAGES.INVALID_TOKEN));
     }
 }
 
@@ -53,13 +54,13 @@ module.exports.checkAdmin = async (req, res, next) => {
     if (req.user.status >= 1)
         next()
     else
-        res.json(responseWithError("You can not access this route"));
+        res.json(responseWithError(CONSTANT_MESSAGES.NOT_ALLOWED));
 }
 
 module.exports.checkOwner = async (req, res, next) => {
     if (req.user.status === 2)
         next()
     else
-        res.json(responseWithError("You can not access this route"));
+        res.json(responseWithError(CONSTANT_MESSAGES.NOT_ALLOWED));
 }
 

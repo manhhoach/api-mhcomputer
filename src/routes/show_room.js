@@ -10,9 +10,9 @@ router.use(jwt_token.checkAccessToken);
 router.use(jwt_token.checkAdmin)
 
 
-router.get('/product/:id',showRoomController.getProductInShowRoom);
-router.post('/product/:id',showRoomController.addProductInShowRoom);
-router.put('/product/:id',showRoomController.updateQuantityInShowRoom);
+router.get('/manage-product/:id',showRoomController.getProductInShowRoom);
+router.post('/manage-product/:id',showRoomController.addProductInShowRoom);
+router.put('/manage-product/:id',showRoomController.updateQuantityInShowRoom);
 
 
 router.put('/:id', showRoomController.update);

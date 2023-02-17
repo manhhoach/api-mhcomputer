@@ -1,6 +1,7 @@
 const brandService = require('./../services/brandService')
 const { getPagingData, getPagination } = require('./../utils/pagination');
 const { responseSuccess, responseWithError } = require('./../utils/response')
+const CONSTANT_MESSAGES = require('./../utils/constants/messages');
 
 module.exports.getAll = async (req, res) => {
     try { 
@@ -42,7 +43,7 @@ module.exports.update = async (req, res) => {
             res.status(201).json(responseSuccess(response));
         }
         else {
-            res.json(responseWithError("BRAND UPDATE FAILED"))
+            res.json(responseWithError(CONSTANT_MESSAGES.UPDATE_FAILED))
         }
 
     }
@@ -55,10 +56,10 @@ module.exports.destroy = async (req, res) => {
     try {
         let data = await brandService.destroyByCondition({ id: req.params.id });
         if (data === 1) {
-            res.status(200).json(responseSuccess("DELETE SUCCESSFULLY"));
+            res.status(200).json(responseSuccess(CONSTANT_MESSAGES.DELETE_SUCCESSFULLY));
         }
         else {
-            res.status(404).json(responseWithError("DELETE FAILED"))
+            res.status(404).json(responseWithError(CONSTANT_MESSAGES.DELETE_FAILED))
         }
 
     }

@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     stored_product.afterValidate(function(pro, options){
         if(pro.quantity<0)
         {
-            throw new Error("Quantity must be greater than 0")
+            throw new Error("Quantity must be greater or equal than 0")
         }
     })
     return stored_product;

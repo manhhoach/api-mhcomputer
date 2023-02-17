@@ -1,71 +1,47 @@
 const markService = require('./../services/markService');
 const { responseSuccess, responseWithError } = require('./../utils/response');
 const { getPagingData, getPagination } = require('./../utils/pagination');
+const CONSTANT_MESSAGES = require('./../utils/constants/messages');
 
-module.exports.getMarkList = async (req, res, next) => {
+module.exports.getAll = async (req, res) => {
     try {
-        let page_index = req.query.page_index, page_size = req.query.page_size;
-        const { limit, offset } = getPagination(page_index, page_size)
+        let page_index = parseInt(req.query.page_index), page_size = parseInt(req.query.page_size);
+        const { limit, offset } = getPagination(page_index, page_size);
         let data = await markService.getByCondition({ userId: req.user.id, status: req.query.status }, limit, offset);
-        data=data.map(ele=>{
-            let temp=ele.dataValues;
-            delete temp.user;
-            temp.product=ele.product.dataValues;
-            return temp;
-        })
-        let response=getPagingData({rows: data, count: data.length}, page_index, limit)
-        res.json(responseSuccess(response))
+        let response = getPagingData(data, page_index, limit)
+        res.status(200).json(responseSuccess(response))
     }
     catch (err) {
-        res.json(responseWithError(err));
+        res.status(500).json(responseWithError(err))
     }
 }
 
-module.exports.create = async (req, res, next) => {
+module.exports.create = async (req, res) => {
     try {
         let body = {
             userId: req.user.id,
             productId: req.body.productId,
-            status: req.body.status // 0: like, 1: mua sau
+            status: req.body.status ? 0 : 1 // 0: like, 1: buy later
         }
         let data = await markService.create(body);
-        res.json(responseSuccess(data.dataValues))
+        res.status(200).json(responseSuccess(data))
     }
     catch (err) {
-        res.json(responseWithError(err));
+        res.status(500).json(responseWithError(err))
     }
 }
 
-// module.exports.update = async (req, res, next) => {
-//     try {
-//         let body = { ...req.body }
-//         body.detailAddress = JSON.stringify(req.body.detailAddress);
-
-//         let data = await markService.updateByCondition(body, { id: req.params.id, userId: req.user.id });
-//         if (data[0] === 1) {
-//             data = await markService.getByCondition({ id: req.params.id });
-//             res.json(responseSuccess(responseAddress(data[0].dataValues)))
-//         }
-//         else {
-//             res.json(responseWithError())
-//         }
-//     }
-//     catch (err) {
-//         res.json(responseWithError(err));
-//     }
-// }
-
-module.exports.destroy = async (req, res, next) => {
+module.exports.destroy = async (req, res) => {
     try {
         let data = await markService.destroyByCondition({ id: req.params.id, userId: req.user.id });
         if (data === 1) {
-            res.json(responseSuccess())
+            res.status(200).json(responseSuccess(CONSTANT_MESSAGES.DELETE_SUCCESSFULLY));
         }
         else {
-            res.json(responseWithError())
+            res.status(404).json(responseWithError(CONSTANT_MESSAGES.DELETE_FAILED))
         }
     }
     catch (err) {
-        res.json(responseWithError(err));
+        res.status(500).json(responseWithError(err))
     }
 }

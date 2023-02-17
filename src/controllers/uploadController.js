@@ -12,7 +12,7 @@ module.exports.uploadSingle = async (req, res, next) => {
         }
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -29,7 +29,7 @@ module.exports.uploadArray = async (req, res, next) => {
         }
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
@@ -47,7 +47,7 @@ module.exports.get = async (req, res, next) => {
         console.log(data)
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 

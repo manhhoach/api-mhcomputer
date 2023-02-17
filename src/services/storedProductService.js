@@ -17,9 +17,11 @@ module.exports.getAllInShowRoom = (condition) => {
         include: [
             {
                 model: models.products,
+                attributes: ['id', 'name', 'price', 'imageCover']
             }
         ],
-        where: { showRoomId: condition.showRoomId }
+        where: condition,
+        attributes: ['id', 'quantity']
     })
 }
 
@@ -45,4 +47,12 @@ module.exports.bulkCreate = (data) => {
 
 module.exports.increment = (data, condition) => {
     return models.stored_products.increment(data, { where: condition })
+}
+
+
+module.exports.findOrCreate = (condition, data) => {
+    return models.stored_products.findOrCreate({
+        where: condition,
+        defaults: data
+    })
 }

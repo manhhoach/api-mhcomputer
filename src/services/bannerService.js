@@ -8,7 +8,6 @@ module.exports.getAllPaging = (data) => {
 }
 
 
-
 module.exports.create = (data) => {
     return models.banners.create(data);
 }
@@ -19,4 +18,8 @@ module.exports.destroyByCondition = (condition) => {
 
 module.exports.updateByCondition = (data, condition) => {
     return models.banners.update(data, { where: condition });
+}
+
+module.exports.getById = (id) => {
+    return models.banners.findOne({ where: { id: id } });
 }

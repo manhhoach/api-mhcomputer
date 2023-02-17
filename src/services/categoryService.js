@@ -1,11 +1,12 @@
 const models = require('../connectDB/db');
+const { QueryTypes } = require('sequelize')
 
 module.exports.getByCondition = (data) => {
     return models.categories.findAll({
         where: data,
         include: [
             { model: models.categories, as: 'category_children', attributes: ['id', 'name', 'imageUrl', 'parentId'] },
-           // { model: models.categories, as: 'category_parents' }
+            // { model: models.categories, as: 'category_parents' }
         ],
         attributes: ['id', 'name', 'imageUrl', 'parentId']
     });
@@ -25,4 +26,9 @@ module.exports.destroyByCondition = (condition) => {
 
 module.exports.getById = (id) => {
     return models.categories.findOne({ where: { id: id } });
+}
+
+
+module.exports.query = (stringQuery) => {
+    return models.sequelize.query(stringQuery, { type: QueryTypes.SELECT })
 }
