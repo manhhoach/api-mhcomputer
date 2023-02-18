@@ -1,5 +1,9 @@
 "use strict";
 
+const splitImage=(prd)=>{
+    if(prd.imageUrl) prd.imageUrl=prd.imageUrl.split(';')
+}
+
 module.exports = (sequelize, DataTypes) => {
     const category=require('./category')(sequelize, DataTypes)
     const brand=require('./brand')(sequelize, DataTypes)
@@ -57,7 +61,26 @@ module.exports = (sequelize, DataTypes) => {
     brand.hasMany(product, {foreignKey: 'brandId'});
     product.belongsTo(brand);
     
-    
+    product.beforeValidate((prd) => {
+        if (prd.imageUrl) {
+            prd.imageUrl = prd.imageUrl.join(';')
+        }
+    })
+
+    product.afterCreate((prd) => {
+        splitImage(prd)
+    })
+
+    product.afterFind(prds=>{
+        if (Array.isArray(prds)) {
+            prds.forEach(prd => { 
+                splitImage(prd)
+            })
+        }
+        else {
+            splitImage(prds)
+        }
+    })
 
     return product;
 }

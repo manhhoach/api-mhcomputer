@@ -11,7 +11,7 @@ router.get('/:id', productController.getById);
 router.use(jwt_token.checkAccessToken)
 router.use(jwt_token.checkAdmin)
 router.post('/', productController.create);
-router.delete('/', productController.delete);
+router.delete('/:id', productController.delete);
 router.put('/:id', productController.update);
 
 

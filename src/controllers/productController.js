@@ -8,9 +8,9 @@ const { responseSuccess, responseWithError } = require('./../utils/response')
 const { getPagingData, getPagination } = require('./../utils/pagination');
 const sequelize = require('sequelize');
 const { Op } = require('sequelize');
+const CONSTANT_MESSAGES = require('./../utils/constants/messages');
 
-
-const property_array = ['ram', 'o-cung', 'vga---card-man-hinh', 'kich-thuoc-man-hinh', 'do-phan-giai-man-hinh',
+const PROPERTY_ARR = ['ram', 'o-cung', 'vga---card-man-hinh', 'kich-thuoc-man-hinh', 'do-phan-giai-man-hinh',
     'cam-ung-man-hinh', 'tan-so-man-hinh', 'he-dieu-hanh', 'dong-cpu', 'the-he-cpu', 'socket', 'chip-set',
     'so-khe-cam-ram', 'loai-ram', 'dung-luong-o-cung', 'bus-ram', 'den-led', 'gpu', 'loai-o-cung',
     'toc-do-vong-quay', 'bo-nho-dem', 'loai-case', 'chat-lieu', 'mau', 'cong-suat', 'dung-luong-ram'
@@ -25,9 +25,6 @@ const responseProduct = (product, property) => {
         }
     });
     let _product = { ...product.dataValues };
-    if (_product.imageUrl) {
-        _product.imageUrl = _product.imageUrl.split(";")
-    }
 
     let data = { ..._product, property };
     return data;
@@ -56,7 +53,7 @@ const filterProduct = async (data) => {
     return productId
 }
 
-module.exports.getAllPaging = async (req, res, next) => {
+module.exports.getAllPaging = async (req, res) => {
     try {
         const page_index = parseInt(req.query.page_index);
         const page_size = parseInt(req.query.page_size);
@@ -110,7 +107,7 @@ module.exports.getAllPaging = async (req, res, next) => {
 
         let property = [];
         for (let element in req.query) {
-            if (property_array.includes(element)) {
+            if (PROPERTY_ARR.includes(element)) {
                 property.push({
                     extendName: element,
                     value: req.query[element]
@@ -125,94 +122,79 @@ module.exports.getAllPaging = async (req, res, next) => {
         data.condition = condition;
 
         let products = await productService.getAllPaging(data);
-
-        // products = await Promise.all(products.map(async (ele) => {
-        //     let property_product = await productDetailService.getByCondition({ productId: ele.id })
-
-        //     return responseProduct(ele, property_product)
-        // }))
-
         let response = getPagingData(products, page_index, limit);
-        res.json(responseSuccess(response));
+        res.status(200).json(responseSuccess(response));
 
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
-module.exports.create = async (req, res, next) => {
+module.exports.create = async (req, res) => {
     try {
         let body = { ...req.body };
         delete body.property;
-        if (body.imageUrl && body.imageUrl.length > 0) {
-            body.imageUrl = body.imageUrl.join(";");
-        }
+
         let product = await productService.create(body);
         let property = req.body.property.map(ele => {
             return {
                 ...ele,
-                productId: product.dataValues.id
+                productId: product.id
             }
         });
         await productDetailService.bulkCreate(property)
-
-        res.json(responseSuccess(product.dataValues));
+        res.status(201).json(responseSuccess(product));
 
     }
     catch (err) {
-        console.log(err)
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
-module.exports.getById = async (req, res, next) => {
+module.exports.getById = async (req, res) => {
     try {
-        let [product, property, stored] = await Promise.all([
+        let [product, property, storedShowroom] = await Promise.all([
             productService.getById(req.params.id),
             productDetailService.getByCondition({ productId: req.params.id }),
             storedProductService.getByCondition({ productId: req.params.id })
         ])
 
         let data = responseProduct(product, property)
-        data.stored = stored.map(ele => ele.show_room)
-        res.json(responseSuccess(data))
+        data.storedShowroom = storedShowroom.map(ele => ele.show_room)
+        res.status(200).json(responseSuccess(data))
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
-module.exports.delete = async (req, res, next) => {
+module.exports.delete = async (req, res) => {
     try {
-
         await Promise.all([
             productDetailService.destroyByCondition({
-                productId: { [Op.in]: req.body.id }
+                productId: req.params.id
             }),
             storedProductService.destroyByCondition({
-                productId: { [Op.in]: req.body.id }
+                productId: req.params.id
             }),
             productService.destroyByCondition({
-                id: { [Op.in]: req.body.id }
+                id: req.params.id
             }),
-            orderDetailService.destroyByCondition({ productId: { [Op.in]: req.body.id } }),
-            markService.destroyByCondition({ productId: { [Op.in]: req.body.id } }),
-            assessService.destroyByCondition({ productId: { [Op.in]: req.body.id } })
+            orderDetailService.destroyByCondition({ productId: req.params.id }),
+            markService.destroyByCondition({ productId: req.params.id }),
+            assessService.destroyByCondition({ productId: req.params.id })
 
         ])
-        res.json(responseSuccess("PRODUCT DELETE SUCCESSFUL"));
-
-
+        res.status(200).json(responseSuccess(CONSTANT_MESSAGES.DELETE_SUCCESSFULLY));
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }
 
-module.exports.update = async (req, res, next) => {
+module.exports.update = async (req, res) => {
     try {
-
         let result_property = -1;
         if (req.body.property && req.body.property.length > 0) {
             result_property = await Promise.all(req.body.property.map(async (ele) => {
@@ -221,31 +203,28 @@ module.exports.update = async (req, res, next) => {
             delete req.body.property;
         }
 
-        if (req.body.imageUrl.length > 0) {
-            req.body.imageUrl = req.body.imageUrl.join(";");
-        }
         let data = await productService.updateByCondition(req.body, { id: req.params.id });
 
         if (result_property === -1) {
             if (data[0] === 1) {
-                res.json(responseSuccess('PRODUCT UPDATE SUCCESSFUL'))
+                res.status(201).json(responseSuccess(CONSTANT_MESSAGES.UPDATE_SUCCESSFULLY))
             }
             else {
-                res.json(responseWithError('PRODUCT UPDATE FAILED'))
+                res.status(400).json(responseWithError(CONSTANT_MESSAGES.UPDATE_FAILED))
             }
         }
         else {
             let result = [...data, ...result_property.flat()];
             if (result.includes(1)) {
-                res.json(responseSuccess('PRODUCT UPDATE SUCCESSFUL'))
+                res.status(201).json(responseSuccess(CONSTANT_MESSAGES.UPDATE_SUCCESSFULLY))
             }
             else {
-                res.json(responseWithError('PRODUCT UPDATE FAILED'))
+                res.status(400).json(responseWithError(CONSTANT_MESSAGES.UPDATE_FAILED))
             }
         }
 
     }
     catch (err) {
-        res.json(responseWithError(err))
+        res.status(500).json(responseWithError(err))
     }
 }

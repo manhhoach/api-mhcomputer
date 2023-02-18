@@ -4,8 +4,9 @@ const storedProductService = require('./../services/storedProductService')
 const { responseSuccess, responseWithError } = require('../utils/response')
 const {ORDER_STATUS} =require('../utils/constants/orderStatus')
 const {sequelize}=require('./../connectDB/db')
+const CONSTANT_MESSAGES = require('./../utils/constants/messages');
 
-module.exports.getProductsInCart = async (req, res, next) => {
+module.exports.getProductsInCart = async (req, res) => {
     try {
         let data = await orderService.getProductsInCart(
             { userId: req.user.id, status: ORDER_STATUS[0].status },
@@ -13,14 +14,14 @@ module.exports.getProductsInCart = async (req, res, next) => {
             ['id', 'quantity', 'createdDate'],
             ['id', 'name', 'price', 'imageCover']
         )
-        res.json(responseSuccess(data))
+        res.status(200).json(responseSuccess(data))
     }
     catch (err) {
         res.status(500).json(responseWithError(err))
     }
 }
 
-module.exports.addProductInCart = async (req, res, next) => {
+module.exports.addProductInCart = async (req, res) => {
     try {
         let condition = {
             userId: req.user.id,
@@ -44,15 +45,14 @@ module.exports.addProductInCart = async (req, res, next) => {
                 quantity: req.body.quantity
             })
         }
-        res.json(responseSuccess())
-
+        res.status(201).json(responseSuccess(CONSTANT_MESSAGES.CREATE_SUCCESSFULLY))
     }
     catch (err) {
         res.status(500).json(responseWithError(err))
     }
 }
 
-module.exports.checkOut = async (req, res, next) => {
+module.exports.checkOut = async (req, res) => {
     try {
         let status = req.body.paymentMethod === 1 ? ORDER_STATUS[1].status : ORDER_STATUS[2].status;
         let new_order = await orderService.create({
@@ -78,14 +78,14 @@ module.exports.checkOut = async (req, res, next) => {
                 return order_detail
             })
         );
-        res.json(responseSuccess(new_order_detail))
+        res.status(201).json(responseSuccess(new_order_detail))
     }
     catch (err) {
         res.status(500).json(responseWithError(err))
     }
 }
 
-module.exports.getOrdersByStatus = async (req, res, next) => {
+module.exports.getOrdersByStatus = async (req, res) => {
     try {
         let data;
         if(req.user.status===0)
@@ -103,7 +103,7 @@ module.exports.getOrdersByStatus = async (req, res, next) => {
             data = await orderService.getAllWithOrderDetails({ status: req.query.status })
         }
         
-        res.json(responseSuccess(data))
+        res.status(200).json(responseSuccess(data))
     }
     catch (err) {
         res.status(500).json(responseWithError(err))
@@ -118,7 +118,7 @@ const updateStatus = (status, order) => {
     ])
 }
 
-module.exports.updateStatusOrder = async (req, res, next) => {
+module.exports.updateStatusOrder = async (req, res) => {
     const t=await sequelize.transaction()
     try {
         if(req.user.status>=ORDER_STATUS[req.body.status].permissionStatus)
@@ -129,11 +129,11 @@ module.exports.updateStatusOrder = async (req, res, next) => {
                 if(order)
                 {
                     await updateStatus(req.body.status, {id: order.id, deliveryProgress: order.deliveryProgress })
-                    res.json(responseSuccess("UPDATE STATUS SUCCESSFULLY"));
+                    res.status(201).json(responseSuccess(CONSTANT_MESSAGES.UPDATE_SUCCESSFULLY));
                 }
                 else
                 {
-                    res.json(responseWithError("ORDER NOT FOUND"))
+                    res.status(404).json(responseWithError(CONSTANT_MESSAGES.ORDER_NOT_FOUND))
                 }
 
             }
@@ -157,12 +157,12 @@ module.exports.updateStatusOrder = async (req, res, next) => {
                 {
                     await updateStatus(req.body.status, {id: order.id, deliveryProgress: order.deliveryProgress})
                 }
-                res.json(responseSuccess("UPDATE STATUS SUCCESSFULLY"));
+                res.status(201).json(responseSuccess(CONSTANT_MESSAGES.UPDATE_SUCCESSFULLY));
             }
         }
         else
         {
-            res.json(responseWithError("YOU CAN NOT UPDATE STATUS"))
+            res.status(400).json(responseWithError(CONSTANT_MESSAGES.NOT_ALLOWED))
         }
     }
     catch (err) {

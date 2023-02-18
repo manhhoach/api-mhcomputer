@@ -1,50 +1,29 @@
 const { responseSuccess, responseWithError } = require('./../utils/response')
+const CONSTANT_MESSAGES = require('./../utils/constants/messages');
 
-module.exports.uploadSingle = async (req, res, next) => {
+module.exports.uploadSingle = async (req, res) => {
     try {
         if (req.file) {
-            res.json(responseSuccess(
-                req.file.path
-            ))
+            return res.json(responseSuccess(req.file.path))
         }
-        else {
-            res.json(responseWithError('FILE UPLOAD FAILED'))
-        }
+        res.status(400).json(responseWithError(CONSTANT_MESSAGES.FILE_UPLOAD_FAILED))
+        
     }
     catch (err) {
         res.status(500).json(responseWithError(err))
     }
 }
 
-module.exports.uploadArray = async (req, res, next) => {
+module.exports.uploadArray = async (req, res) => {
     try {
         if (req.files.length > 0) {
             let urls = req.files.map(ele => {
                 return ele.path
             })
-            res.json(responseSuccess(urls))
+            return res.status(200).json(responseSuccess(urls))
         }
-        else {
-            res.json(responseWithError('FILE UPLOAD FAILED'))
-        }
-    }
-    catch (err) {
-        res.status(500).json(responseWithError(err))
-    }
-}
-
-
-
-module.exports.get = async (req, res, next) => {
-    try {
+        res.status(400).json(responseWithError(CONSTANT_MESSAGES.FILE_UPLOAD_FAILED))
         
-        let options = { resource_type: "image", folder: "computer", max_results: req.query.max_results? parseInt(req.query.max_results):20 };
-       
-        let result = await cloudinary.api.resources(options)
-        let data = result.resources.map(ele=>{
-            return ele.url;
-        })
-        console.log(data)
     }
     catch (err) {
         res.status(500).json(responseWithError(err))
@@ -52,4 +31,3 @@ module.exports.get = async (req, res, next) => {
 }
 
 
-   

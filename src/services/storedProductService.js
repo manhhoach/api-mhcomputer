@@ -6,6 +6,7 @@ module.exports.getByCondition = (condition) => {
         include: [
             {
                 model: models.show_rooms,
+                attributes: ['name', 'phone', 'address', 'urlMap', 'openTime']
             }
         ],
         where: { productId: condition.productId, quantity: { [Op.gt]: 0 } }
