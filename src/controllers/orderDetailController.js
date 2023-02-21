@@ -1,7 +1,9 @@
 const orderDetailService = require('./../services/orderDetailService')
 const orderService = require('./../services/orderService')
-const { responseSuccess, responseWithError } = require('./../utils/response')
+const { responseSuccess } = require('./../utils/response')
 const CONSTANT_MESSAGES = require('./../utils/constants/messages');
+const tryCatch = require('./../utils/tryCatch');
+const AppError = require('./../utils/AppError');
 
 const checkMyCart = async (data) => {
     let [cart, order_detail] = await Promise.all([
@@ -13,44 +15,36 @@ const checkMyCart = async (data) => {
     return false;
 }
 
-module.exports.updateQuantity = async (req, res) => {
-    try {
+module.exports.updateQuantity = tryCatch(async (req, res, next) => {
+
+    let data = { userId: req.user.id, status: 0, id: req.params.orderDetailId }
+    let isMyOrder = await checkMyCart(data)
+    if (isMyOrder) {
+        await orderDetailService.updateByCondition({ quantity: req.body.quantity }, { id: req.params.orderDetailId })
+        res.status(201).json(responseSuccess(CONSTANT_MESSAGES.UPDATE_SUCCESSFULLY))
+    }
+    else {
+        next(new AppError(400, CONSTANT_MESSAGES.NOT_ALLOWED))
+    }
+})
+
+module.exports.removeProduct = tryCatch(async (req, res, next) => {
+
+    if (req.params.orderDetailId == 0) // remove all products
+    {
+        await orderDetailService.destroyByConditionOrder(req.user.id)
+        res.status(200).json(responseSuccess(CONSTANT_MESSAGES.DELETE_SUCCESSFULLY))
+    }
+    else {
         let data = { userId: req.user.id, status: 0, id: req.params.orderDetailId }
         let isMyOrder = await checkMyCart(data)
         if (isMyOrder) {
-            await orderDetailService.updateByCondition({ quantity: req.body.quantity }, { id: req.params.orderDetailId })
-            res.status(201).json(responseSuccess(CONSTANT_MESSAGES.UPDATE_SUCCESSFULLY))
-        }
-        else {
-            res.status(400).json(responseWithError(CONSTANT_MESSAGES.NOT_ALLOWED))
-        }
-    }
-    catch (err) {
-        res.status(500).json(responseWithError(err))
-    }
-}
-
-module.exports.removeProduct = async (req, res) => {
-    try {
-        if (req.params.orderDetailId == 0) // remove all products
-        { 
-            await orderDetailService.destroyByConditionOrder(req.user.id)
+            await orderDetailService.destroyByCondition({ id: req.params.orderDetailId })
             res.status(200).json(responseSuccess(CONSTANT_MESSAGES.DELETE_SUCCESSFULLY))
         }
         else {
-            let data = { userId: req.user.id, status: 0, id: req.params.orderDetailId }
-            let isMyOrder = await checkMyCart(data)
-            if (isMyOrder) {
-                await orderDetailService.destroyByCondition({ id: req.params.orderDetailId })
-                res.status(200).json(responseSuccess(CONSTANT_MESSAGES.DELETE_SUCCESSFULLY))
-            }
-            else {
-                res.status(400).json(responseWithError(CONSTANT_MESSAGES.NOT_ALLOWED))
-            }
+            next(new AppError(400, CONSTANT_MESSAGES.NOT_ALLOWED))
         }
+    }
 
-    }
-    catch (err) {
-        res.status(500).json(responseWithError(err))
-    }
-}
+})

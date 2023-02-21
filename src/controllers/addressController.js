@@ -1,11 +1,10 @@
 const addressService = require('./../services/addressService');
-const { responseSuccess, responseWithError } = require('./../utils/response');
+const { responseSuccess } = require('./../utils/response');
 const CONSTANT_MESSAGES = require('./../utils/constants/messages');
 const tryCatch = require('./../utils/tryCatch');
 const AppError = require('./../utils/AppError');
 
 module.exports.getAll = tryCatch(async (req, res, next) => {
-    
     let data = await addressService.getByCondition({ userId: req.user.id });
     res.status(200).json(responseSuccess(data))
 })

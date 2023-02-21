@@ -5,6 +5,7 @@ const showRoomController = require('./../controllers/showRoomController');
 
 
 router.get('/', showRoomController.getAll);
+router.get('/all-paging', showRoomController.getAllPaging);
 
 router.use(jwt_token.checkAccessToken);
 router.use(jwt_token.checkAdmin)

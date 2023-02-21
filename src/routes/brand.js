@@ -4,6 +4,7 @@ const jwt_token = require('./../middlewares/jwt_token')
 const brandController = require('./../controllers/brandController');
 
 
+router.get('/all-paging', brandController.getAllPaging);
 router.get('/', brandController.getAll);
 router.get('/:id', brandController.getById);
 
