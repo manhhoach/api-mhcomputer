@@ -3,7 +3,7 @@ const app = express()
 require('dotenv').config();
 const route = require('./routes')
 const cors = require('cors')
-const {responseError}=require('./utils/response')
+const {responseWithError}=require('./utils/response')
 
 app.use(cors());
 app.use(express.json());
@@ -16,6 +16,10 @@ app.get('/', (req, res) => {
 
 app.use(route)
 
+app.use((err, req, res, next)=>{
+  console.log('err in app: ',err);
+  res.status(err.statusCode || 500).json(responseWithError(err))
+})
 
 
 

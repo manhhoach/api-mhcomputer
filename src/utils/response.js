@@ -1,15 +1,14 @@
-const responseSuccess=(data)=> {
+const responseSuccess = (data) => {
     return {
         success: true,
         data
     };
 }
 
-const responseWithError=(err) =>{
-    console.log(err);
+const responseWithError = (err) => {
     return {
         success: false,
-        error: err.message?err.message:err
+        error: err.message ? err.message : err
     };
 }
 
