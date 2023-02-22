@@ -5,7 +5,7 @@ const jwt_token = require('./../middlewares/jwt_token')
 
 
 
-router.use(jwt_token.checkTokenV2);
+router.use(jwt_token.checkAccessToken);
 
 router.get('/', orderController.getOrdersByStatus);
 router.put('/:id', orderController.updateStatusOrder);

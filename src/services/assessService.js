@@ -1,20 +1,42 @@
 const models = require('./../connectDB/db');
+const sequelize = require('sequelize');
 
-module.exports.getByCondition = (condition, limit, offset) => {
-    return models.assesses.findAll({
-        where: condition.assess,
+module.exports.getByCondition = (condition, limit, offset, attributesUser = [], attributesProduct=[]) => {
+    return models.assesses.findAndCountAll({
+        where: condition,
         include: [
             {
-                model: models.products,
-                where: condition.product
+                model: models.users,
+                attributes: attributesUser
             },
             {
-                model: models.users,
-                where: condition.user
+                model: models.products,
+                attributes: attributesProduct
             }
         ],
         limit: limit,
-        offset: offset
+        offset: offset,
+        attributes: { exclude: ['userId', 'productId'] }
+    })
+}
+
+
+module.exports.getAll = (condition, attributes=[]) => {
+    return models.assesses.findAll({
+        where: condition,
+        attributes: attributes
+    })
+}
+
+module.exports.statistical = (condition) => {
+    return models.assesses.findAll({
+        where: condition,
+        attributes: [
+            'rate',
+            [sequelize.fn("COUNT", sequelize.col("id")), "total"]
+        ],
+        group: 'rate',
+        raw: true
     })
 }
 

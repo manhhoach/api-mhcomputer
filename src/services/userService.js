@@ -13,7 +13,6 @@ module.exports.findOne = (condition, requiredPassword = false) => {
 }
 
 
-
 module.exports.create = (user) => {
     return models.users.create(user);
 }

@@ -2,53 +2,43 @@ const jwt = require('jsonwebtoken')
 const { responseWithError } = require("./../utils/response");
 const userService = require('./../services/userService')
 const CONSTANT_MESSAGES = require('./../utils/constants/messages')
+const tryCatch = require('./../utils/tryCatch');
+const AppError = require('./../utils/AppError');
 
 module.exports.signAccessToken = (user) => {
     return jwt.sign({
         ...user
-    }, process.env.SECRET_KEY_ACCESS_TOKEN, { expiresIn: '6h'  });
+    }, process.env.SECRET_KEY_ACCESS_TOKEN, { expiresIn: '6h' });
 }
 module.exports.signRefreshToken = (user) => {
     return jwt.sign({
         ...user
-    }, process.env.SECRET_KEY_REFRESH_TOKEN, { expiresIn: '3d'  });
+    }, process.env.SECRET_KEY_REFRESH_TOKEN, { expiresIn: '3d' });
 }
 
 
-module.exports.checkAccessToken = async (req, res, next) => {
-    try {
-        let token = req.headers.authorization.split(' ')[1];
-        let decoded = jwt.verify(token, process.env.SECRET_KEY_ACCESS_TOKEN);
-        let user = await userService.findOne({ id: decoded.id });
-        if(user)
-        {
-            req.user = user.dataValues;
-            return next()
-        }
-        return res.json(responseWithError(CONSTANT_MESSAGES.USER_NOT_FOUND));
+module.exports.checkAccessToken = tryCatch(async (req, res, next) => {
+    let token = req.headers.authorization?.split(' ')[1];
+    if(token)
+    {
+        jwt.verify(token, process.env.SECRET_KEY_ACCESS_TOKEN, async (err, decoded) => {
+            if (err) {
+                let message = err.name === 'TokenExpiredError' ? CONSTANT_MESSAGES.EXPIRED_TOKEN : CONSTANT_MESSAGES.INVALID_TOKEN;
+                return next(new AppError(401, message))
+            }
+            let user = await userService.findOne({ id: decoded.id });
+            if(user)
+            {
+                req.user = user.dataValues;
+                return next()
+            }
+            return next(new AppError(404, CONSTANT_MESSAGES.USER_NOT_FOUND));
+        })
     }
-    catch (err) {
-        res.json(responseWithError(CONSTANT_MESSAGES.INVALID_TOKEN));
-    }
-}
+    else
+        return next(new AppError(404, CONSTANT_MESSAGES.TOKEN_NOT_PROVIDED))
+})
 
-module.exports.checkTokenV2 = async (req, res, next) => {
-    try {
-        let token = req.headers.authorization.split(' ')[1];
-        let decoded = jwt.verify(token, process.env.SECRET_KEY);
-
-        let user = await userService.getOne({ id: decoded.id });
-        if(user)
-        {
-            req.user = user.dataValues;
-            return next()
-        }
-        return res.json(responseWithError(CONSTANT_MESSAGES.USER_NOT_FOUND));
-    }
-    catch (err) {
-        res.json(responseWithError(CONSTANT_MESSAGES.INVALID_TOKEN));
-    }
-}
 
 module.exports.checkAdmin = async (req, res, next) => {
     if (req.user.status >= 1)

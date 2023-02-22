@@ -33,5 +33,10 @@ module.exports.ORDER_STATUS={
         status: 6,
         message: "CANCELLED",
         permissionStatus: 0
+    },
+    7:{
+        status: 7,
+        message: "HAVE EVALUATED",
+        permissionStatus: 0
     }
 }

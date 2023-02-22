@@ -3,16 +3,15 @@ const router = express.Router();
 const assessController = require('./../controllers/assessController');
 const jwt_token=require('./../middlewares/jwt_token')
 
-router.get('/product/:id', assessController.getAssessOfProduct); // xong
-router.get('/statistical/:productId', assessController.statistical); // xong
+router.get('/product/:id', assessController.getAssessOfProduct); 
+router.get('/statistical/:productId', assessController.statistical); 
+
 router.use(jwt_token.checkAccessToken)
-router.get('/my-assesses', assessController.getMyAssesses); // xong
-router.post('/', assessController.create); // xong
-
-
+router.get('/my-assesses', assessController.getMyAssesses); 
+router.post('/', assessController.create); 
 router.use(jwt_token.checkAdmin)
-router.put('/:id', assessController.update); // xong
-router.delete('/:id', assessController.destroy); // xong
+router.put('/:id', assessController.update); 
+router.delete('/:id', assessController.destroy); 
 
 
 module.exports = router;

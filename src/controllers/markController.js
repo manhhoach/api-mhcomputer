@@ -1,5 +1,5 @@
 const markService = require('./../services/markService');
-const { responseSuccess, responseWithError } = require('./../utils/response');
+const { responseSuccess } = require('./../utils/response');
 const { getPagingData, getPagination } = require('./../utils/pagination');
 const CONSTANT_MESSAGES = require('./../utils/constants/messages');
 const tryCatch = require('./../utils/tryCatch');
