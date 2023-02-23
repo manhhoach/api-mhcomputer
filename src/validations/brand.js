@@ -2,15 +2,15 @@ const Joi = require('joi')
 const validationData = require('./validation')
 const {TYPE_VALIDATE} = require('./../utils/constants/typeValidate')
 
-
 const createSchema = (type) => {
     let validationObj = {
-        productId: Joi.number().integer(),
-        content: Joi.string().max(1024),
-        rate: Joi.number().integer().max(5).min(1),
+        name: Joi.string().max(255),
+        imageUrl: Joi.string().max(1024)
     }
     if (type === TYPE_VALIDATE.UPDATE) {
-        validationObj = { response: Joi.string().max(1024).required() }
+        for (let field in validationObj) {
+            validationObj[field] = validationObj[field].optional()
+        }
     }
     else if (type === TYPE_VALIDATE.CREATE){
         for (let field in validationObj) {
@@ -20,8 +20,6 @@ const createSchema = (type) => {
     validationObj = Joi.object(validationObj)
     return validationObj
 }
-
-
 
 const validate = (type) => {
     const validationObj = createSchema(type)

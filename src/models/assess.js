@@ -32,10 +32,6 @@ module.exports = (sequelize, DataTypes) => {
         response:{
             type: DataTypes.STRING(1024)
         },
-        status:{
-            type: DataTypes.INTEGER(4),
-            defaultValue: 0
-        },
         createdDate: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW

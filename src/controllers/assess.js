@@ -23,28 +23,32 @@ module.exports.getMyAssesses = tryCatch(async (req, res, next) => {
 
 module.exports.create = tryCatch(async (req, res, next) => {
 
-    let checkOrderDetail = await orderDetailService.checkOrder({
-        order_detail: { status: ORDER_STATUS[5].status, id: req.body.orderDetailId },
-        order: { userId: req.user.id }
-    })
-    if (checkOrderDetail) {
-        let [, , comment] = await Promise.all([
-            orderDetailService.updateByCondition({ status: ORDER_STATUS[7].status }, { id: req.body.orderDetailId }),
-            orderService.updateByCondition({ status: ORDER_STATUS[7].status }, { id: checkOrderDetail.orderId }),
-            assessService.create({
-                productId: req.body.productId,
-                userId: req.user.id,
-                content: req.body.content,
-                rate: req.body.rate,
-                imageUrl: req.body.imageUrl,
-                status: req.body.status
-            })
-        ]);
+    // let checkOrderDetail = await orderDetailService.checkOrder({
+    //     order_detail: { status: ORDER_STATUS[5].status, id: req.params.orderDetailId },
+    //     order: { userId: req.user.id }
+    // })
+    // if (checkOrderDetail) {
+    //     let [, , comment] = await Promise.all([
+    //         orderDetailService.updateByCondition({ status: ORDER_STATUS[7].status }, { id: req.params.orderDetailId }),
+    //         orderService.updateByCondition({ status: ORDER_STATUS[7].status }, { id: checkOrderDetail.orderId }),
+    //         assessService.create({
+    //             productId: req.body.productId,
+    //             userId: req.user.id,
+    //             content: req.body.content,
+    //             rate: req.body.rate,
+    //             imageUrl: req.body.imageUrl,
+    //             status: req.body.status
+    //         })
+    //     ]);
+        let comment=await assessService.create({
+            userId: req.user.id,
+            ...req.body
+        })
         res.status(201).json(responseSuccess(comment))
-    }
-    else {
-        next(new AppError(404, CONSTANT_MESSAGES.ORDER_NOT_FOUND))
-    }
+    // }
+    // else {
+    //     next(new AppError(404, CONSTANT_MESSAGES.ORDER_NOT_FOUND))
+    // }
 
 })
 

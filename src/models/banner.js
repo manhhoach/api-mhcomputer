@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER(4)
         },
         imageUrl:{
-            type: DataTypes.STRING(1024)
+            type: DataTypes.STRING(1024),
+            required: true
         },
         createdDate: {
             type: DataTypes.DATE,
