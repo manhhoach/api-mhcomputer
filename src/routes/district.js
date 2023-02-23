@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const districtController = require('./../controllers/districtController');
+const districtController = require('./../controllers/district');
 
 router.get('/:cityId', districtController.getAllByCityId); 
 

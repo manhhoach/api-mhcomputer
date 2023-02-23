@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const markController = require('./../controllers/markController');
+const markController = require('./../controllers/mark');
 const jwt_token=require('./../middlewares/jwt_token')
 
 

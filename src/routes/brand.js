@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jwt_token = require('./../middlewares/jwt_token')
-const brandController = require('./../controllers/brandController');
+const brandController = require('./../controllers/brand');
 
 
 router.get('/all-paging', brandController.getAllPaging);

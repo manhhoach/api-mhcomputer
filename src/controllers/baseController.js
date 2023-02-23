@@ -1,9 +1,9 @@
-const { getPagingData, getPagination } = require('./../utils/pagination');
-const { responseSuccess } = require('./../utils/response')
-const CONSTANT_MESSAGES = require('./../utils/constants/messages');
-const tryCatch = require('./../utils/tryCatch');
-const AppError = require('./../utils/AppError');
-const baseService = require('./../services/baseService')
+const { getPagingData, getPagination } = require('../utils/pagination');
+const { responseSuccess } = require('../utils/response')
+const CONSTANT_MESSAGES = require('../utils/constants/messages');
+const tryCatch = require('../utils/tryCatch');
+const AppError = require('../utils/AppError');
+const baseService = require('../services/baseService')
 
 
 module.exports.getAllPaging = (model) => tryCatch(async (req, res, next) => {

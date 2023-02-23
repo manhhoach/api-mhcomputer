@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const { responseWithError } = require("./../utils/response");
-const userService = require('./../services/userService')
+const userService = require('./../services/user')
 const CONSTANT_MESSAGES = require('./../utils/constants/messages')
 const tryCatch = require('./../utils/tryCatch');
 const AppError = require('./../utils/AppError');

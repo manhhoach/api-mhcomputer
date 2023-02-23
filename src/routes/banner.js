@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const bannerController = require('./../controllers/bannerController');
+const bannerController = require('./../controllers/banner');
 const jwt_token=require('./../middlewares/jwt_token')
 
 router.get('/all-paging', bannerController.getAllPaging);

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const orderController = require('./../controllers/orderController');
+const orderController = require('./../controllers/order');
 const jwt_token = require('./../middlewares/jwt_token')
 
 

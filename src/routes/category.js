@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const categoryController = require('./../controllers/categoryController');
+const categoryController = require('./../controllers/category');
 const jwt_token = require('./../middlewares/jwt_token')
 
 

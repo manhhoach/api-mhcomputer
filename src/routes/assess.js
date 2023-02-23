@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const assessController = require('./../controllers/assessController');
+const assessController = require('./../controllers/assess');
 const jwt_token=require('./../middlewares/jwt_token')
 
 router.get('/product/:id', assessController.getAssessOfProduct); 
