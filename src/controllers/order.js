@@ -50,7 +50,8 @@ module.exports.addProductInCart = tryCatch(async (req, res, next) => {
 
 module.exports.checkOut = tryCatch(async (req, res, next) => {
 
-    let status = req.body.paymentMethod === 1 ? ORDER_STATUS[1].status : ORDER_STATUS[2].status;
+    //let status = req.body.paymentMethod === 1 ? ORDER_STATUS[1].status : ORDER_STATUS[2].status;
+    let status = req.body.status;
     let new_order = await orderService.create({
         userId: req.user.id,
         phone: req.body.phone,
@@ -79,29 +80,24 @@ module.exports.checkOut = tryCatch(async (req, res, next) => {
 })
 
 module.exports.getOrdersByStatus = tryCatch(async (req, res, next) => {
-
-    let data;
-    if (req.user.status === 0) {
-        data = await orderService.getAllWithOrderDetails(
-            { userId: req.user.id, status: req.query.status },
-            ['id', 'phone', 'code', 'address', 'price', 'discount', 'createdDate', 'paymentMethod', 'deliveryProgress'],
-            ['id', 'quantity', 'createdDate'],
-            ['id', 'name', 'price', 'imageCover'],
-
-        )
-    }
-    else {
-        data = await orderService.getAllWithOrderDetails({ status: req.query.status })
-    }
-
+    
+    let condition = req.user.status === 0 ? { userId: req.user.id, status: req.query.status } : { status: req.query.status }
+    let data = await orderService.getAllWithOrderDetails(condition, 
+        ['id', 'phone', 'code', 'address', 'price', 'discount', 'createdDate', 'paymentMethod', 'deliveryProgress'],
+        ['id', 'quantity', 'createdDate'],
+        ['id', 'name', 'price', 'imageCover'],
+        ['id', 'name']
+    );
     res.status(200).json(responseSuccess(data))
 
 })
 
 const updateStatus = (status, order) => {
-    let deliveryProgress = `${JSON.stringify({ status: status, time: new Date() })};${order.deliveryProgress}`;
+    let dP = order.deliveryProgress;
+    dP.push({ status: status, time: new Date() })
+    dP = JSON.stringify(dP);
     return Promise.all([
-        orderService.updateByCondition({ status: status, deliveryProgress }, { id: order.id }),
+        orderService.updateByCondition({ status: status, deliveryProgress: dP }, { id: order.id }),
         orderDetailService.updateByCondition({ status: status }, { orderId: order.id })
     ])
 }
@@ -109,7 +105,7 @@ const updateStatus = (status, order) => {
 module.exports.updateStatusOrder = tryCatch(async (req, res, next) => {
     const t = await sequelize.transaction()
     if (req.user.status >= ORDER_STATUS[req.body.status].permissionStatus) {
-        if (req.user.status === 0) {
+        if (req.user.status === 0 || req.body.status !== 3) {
             let order = await orderService.findOne({ id: req.params.id, userId: req.user.id })
             if (order) {
                 await updateStatus(req.body.status, { id: order.id, deliveryProgress: order.deliveryProgress })
@@ -121,21 +117,19 @@ module.exports.updateStatusOrder = tryCatch(async (req, res, next) => {
         }
         else {
             let order = await orderService.findOne({ id: req.params.id })
-            let deliveryProgress = `${JSON.stringify({ status: req.body.status, time: new Date() })};${order.deliveryProgress}`;
-            if (req.body.status === 3) {
-                await Promise.all([
-                    orderService.updateByCondition({ status: req.body.status, deliveryProgress: deliveryProgress }, { id: order.id }, t),
-                    orderDetailService.updateByCondition({ status: req.body.status }, { orderId: order.id }, t),
-                    ...req.body.orderDetails.map(async (ele) => {
-                        let data = await storedProductService.findOne({ productId: ele.productId, showRoomId: ele.showRoomId })
-                        await storedProductService.updateByCondition({ quantity: data.quantity - ele.quantity }, { id: data.id }, t)
-                    })
-                ])
-                await t.commit()
-            }
-            else {
-                await updateStatus(req.body.status, { id: order.id, deliveryProgress: order.deliveryProgress })
-            }
+            let dP = order.deliveryProgress;
+            dP.push({ status: req.body.status, time: new Date() })
+            dP = JSON.stringify(dP);
+
+            await Promise.all([
+                orderService.updateByCondition({ status: req.body.status, deliveryProgress: dP }, { id: order.id }, t),
+                ...req.body.orderDetails.map(async (ele) => {
+                    await orderDetailService.updateByCondition({ status: req.body.status, showRoomId: ele.showRoomId }, { orderId: order.id }, t);
+                    let data = await storedProductService.findOne({ productId: ele.productId, showRoomId: ele.showRoomId });
+                    await storedProductService.updateByCondition({ quantity: data.quantity - ele.quantity }, { id: data.id }, t);
+                })
+            ])
+            await t.commit()
             res.status(201).json(responseSuccess(CONSTANT_MESSAGES.UPDATE_SUCCESSFULLY));
         }
     }

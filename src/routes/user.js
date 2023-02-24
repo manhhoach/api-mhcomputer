@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userController = require('./../controllers/user');
 const jwt_token = require('./../middlewares/jwt_token')
-
+const {TYPE_VALIDATE} = require('./../utils/constants/typeValidate')
 
 router.post('/refresh-access-token', userController.refreshToken);
 router.post('/register', userController.register);

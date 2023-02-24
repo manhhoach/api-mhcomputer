@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
                 responseAddress(adr)
             })
         }
-        else {
+        else if(adrs!==null) {
             responseAddress(adrs)
         }
     })

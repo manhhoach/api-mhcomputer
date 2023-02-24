@@ -1,7 +1,11 @@
 "use strict";
+const handleDeliveryProgress = (order) => {
+    if (order.deliveryProgress)
+        order.deliveryProgress = JSON.parse(order.deliveryProgress)
+}
 
 module.exports = (sequelize, DataTypes) => {
-    const user=require('./user')(sequelize, DataTypes)
+    const user = require('./user')(sequelize, DataTypes)
     const order = sequelize.define('order', {
         id: {
             allowNull: false,
@@ -12,32 +16,39 @@ module.exports = (sequelize, DataTypes) => {
         userId: {
             type: DataTypes.INTEGER(4)
         },
+        name: {
+            type: DataTypes.STRING(512),
+            required: true
+        },
         phone: {
-            type: DataTypes.STRING(14)
+            type: DataTypes.STRING(20),
+            required: true
         },
         address: {
-            type: DataTypes.STRING(512)
+            type: DataTypes.STRING(512),
+            required: true
         },
-        paymentMethod:{
+        paymentMethod: {
             type: DataTypes.INTEGER(4),
-            //defaultValue: 0  thanh toán tiền mặt
+            defaultValue: 0  // 0: cash, 1: online
         },
         code: {
             type: DataTypes.STRING(128),
             unique: true
         },
-        deliveryProgress:{
+        deliveryProgress: {
             type: DataTypes.STRING(512)
         },
-        price:{
+        price: {
+            type: DataTypes.INTEGER(32),
+            required: true
+        },
+        discount: {
             type: DataTypes.INTEGER(32)
         },
-        discount:{
-            type: DataTypes.INTEGER(32)
-        },
-        status:{
+        status: {
             type: DataTypes.INTEGER(4),
-            defaultValue:0
+            defaultValue: 0
         },
         createdDate: {
             type: DataTypes.DATE,
@@ -46,23 +57,28 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         timestamps: false
     });
-    user.hasMany(order, {foreignKey: 'userId'});
+    user.hasMany(order, { foreignKey: 'userId' });
     order.belongsTo(user);
 
-    order.beforeCreate((ord)=>{
-        if(ord.status!==0)
-        {
-            ord.code=`MH${Math.floor(Math.random() * 100)}-${ord.userId}-${ord.createdDate.getTime()}`;
-            ord.deliveryProgress=JSON.stringify({
+    order.beforeCreate((ord) => {
+        if (ord.status !== 0) {
+            ord.code = `MH${Math.floor(Math.random() * 10)}${ord.userId}${ord.createdDate.getTime()}`;
+            ord.deliveryProgress = JSON.stringify([{
                 status: ord.status,
                 time: new Date()
-            })
+            }])
         }
     })
-    order.afterFind((orders)=>{
-        orders.map(o=>{
-            o.deliveryProgress=o.deliveryProgress.split(';').map(e=>JSON.parse(e))
-        })
+    
+    order.afterFind((orders) => {
+        if (Array.isArray(orders)) {
+            orders.map(o => {
+                handleDeliveryProgress(o)
+            })
+        }
+        else if (orders !== null) {
+            handleDeliveryProgress(orders)
+        }
     })
 
     return order;

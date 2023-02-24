@@ -1,20 +1,19 @@
 const Joi = require('joi')
 const validationData = require('./validation')
-const {TYPE_VALIDATE} = require('./../utils/constants/typeValidate')
+const createSchemaValidation = require('./schema')
 
 
-const createSchema = (type) => {
+const validate = (type) => {
     let unit = Joi.object({
         id: Joi.number().integer().required(),
         name: Joi.string().required()
     })
-
     let detailAddress = Joi.object({
         city: unit,
         district: unit,
         ward: unit
     })
-    let validationObj = {
+    let schema = {
         name: Joi.string().max(255),
         phone: Joi.string().pattern(/((84|0)[3|5|7|8|9])+([0-9]{8})\b/).messages({
             'string.pattern.base': '{{#label}} with value {:[.]} fails to match the required pattern'
@@ -23,24 +22,7 @@ const createSchema = (type) => {
         detailAddress: detailAddress,
         street: Joi.string().max(512)
     }
-    if (type === TYPE_VALIDATE.UPDATE) {
-        for (let field in validationObj) {
-            validationObj[field] = validationObj[field].optional()
-        }
-    }
-    else if (type === TYPE_VALIDATE.CREATE){
-        for (let field in validationObj) {
-            validationObj[field] = validationObj[field].required()
-        }
-    }
-    validationObj = Joi.object(validationObj)
-    return validationObj
-}
-
-
-
-const validate = (type) => {
-    const validationObj = createSchema(type)
+    const validationObj = createSchemaValidation(schema, type)
     return validationData(validationObj)
 }
 

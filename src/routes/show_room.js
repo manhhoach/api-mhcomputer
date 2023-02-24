@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt_token = require('./../middlewares/jwt_token')
 const showRoomController = require('./../controllers/show_room');
-
+const {TYPE_VALIDATE} = require('./../utils/constants/typeValidate')
 
 router.get('/', showRoomController.getAll);
 router.get('/all-paging', showRoomController.getAllPaging);
