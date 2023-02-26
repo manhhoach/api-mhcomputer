@@ -1,4 +1,5 @@
 module.exports.TYPE_VALIDATE = {
     CREATE: 'CREATE',
-    UPDATE: 'UPDATE'
+    UPDATE: 'UPDATE',
+    LOGIN: 'LOGIN'
 }

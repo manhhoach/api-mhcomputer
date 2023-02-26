@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 const userController = require('./../controllers/user');
 const jwt_token = require('./../middlewares/jwt_token')
-const {TYPE_VALIDATE} = require('./../utils/constants/typeValidate')
+const { TYPE_VALIDATE } = require('./../utils/constants/typeValidate')
+const validateUser = require('./../validations/user')
 
 router.post('/refresh-access-token', userController.refreshToken);
-router.post('/register', userController.register);
-router.post('/login', userController.login);
+router.post('/register', validateUser(TYPE_VALIDATE.CREATE), userController.register);
+router.post('/login', validateUser(TYPE_VALIDATE.LOGIN), userController.login);
 router.post('/login-with-google', userController.loginWithGoogleAPI);
 router.post('/login-with-facebook', userController.loginWithFacebookAPI);
 
@@ -19,7 +20,7 @@ router.put('/reset-password/:token', userController.resetPassword)
 
 router.use(jwt_token.checkAccessToken)
 router.get('/me', userController.getMe);
-router.put('/me', userController.updateMe);
+router.put('/me', validateUser(TYPE_VALIDATE.UPDATE), userController.updateMe);
 router.put('/change-password', userController.changePassword);
 //router.post('/verify-email', userController.verifyEmail);
 

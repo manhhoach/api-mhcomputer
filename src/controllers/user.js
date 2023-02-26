@@ -125,7 +125,6 @@ module.exports.loginWithGoogleAPI = tryCatch(async (req, res, next) => {
         googleId: req.body.user.id,
         email: req.body.user.email,
         fullName: req.body.user.name || `${req.body.user.familyName} ${req.body.user.givenName}`,
-        status: 0
     };
     let user, token;
 
