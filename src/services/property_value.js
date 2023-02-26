@@ -22,3 +22,7 @@ module.exports.getPropertyByCategoryId = (category_id) => {
 
     })
 }
+
+module.exports.destroy = (condition) => {
+    return models.property_values.destroy({where: condition});
+}

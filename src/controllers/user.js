@@ -113,10 +113,13 @@ module.exports.loginWithFacebookAPI = tryCatch(async (req, res, next) => {
     } else {
         user = await userService.create({ facebookId: json.id, fullName: json.name })
     }
-    token = jwt_token.signToken({
+    accessToken = jwt_token.signAccessToken({
         id: user.id
     })
-    res.status(200).json(responseSuccess({ ...user.dataValues, token }));
+    let refreshToken = jwt_token.signRefreshToken({
+        id: user.id
+    })
+    res.status(200).json(responseSuccess({ ...user, accessToken, refreshToken }))
 
 })
 
@@ -148,10 +151,13 @@ module.exports.loginWithGoogleAPI = tryCatch(async (req, res, next) => {
             user = await userService.create(data);
         }
     }
-    token = jwt_token.signToken({
+    let accessToken = jwt_token.signAccessToken({
         id: user.id
     })
-    res.status(200).json(responseSuccess({ ...user.dataValues, token }));
+    let refreshToken = jwt_token.signRefreshToken({
+        id: user.id
+    })
+    res.status(200).json(responseSuccess({ ...user, accessToken, refreshToken }))
 })
 
 
