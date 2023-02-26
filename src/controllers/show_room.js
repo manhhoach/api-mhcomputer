@@ -45,7 +45,7 @@ module.exports.updateQuantityInShowRoom = tryCatch(async (req, res, next) => {
 
     await storedProductService.updateByCondition(
         { quantity: req.body.quantity },
-        { showRoomId: req.params.id, productId: req.body.productId }
+        { id: req.params.id }
     )
     res.status(201).json(responseSuccess(CONSTANT_MESSAGES.UPDATE_SUCCESSFULLY))
 
@@ -55,8 +55,8 @@ module.exports.updateQuantityInShowRoom = tryCatch(async (req, res, next) => {
 module.exports.addProductInShowRoom = tryCatch(async (req, res, next) => {
 
     let [stored, isCreated] = await storedProductService.findOrCreate(
-        { showRoomId: req.params.id, productId: req.body.productId },
-        { ...req.body, showRoomId: req.params.id }
+        { showRoomId: req.body.showRoomId, productId: req.body.productId },
+        { ...req.body}
     )
     if (!isCreated) {
         await storedProductService.increment(

@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
-            type: DataTypes.INTEGER(4)
+            type: DataTypes.INTEGER(4) // 4 byte => 32 bit => 2^31
         },
         productId: {
             type: DataTypes.INTEGER(4)

@@ -1,5 +1,5 @@
 "use strict";
-
+const formatText=require('./../utils/formatText')
 module.exports = (sequelize, DataTypes) => {
 
     const property = sequelize.define('property', {
@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false
         }
     );
+
+    property.beforeCreate(ppt=>{
+        ppt.extendName=formatText(ppt.name)
+    })
 
     return property;
 }

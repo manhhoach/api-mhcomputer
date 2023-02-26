@@ -1,16 +1,8 @@
-const propertyValueService = require('../services/property_value')
-const { responseSuccess } = require('../utils/response')
-const tryCatch = require('../utils/tryCatch');
+const { property_values } = require('../database/db')
+const baseController = require('./baseController');
 
-module.exports.getAll = tryCatch(async (req, res, next) => {
-})
+module.exports.create = baseController.create(property_values)
 
-module.exports.create = tryCatch(async (req, res, next) => {
+module.exports.update = baseController.update(property_values)
 
-    let data = req.body.propertyId.map(ele => {
-        return { propertyId: ele, categoryId: req.body.categoryId };
-    })
-    data = await propertyValueService.bulkCreate(data);
-    res.status(200).json(responseSuccess(data));
-
-})
+module.exports.delete = baseController.destroy(property_values)

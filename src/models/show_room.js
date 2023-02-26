@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(255),
         },
         email:{
-            type: DataTypes.STRING(64),
+            type: DataTypes.STRING(128),
         },
         phone:{
             type: DataTypes.STRING(20),
@@ -21,10 +21,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(512),
         },
         urlMap: {
-            type: DataTypes.TEXT(),
+            type: DataTypes.STRING(1024),
         },
         imageUrl:{
-            type: DataTypes.TEXT(),
+            type: DataTypes.STRING(512),
         },
         openTime:{
             type: DataTypes.STRING(128),

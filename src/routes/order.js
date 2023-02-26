@@ -8,7 +8,7 @@ const orderValidate= require('./../validations/order')
 router.use(jwt_token.checkAccessToken);
 
 router.get('/', orderController.getOrdersByStatus);
-router.put('/:id', orderValidate(TYPE_VALIDATE.UPDATE), orderController.updateStatusOrder);
+router.put('/:id', orderValidate(TYPE_VALIDATE.UPDATE), orderController.updateOrderStatus);
 
 
 

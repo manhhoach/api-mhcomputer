@@ -53,6 +53,7 @@ module.exports.checkOut = tryCatch(async (req, res, next) => {
     //let status = req.body.paymentMethod === 1 ? ORDER_STATUS[1].status : ORDER_STATUS[2].status;
     let status = req.body.status;
     let new_order = await orderService.create({
+        name: req.body.name,
         userId: req.user.id,
         phone: req.body.phone,
         address: req.body.address,
@@ -102,7 +103,7 @@ const updateStatus = (status, order) => {
     ])
 }
 
-module.exports.updateStatusOrder = tryCatch(async (req, res, next) => {
+module.exports.updateOrderStatus = tryCatch(async (req, res, next) => {
     const t = await sequelize.transaction()
     if (req.user.status >= ORDER_STATUS[req.body.status].permissionStatus) {
         if (req.user.status === 0 || req.body.status !== 3) {

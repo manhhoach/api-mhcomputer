@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(1024)
         },
         price: { 
-            type: DataTypes.INTEGER(32)
+            type: DataTypes.BIGINT.UNSIGNED
         },
         description: {
             type: DataTypes.STRING(1024)
