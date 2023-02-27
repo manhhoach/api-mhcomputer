@@ -4,8 +4,8 @@ const mailTemplate = require('../utils/mailTemplate')
 const { OAuth2Client } = require('google-auth-library')
 
 module.exports.sendMail = async (email, url) => {
-    const oAuth2Client = new OAuth2Client(process.env.googleClientID_mail, process.env.googleClientSecret_mail)
-    oAuth2Client.setCredentials({ refresh_token: process.env.refreshToken_mail })
+    const oAuth2Client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET)
+    oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN })
 
     let accessToken = await oAuth2Client.getAccessToken();
     accessToken = accessToken.token;
@@ -15,10 +15,10 @@ module.exports.sendMail = async (email, url) => {
         secure: true,
         auth: {
             type: 'OAuth2',
-            user: process.env.mail,
-            clientId: process.env.googleClientID_mail,
-            clientSecret: process.env.googleClientSecret_mail,
-            refreshToken: process.env.refreshToken_mail,
+            user: process.env.GMAIL,
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            refreshToken: process.env.REFRESH_TOKEN,
             accessToken: accessToken
         }
     })
