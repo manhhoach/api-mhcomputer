@@ -48,22 +48,21 @@ GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-id
 REFRESH_TOKEN=your-refresh-token
 GMAIL=your-gmail
-
+``````
 
 3. Run project
 
- In development mode
+In development mode
 
-    `````````
-    npm run dev
+`````````
+npm run dev
+`````````
 
-    ``````````
-
- In production mode
+In production mode
  
-    `````````
-    npm start
-    `````````
+`````````
+ npm start
+`````````
     
 ## Author
 Manh Hoach
