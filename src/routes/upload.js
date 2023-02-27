@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { uploadMemoryStorage, uploadCloudStorage } = require('./../middlewares/upload')
+const { uploadMemoryStorage } = require('./../middlewares/upload')
 const uploadController = require('./../controllers/upload');
-const { validateUploadSingle } = require('./../validations/upload');
+const { validateUpload } = require('./../validations/upload');
+const {TYPE_VALIDATE} = require('./../utils/constants/typeValidate')
 
-
-router.post('/single', uploadMemoryStorage.single('file'), validateUploadSingle, uploadController.uploadSingle);
-router.post('/array', uploadCloudStorage.array('files'), uploadController.uploadArray);
+router.post('/single', uploadMemoryStorage.single('file'), validateUpload(TYPE_VALIDATE.SINGLE), uploadController.uploadSingle);
+router.post('/array', uploadMemoryStorage.array('files'), validateUpload(TYPE_VALIDATE.ARRAY), uploadController.uploadArray);
 
 
 module.exports = router;
