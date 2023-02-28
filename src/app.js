@@ -3,15 +3,24 @@ const app = express()
 require('dotenv').config();
 const route = require('./routes')
 const cors = require('cors')
+const helmet=require('helmet')
+const compression=require('compression')
 const {responseWithError}=require('./utils/response')
 
+
 app.use(cors());
+app.use(compression({
+  //level: 6
+}));
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res) => {
-  res.send('Welcome to MH-Computer!')
+  let str="hello cụ mạnh"
+  res.send(str.repeat(90000))
+  //res.send('Welcome to MH-Computer!')
 })
 
 app.use(route)
