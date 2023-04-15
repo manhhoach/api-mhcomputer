@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
         propertyId:{
             type: DataTypes.INTEGER(4),
         },
+        propertyName:{
+            type: DataTypes.STRING(255)
+        },
         value:{
             type: DataTypes.STRING(1024),
         },

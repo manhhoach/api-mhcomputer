@@ -21,6 +21,17 @@ module.exports.getAllPaging = (data) => {
     });
 }
 
+module.exports.getAllPagingAndFilterWithProperty = (data, productCondition) => {
+
+    return models.products.findAndCountAll({
+        where: productCondition,
+        limit: data.limit,
+        offset: data.offset,
+        order: data.order,
+        attributes: ['id', 'name', 'price', 'imageCover', 'createdDate']
+    });
+}
+
 module.exports.create = (data) => {
     return models.products.create(data);
 }

@@ -18,24 +18,9 @@ const PROPERTY_ARR = ['ram', 'o-cung', 'vga---card-man-hinh', 'kich-thuoc-man-hi
     'toc-do-vong-quay', 'bo-nho-dem', 'loai-case', 'chat-lieu', 'mau', 'cong-suat', 'dung-luong-ram'
 ]
 
-const responseProduct = (product, property) => {
-    property = property.map(ele => {
-        return {
-            productDetailId: ele.id,
-            propertyName: ele.property.name,
-            value: ele.value
-        }
-    });
-    let _product = { ...product.dataValues };
-
-    let data = { ..._product, property };
-    return data;
-}
-
 const filterProduct = async (data) => {
-    let strQuery = 'SELECT productId from properties join product_details on properties.id=product_details.propertyId';
     let product_id = await Promise.all(data.map(async (ele) => {
-        return await productDetailService.query(`${strQuery} where properties.extendName='${ele.extendName}' and product_details.value like '%${ele.value}%'`)
+        return await productDetailService.query(`SELECT productId from product_details where product_details.propertyName='${ele.propertyName}' and product_details.value like '%${ele.value}%'`)
     }));
     let temp = product_id.flat().map(ele => ele.productId);
     let m = new Map();
@@ -54,23 +39,37 @@ const filterProduct = async (data) => {
     return productId
 }
 
+const responseProduct = (product, property) => {
+    property = property.map(ele => {
+        return {
+            productDetailId: ele.id,
+            propertyName: ele.property.name,
+            value: ele.value
+        }
+    });
+    let _product = { ...product.dataValues };
+
+    let data = { ..._product, property };
+    return data;
+}
+
 module.exports.getAllPaging = tryCatch(async (req, res, next) => {
 
     const page_index = parseInt(req.query.page_index);
     const page_size = parseInt(req.query.page_size);
     const { limit, offset } = getPagination(page_index, page_size)
-    let condition = {};
+    let productCondition = {};
     let data = {
         limit: limit,
         offset: offset
     };
     if (req.query.categoryId) {
-        condition.categoryId = {
+        productCondition.categoryId = {
             [Op.in]: req.query.categoryId.split(';').map(ele => parseInt(ele))
         }
     }
     if (req.query.brandId) {
-        condition.brandId = parseInt(req.query.brandId)
+        productCondition.brandId = parseInt(req.query.brandId)
     }
     if (req.query.sort) {
         if (req.query.sort.startsWith('-')) {
@@ -85,10 +84,10 @@ module.exports.getAllPaging = tryCatch(async (req, res, next) => {
         data.order = [['createdDate', 'DESC']];
     }
     if (req.query.name) {
-        condition.name = sequelize.where(sequelize.fn('LOWER', sequelize.col('product.name')), 'LIKE', '%' + req.query.name.toLowerCase() + '%')
+        productCondition.name = sequelize.where(sequelize.fn('LOWER', sequelize.col('product.name')), 'LIKE', '%' + req.query.name.toLowerCase() + '%')
     }
     if (req.query.price_start && req.query.price_end) {
-        condition.price = {
+        productCondition.price = {
             [Op.between]: [
                 parseInt(req.query.price_start),
                 parseInt(req.query.price_end)
@@ -96,33 +95,32 @@ module.exports.getAllPaging = tryCatch(async (req, res, next) => {
         }
     }
     else if (req.query.price_start) {
-        condition.price = {
+        productCondition.price = {
             [Op.gte]: parseInt(req.query.price_start)
         }
     }
     else if (req.query.price_end) {
-        condition.price = {
+        productCondition.price = {
             [Op.lte]: parseInt(req.query.price_end)
         }
     }
 
-    let property = [];
+    let propertyCondition = [];
     for (let element in req.query) {
         if (PROPERTY_ARR.includes(element)) {
-            property.push({
-                extendName: element,
+            propertyCondition.push({
+                propertyName: element,
                 value: req.query[element]
             });
         }
     }
-    if (property.length > 0) {
-        condition.id = {
-            [Op.in]: await filterProduct(property)
+    if (propertyCondition.length > 0) {
+        productCondition.id = {
+            [Op.in]: await filterProduct(propertyCondition)
         }
     }
-    data.condition = condition;
 
-    let products = await productService.getAllPaging(data);
+    let products = await productService.getAllPagingAndFilterWithProperty(data, productCondition);
     let response = getPagingData(products, page_index, limit);
     res.status(200).json(responseSuccess(response));
 

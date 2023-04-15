@@ -5,6 +5,7 @@ const productController = require('./../controllers/product');
 const {TYPE_VALIDATE} = require('./../utils/constants/typeValidate')
 const validateProduct = require ('./../validations/product')
 
+
 router.get('/all-paging', productController.getAllPaging);
 router.get('/:id', productController.getById);
 

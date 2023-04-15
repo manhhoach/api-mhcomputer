@@ -52,6 +52,7 @@ db.addresses = require('../models/address')(sequelize, DataTypes)
 //sequelize.sync({alter: true})
 
 db.orders.hasMany(db.order_details)
+db.products.hasMany(db.product_details)
 
 
 
