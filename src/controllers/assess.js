@@ -1,14 +1,10 @@
 const assessService = require('../services/assess');
-const orderDetailService = require('../services/order_detail')
-const orderService = require('../services/order')
 const { responseSuccess } = require('../utils/response')
 const { getPagingData, getPagination } = require('../utils/pagination');
 const tryCatch = require('../utils/tryCatch');
-const AppError = require('../utils/AppError');
-const { ORDER_STATUS } = require('../utils/constants/orderStatus')
 const CONSTANT_MESSAGES = require('../utils/constants/messages');
 const baseController = require('./baseController');
-const { assesses } = require('../database/db')
+const { models } = require('../database/db')
 
 module.exports.getMyAssesses = tryCatch(async (req, res, next) => {
     const page_index = req.query.page_index, page_size = req.query.page_size;
@@ -76,7 +72,7 @@ module.exports.update = tryCatch(async (req, res, next) => {
 })
 
 
-module.exports.destroy = baseController.destroy(assesses)
+module.exports.destroy = baseController.destroy(models.assesses)
 
 
 module.exports.statistical = tryCatch(async (req, res, next) => {

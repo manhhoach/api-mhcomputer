@@ -1,5 +1,5 @@
 const PORT = process.env.PORT || 3000
-const { sequelize } = require('./src/database/db')
+const sequelize = require('./src/database/db')
 const app = require('./src/app')
 
 sequelize.authenticate().then(() => {

@@ -1,4 +1,4 @@
-const models = require('./../database/db');
+const {models} = require('./../database/db');
 
 module.exports.getByCondition = (condition) => {
     return models.addresses.findAll({ where: condition })

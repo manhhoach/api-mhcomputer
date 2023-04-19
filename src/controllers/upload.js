@@ -2,8 +2,9 @@ const { responseSuccess } = require('../utils/response')
 const tryCatch = require('../utils/tryCatch');
 const AppError = require('../utils/AppError');
 const { getFileName } = require('./../utils/getFileName')
-const cloudinary = require('./../config/cloudinary')
-
+const cloudinary = require('cloudinary')
+const { CLOUDINARY_CONFIG } = require('./../config/cloudinary')
+cloudinary.config(CLOUDINARY_CONFIG)
 const streamifier = require('streamifier');
 
 const uploadImage = (file) => {

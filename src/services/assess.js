@@ -1,4 +1,4 @@
-const models = require('../database/db');
+const {models} = require('../database/db');
 const sequelize = require('sequelize');
 
 module.exports.getByCondition = (condition, limit, offset, attributesUser = [], attributesProduct=[]) => {

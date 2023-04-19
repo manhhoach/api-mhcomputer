@@ -22,16 +22,16 @@ const assessRouter=require('./assess');
 const markRouter = require('./mark');
 const bannerRouter=require('./banner');
 
-// infomation
+
 router.use('/user', usersRouter);
 
-// address
+
 router.use('/district', districtRouter);
 router.use('/ward', wardRouter);
 router.use('/city', cityRouter);
 router.use('/address', addressRouter);
 
-// product
+
 router.use('/product', productsRouter);
 router.use('/category', categoryRouter);
 router.use('/brand', brandRouter);
@@ -41,15 +41,16 @@ router.use('/show-room', showRoomRouter);
 router.use('/mark', markRouter);
 router.use('/banner', bannerRouter);
 
-// order
+
 router.use('/order', ordersRouter);
 router.use('/cart', cartRouter);
 router.use('/payment',paymentRouter);
 router.use('/assess', assessRouter)
 
 
-// upload
+
 router.use('/upload', uploadRouter);
+
 
 
 

@@ -16,14 +16,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(1024) 
         },
         parentId: {
-            type: DataTypes.INTEGER(4)
+            type: DataTypes.INTEGER(4),
         },
         createdDate: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
         }
     }, {
-        timestamps: false
+        timestamps: false,
+      
     });
     
     category.hasMany(category, { as: 'category_children', foreignKey: 'parentId'})

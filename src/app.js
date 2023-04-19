@@ -20,8 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res) => {
-  //let str="hello mạnh"
-  //res.send(str.repeat(90000))
   res.send('Welcome to MH-Computer!')
 })
 

@@ -3,17 +3,17 @@ const storedProductService = require('../services/stored_product');
 const { responseSuccess } = require('../utils/response')
 const CONSTANT_MESSAGES = require('../utils/constants/messages');
 const baseController = require('./baseController');
-const { show_rooms } = require('../database/db')
+const { models } = require('../database/db')
 const tryCatch = require('../utils/tryCatch');
 const AppError = require('../utils/AppError');
 
-module.exports.getAll = baseController.getAll(show_rooms)
+module.exports.getAll = baseController.getAll(models.show_rooms)
 
-module.exports.getAllPaging = baseController.getAllPaging(show_rooms)
+module.exports.getAllPaging = baseController.getAllPaging(models.show_rooms)
 
-module.exports.create = baseController.create(show_rooms)
+module.exports.create = baseController.create(models.show_rooms)
 
-module.exports.update = baseController.update(show_rooms)
+module.exports.update = baseController.update(models.show_rooms)
 
 module.exports.destroy = tryCatch(async (req, res, next) => {
 

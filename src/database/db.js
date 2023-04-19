@@ -1,5 +1,4 @@
 const { Sequelize, DataTypes } = require('sequelize');
-let db = {};
 const { DATABASE } = require('../config/mysql')
 
 const sequelize = new Sequelize(DATABASE.DB_DBNAME, DATABASE.DB_USERNAME, DATABASE.DB_PASSWORD, {
@@ -15,45 +14,39 @@ const sequelize = new Sequelize(DATABASE.DB_DBNAME, DATABASE.DB_USERNAME, DATABA
 
 
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
 
-db.brands = require('../models/brand')(sequelize, DataTypes)
+sequelize.models.brands = require('../models/brand')(sequelize, DataTypes)
 
-db.categories = require('../models/category')(sequelize, DataTypes)
-db.products = require('../models/product')(sequelize, DataTypes)
-db.properties = require('../models/property')(sequelize, DataTypes)
-db.property_values = require('../models/property_value')(sequelize, DataTypes)
-db.product_details = require('../models/product_detail')(sequelize, DataTypes)
-db.show_rooms = require('../models/show_room')(sequelize, DataTypes)
-db.stored_products = require('../models/stored_product')(sequelize, DataTypes)
-db.banners = require('../models/banner')(sequelize, DataTypes)
+sequelize.models.categories = require('../models/category')(sequelize, DataTypes)
+sequelize.models.products = require('../models/product')(sequelize, DataTypes)
+sequelize.models.properties = require('../models/property')(sequelize, DataTypes)
+sequelize.models.property_values = require('../models/property_value')(sequelize, DataTypes)
+sequelize.models.product_details = require('../models/product_detail')(sequelize, DataTypes)
+sequelize.models.show_rooms = require('../models/show_room')(sequelize, DataTypes)
+sequelize.models.stored_products = require('../models/stored_product')(sequelize, DataTypes)
+sequelize.models.banners = require('../models/banner')(sequelize, DataTypes)
 
 
-db.users = require('../models/user')(sequelize, DataTypes)
-db.marks = require('../models/mark')(sequelize, DataTypes)
-db.assesses = require('../models/assess')(sequelize, DataTypes)
+sequelize.models.users = require('../models/user')(sequelize, DataTypes)
+sequelize.models.marks = require('../models/mark')(sequelize, DataTypes)
+sequelize.models.assesses = require('../models/assess')(sequelize, DataTypes)
 
 
 
-db.orders = require('../models/order')(sequelize, DataTypes)
-db.order_details = require('../models/order_detail')(sequelize, DataTypes)
+sequelize.models.orders = require('../models/order')(sequelize, DataTypes)
+sequelize.models.order_details = require('../models/order_detail')(sequelize, DataTypes)
 
 
 
-db.cities = require('../models/city')(sequelize, DataTypes);
-db.districts = require('../models/district')(sequelize, DataTypes)
-db.wards = require('../models/ward')(sequelize, DataTypes)
-db.addresses = require('../models/address')(sequelize, DataTypes)
+sequelize.models.cities = require('../models/city')(sequelize, DataTypes);
+sequelize.models.districts = require('../models/district')(sequelize, DataTypes)
+sequelize.models.wards = require('../models/ward')(sequelize, DataTypes)
+sequelize.models.addresses = require('../models/address')(sequelize, DataTypes)
 
 
-//db.assesses.sync({alter: true})
-
-//sequelize.sync({alter: true})
-
-db.orders.hasMany(db.order_details)
-db.products.hasMany(db.product_details)
+sequelize.models.orders.hasMany(sequelize.models.order_details)
+sequelize.models.products.hasMany(sequelize.models.product_details)
 
 
 
-module.exports = db;
+module.exports = sequelize;

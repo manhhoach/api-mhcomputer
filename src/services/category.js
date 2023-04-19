@@ -1,14 +1,18 @@
-const models = require('../database/db');
+const {models} = require('../database/db');
 const { QueryTypes } = require('sequelize')
 
 module.exports.getByCondition = (data) => {
     return models.categories.findAll({
         where: data,
         include: [
-            { model: models.categories, as: 'category_children', attributes: ['id', 'name', 'imageUrl', 'parentId'] },
-            // { model: models.categories, as: 'category_parents' }
+            {
+                model: models.categories,
+                as: 'category_children',
+                attributes: ['id', 'name', 'imageUrl', 'parentId']
+            }
         ],
         attributes: ['id', 'name', 'imageUrl', 'parentId']
+
     });
 }
 
