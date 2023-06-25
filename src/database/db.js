@@ -47,6 +47,6 @@ sequelize.models.addresses = require('../models/address')(sequelize, DataTypes)
 sequelize.models.orders.hasMany(sequelize.models.order_details)
 sequelize.models.products.hasMany(sequelize.models.product_details)
 
-
+sequelize.sync({alter: true})
 
 module.exports = sequelize;

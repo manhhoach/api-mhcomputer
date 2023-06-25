@@ -1,0 +1,42 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_USER: manhhoach
+      MYSQL_PASSWORD: manhhoach
+      MYSQL_DATABASE: mh-computer
+
+  api-mhcomputer:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+     - 5000:3000
+    volumes:
+      - /app/node_modules
+      - .:/app
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USERNAME: manhhoach
+      DB_PASSWORD: manhhoach
+      DB_DBNAME: mh-computer
+
+      SECRET_KEY_ACCESS_TOKEN: ${SECRET_KEY_ACCESS_TOKEN}
+      SECRET_KEY_REFRESH_TOKEN: ${SECRET_KEY_REFRESH_TOKEN}
+
+      CLOUDINARY_NAME: ${CLOUDINARY_NAME}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
+      
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      REFRESH_TOKEN: ${REFRESH_TOKEN}
+      GMAIL: ${GMAIL}
+
