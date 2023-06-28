@@ -6,7 +6,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 const compression = require('compression')
 const { responseWithError } = require('./utils/response')
-
+const path=require('path')
 
 
 app.use(cors());
@@ -16,11 +16,11 @@ app.use(compression({
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', (req, res) => {
-  res.send('Welcome to MH-Computer!')
+  res.sendFile(path.join(__dirname, 'index.html'));
 })
 
 app.use(route)

