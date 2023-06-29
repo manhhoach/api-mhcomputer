@@ -28,7 +28,9 @@
     "sequelize": "^6.25.0",
     "streamifier": "^0.1.1",
     "stripe": "^11.10.0",
-    "swagger-ui": "^5.1.0"
+    "swagger-ui": "^5.1.0",
+    "swagger-ui-express": "^4.6.3",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

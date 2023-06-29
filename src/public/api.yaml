@@ -1,9 +1,9 @@
 swagger: '2.0'
 info:
   version: '1.0'
-  title: api computer
+  title: API MHComputer
   contact: {}
-host: localhost:3000
+host: api-mhcomputer 
 basePath: /
 securityDefinitions: {}
 schemes:
@@ -15,10 +15,10 @@ produces:
 paths:
   /product/all-paging:
     get:
-      summary: get all paging with filter normal
+      summary: get all paging with filter
       tags:
       - product
-      operationId: getallpagingwithfilternormal
+      operationId: getallpagingwithfilter
       deprecated: false
       produces:
       - application/json
@@ -28,6 +28,39 @@ paths:
         required: false
         default: Bearer {token}
         type: string
+      - name: name
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: sort
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: categoryId
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: brandId
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: price_start
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: price_end
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
       - name: page_size
         in: query
         required: true
@@ -39,6 +72,21 @@ paths:
         required: true
         type: integer
         format: int32
+        description: ''
+      - name: o-cung
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: ram
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: do-phan-giai-man-hinh
+        in: query
+        required: true
+        type: string
         description: ''
       responses:
         '200':
@@ -128,6 +176,233 @@ paths:
         required: false
         default: Bearer {token}
         type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /register:
+    post:
+      summary: register
+      tags:
+      - user
+      operationId: register
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/registerrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /login:
+    post:
+      summary: login
+      tags:
+      - user
+      operationId: login
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/loginrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/refresh-access-token:
+    post:
+      summary: create refresh token
+      tags:
+      - user
+      operationId: createrefreshtoken
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createrefreshtokenrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /user/me:
+    get:
+      summary: get me
+      tags:
+      - user
+      operationId: getme
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    put:
+      summary: update me
+      tags:
+      - user
+      operationId: updateme
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/updatemerequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /user/change-password:
+    put:
+      summary: change password
+      tags:
+      - user
+      operationId: changepassword
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/changepasswordrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /user/login-with-google:
+    post:
+      summary: login with gg api
+      tags:
+      - user
+      operationId: loginwithggapi
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/loginwithggapirequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/login-with-facebook:
+    post:
+      summary: login with fb api
+      tags:
+      - user
+      operationId: loginwithfbapi
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/loginwithfbapirequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /user/reset-password/eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjU3Mjc1NzU5MDc3LCJleHAiOjE2NTk4Njc3NTkwNzd9.GWvmcsECCcW3o8AI96BkRxq_eZP-mPSPfFipFMaKkNbHKKLpCX69XXSXcZcpGXslCKgVLO_YwFuysRlK3Jg5Kw:
+    put:
+      summary: reset password
+      tags:
+      - user
+      operationId: resetpassword
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/resetpasswordrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}    
+  /user/forgot-password:
+    post:
+      summary: forgot password
+      tags:
+      - user
+      operationId: forgotpassword
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/forgotpasswordrequest'
       responses:
         '200':
           description: ''
@@ -595,252 +870,6 @@ paths:
         type: integer
         format: int32
         description: ''
-      responses:
-        '200':
-          description: ''
-          headers: {}
-  /user/register:
-    post:
-      summary: register
-      tags:
-      - user
-      operationId: register
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/registerrequest'
-      responses:
-        '200':
-          description: ''
-          headers: {}
-  /user/login:
-    post:
-      summary: login
-      tags:
-      - user
-      operationId: login
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/loginrequest'
-      responses:
-        '200':
-          description: ''
-          headers: {}
-  /user/refresh-access-token:
-    post:
-      summary: refresh token
-      tags:
-      - user
-      operationId: refreshtoken
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/refreshtokenrequest'
-      responses:
-        '200':
-          description: ''
-          headers: {}
-      security: []
-  /user/me:
-    get:
-      summary: get me
-      tags:
-      - user
-      operationId: getme
-      deprecated: false
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        '200':
-          description: ''
-          headers: {}
-      security: []
-    put:
-      summary: update me
-      tags:
-      - user
-      operationId: updateme
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/updatemerequest'
-      responses:
-        '200':
-          description: ''
-          headers: {}
-      security: []
-  /user/change-password:
-    put:
-      summary: change password
-      tags:
-      - user
-      operationId: changepassword
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/changepasswordrequest'
-      responses:
-        '200':
-          description: ''
-          headers: {}
-      security: []
-  /user/login-with-google:
-    post:
-      summary: login with gg api
-      tags:
-      - user
-      operationId: loginwithggapi
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/loginwithggapirequest'
-      responses:
-        '200':
-          description: ''
-          headers: {}
-  /user/auth/google:
-    get:
-      summary: login with gg client
-      tags:
-      - user
-      operationId: loginwithggclient
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      responses:
-        '200':
-          description: ''
-          headers: {}
-  /user/login-with-facebook:
-    post:
-      summary: login with fb api
-      tags:
-      - user
-      operationId: loginwithfbapi
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/loginwithfbapirequest'
-      responses:
-        '200':
-          description: ''
-          headers: {}
-  /user/forgot-password:
-    post:
-      summary: forgot password
-      tags:
-      - user
-      operationId: forgotpassword
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/forgotpasswordrequest'
-      responses:
-        '200':
-          description: ''
-          headers: {}
-  ? /user/reset-password/eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjU3Mjc1NzU5MDc3LCJleHAiOjE2NTk4Njc3NTkwNzd9.GWvmcsECCcW3o8AI96BkRxq_eZP-mPSPfFipFMaKkNbHKKLpCX69XXSXcZcpGXslCKgVLO_YwFuysRlK3Jg5Kw
-  : put:
-      summary: reset password
-      tags:
-      - user
-      operationId: resetpassword
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/resetpasswordrequest'
       responses:
         '200':
           description: ''
@@ -1980,7 +2009,7 @@ definitions:
   loginrequest:
     title: loginrequest
     example:
-      email: manhhn.nv@gmail.com
+      email: user1x@gmail.com
       password: '123456789'
     type: object
     properties:
@@ -1991,8 +2020,8 @@ definitions:
     required:
     - email
     - password
-  refreshtokenrequest:
-    title: refreshtokenrequest
+  createrefreshtokenrequest:
+    title: createrefreshtokenrequest
     example:
       email: manhhn.nv@gmail.com
       password: '123456789'
